@@ -3,6 +3,8 @@ plugins {
     id("kotlin-android")
     // The Flutter Gradle Plugin must be applied after the Android and Kotlin Gradle plugins.
     id("dev.flutter.flutter-gradle-plugin")
+    // Add the Google services Gradle plugin
+    id("com.google.gms.google-services") version "4.4.0" apply false
 }
 
 android {
@@ -28,6 +30,11 @@ android {
         targetSdk = flutter.targetSdkVersion
         versionCode = flutter.versionCode
         versionName = flutter.versionName
+
+        // Facebook App ID configuration (optional, for Facebook SSO)
+        // Get these values from your .env file or Firebase Console
+        manifestPlaceholders["facebookAppId"] = System.getenv("FACEBOOK_APP_ID") ?: ""
+        manifestPlaceholders["facebookClientToken"] = System.getenv("FACEBOOK_CLIENT_TOKEN") ?: ""
     }
 
     buildTypes {

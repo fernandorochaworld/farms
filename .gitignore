@@ -43,3 +43,32 @@ app.*.map.json
 /android/app/debug
 /android/app/profile
 /android/app/release
+
+# Firebase configuration files (contains API keys and secrets)
+# IMPORTANT: These files contain sensitive credentials
+google-services.json
+GoogleService-Info.plist
+firebase_options.dart
+firebase_options*.dart
+!firebase_options.dart.example
+
+# Note: .firebaserc, firebase.json, firestore.rules, and firestore.indexes.json
+# are SAFE to commit - they contain no secrets
+
+# Old/backup configuration files
+*-old.*
+DELETE-OLD-*
+
+# Environment files
+.env
+.env.*
+*.env
+
+# Facebook configuration
+facebook_app_id.txt
+facebook_client_token.txt
+
+# Keystore files (contains signing keys)
+*.jks
+*.keystore
+key.properties

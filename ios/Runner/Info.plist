@@ -45,5 +45,47 @@
 	<true/>
 	<key>UIApplicationSupportsIndirectInputEvents</key>
 	<true/>
+
+	<!-- Google Sign-In Configuration -->
+	<!-- These values will be automatically populated from GoogleService-Info.plist -->
+	<!-- DO NOT hardcode API keys here -->
+	<key>CFBundleURLTypes</key>
+	<array>
+		<!-- Google Sign-In URL Scheme -->
+		<dict>
+			<key>CFBundleTypeRole</key>
+			<string>Editor</string>
+			<key>CFBundleURLSchemes</key>
+			<array>
+				<!-- This value comes from REVERSED_CLIENT_ID in GoogleService-Info.plist -->
+				<string>com.googleusercontent.apps.897733083777-75ug9emg7eggets2hhs3ic5kia6056f3</string>
+			</array>
+		</dict>
+		<!-- Facebook Sign-In URL Scheme (Optional) -->
+		<dict>
+			<key>CFBundleTypeRole</key>
+			<string>Editor</string>
+			<key>CFBundleURLSchemes</key>
+			<array>
+				<string>fbYOUR_FACEBOOK_APP_ID</string>
+			</array>
+		</dict>
+	</array>
+
+	<!-- Facebook Sign-In Configuration (Optional) -->
+	<key>FacebookAppID</key>
+	<string>YOUR_FACEBOOK_APP_ID</string>
+	<key>FacebookClientToken</key>
+	<string>YOUR_FACEBOOK_CLIENT_TOKEN</string>
+	<key>FacebookDisplayName</key>
+	<string>Farms</string>
+
+	<!-- Query Schemes for Facebook -->
+	<key>LSApplicationQueriesSchemes</key>
+	<array>
+		<string>fbapi</string>
+		<string>fb-messenger-share-api</string>
+		<string>fbauth2</string>
+	</array>
 </dict>
 </plist>

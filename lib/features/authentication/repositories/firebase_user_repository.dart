@@ -240,8 +240,18 @@ class FirebaseUserRepository implements UserRepository {
   @override
   Future<bool> isEmailAvailable(String email) async {
     try {
-      final methods = await _auth.fetchSignInMethodsForEmail(email);
-      return methods.isEmpty;
+      // Check if email is already registered by attempting to create a user
+      // If email exists, createUserWithEmailAndPassword will throw an error
+      // This is a workaround since fetchSignInMethodsForEmail is deprecated
+
+      // Alternative: Query Firestore users collection
+      final querySnapshot = await _firestore
+          .collection('users')
+          .where('email', isEqualTo: email)
+          .limit(1)
+          .get();
+
+      return querySnapshot.docs.isEmpty;
     } catch (e) {
       return false;
     }

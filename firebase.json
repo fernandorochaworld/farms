@@ -1,0 +1,29 @@
+{
+  "firestore": {
+    "rules": "firestore.rules",
+    "indexes": "firestore.indexes.json"
+  },
+  "flutter": {
+    "platforms": {
+      "android": {
+        "default": {
+          "projectId": "farms-2025",
+          "appId": "1:897733083777:android:087005bf36c01d0e8b0380",
+          "fileOutput": "android/app/google-services.json"
+        }
+      },
+      "dart": {
+        "lib/firebase_options.dart": {
+          "projectId": "farms-2025",
+          "configurations": {
+            "android": "1:897733083777:android:087005bf36c01d0e8b0380",
+            "ios": "1:897733083777:ios:50cef3d6d2e5c90d8b0380",
+            "macos": "1:897733083777:ios:50cef3d6d2e5c90d8b0380",
+            "web": "1:897733083777:web:2e275e8fc195b6208b0380",
+            "windows": "1:897733083777:web:b48691e09dcc310a8b0380"
+          }
+        }
+      }
+    }
+  }
+}
