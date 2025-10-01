@@ -3,6 +3,7 @@
 ## Project Structure
 
 ### Feature-First Organization
+- Keep settings files in an easy and centralized way using .env file or the best alternative to Flutter/dart.
 - Group all feature files in a single folder (UI, logic, widgets)
 - Only share truly reusable code (models, services, utilities)
 - Each feature contains: `screens/`, `widgets/`, `controllers/` or `blocs/`
@@ -114,7 +115,7 @@ lib/
 - Avoid `!` operator when possible
 
 ### Testing
-- Write unit tests for business logic
+- Write unit tests for business logic and to the main features developed.
 - Create widget tests for UI components
 - Test authentication flows
 - Mock Firebase services in tests
@@ -154,7 +155,6 @@ lib/
 
 ### Inline Comments
 - Explain "why", not "what"
-- Remove commented-out code
 - Keep comments concise
 - Update comments when code changes
 

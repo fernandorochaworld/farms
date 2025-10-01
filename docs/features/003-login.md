@@ -6,84 +6,84 @@ Complete authentication system supporting traditional email/password login, user
 ## Implementation Checklist
 
 ### Configuration & Setup
-- [ ] Implement a easy and centralized way to setup firebase and single-slign-on. Using something like .env file or the best alternative to Flutter.
+- [x] Implement a easy and centralized way to setup firebase and single-slign-on. Using something like .env file or the best alternative to Flutter.
 - [ ] Configure Firebase project for Authentication
 - [ ] Setup Firestore for user data storage
-- [ ] Add required dependencies to `pubspec.yaml`
-- [ ] Create environment configuration files
-- [ ] Configure Firebase Security Rules for users collection
+- [x] Add required dependencies to `pubspec.yaml`
+- [x] Create environment configuration files
+- [x] Configure Firebase Security Rules for users collection
 - [ ] Setup email/password authentication in Firebase Console
 - [ ] Configure password reset email templates
 
 ### Core Implementation
-- [ ] This page must be the new initial page of the application.
-- [ ] Add authentication to avoid unautorized access to the internal pages.
-- [ ] Create repository pattern abstraction layer
-- [ ] Implement Firebase authentication repository
-- [ ] Create Person model with all required attributes
-- [ ] Implement user registration service
-- [ ] Implement email/password login service
-- [ ] Integrate SSO services (Google & Facebook)
-- [ ] Implement password reset flow
-- [ ] Add Firebase Auth state listener
-- [ ] Create secure token storage
+- [x] This page must be the new initial page of the application.
+- [x] Add authentication to avoid unautorized access to the internal pages.
+- [x] Create repository pattern abstraction layer
+- [x] Implement Firebase authentication repository
+- [x] Create Person model with all required attributes
+- [x] Implement user registration service
+- [x] Implement email/password login service
+- [x] Integrate SSO services (Google & Facebook)
+- [x] Implement password reset flow
+- [x] Add Firebase Auth state listener
+- [x] Create secure token storage
 - [ ] Implement automatic token refresh
-- [ ] Add email verification flow
-- [ ] Create username availability checker
-- [ ] Implement sign-out functionality
+- [x] Add email verification flow
+- [x] Create username availability checker
+- [x] Implement sign-out functionality
 
 ### Data Layer
-- [ ] Create Person model with `fromJson`/`toJson`
-- [ ] Implement User Repository interface
-- [ ] Create Firebase User Repository implementation
-- [ ] Setup Firestore indexes for queries
+- [x] Create Person model with `fromJson`/`toJson`
+- [x] Implement User Repository interface
+- [x] Create Firebase User Repository implementation
+- [x] Setup Firestore indexes for queries
 - [ ] Implement batch operations for user creation
-- [ ] Add data validation layer
-- [ ] Create migration-ready repository pattern
+- [x] Add data validation layer
+- [x] Create migration-ready repository pattern
 
 ### UI Components
-- [ ] Design login screen
-- [ ] Create registration/sign-up screen
-- [ ] Design forgot password screen
+- [x] Design login screen
+- [x] Create registration/sign-up screen
+- [x] Design forgot password screen
 - [ ] Build password reset confirmation screen
-- [ ] Create custom text input widgets (email, password, username)
-- [ ] Implement SSO buttons integration
-- [ ] Add loading states for all forms
-- [ ] Implement error state UI
-- [ ] Add success feedback messages
-- [ ] Create password visibility toggle
-- [ ] Add form validation indicators
-- [ ] Implement responsive layouts
+- [x] Create custom text input widgets (email, password, username)
+- [x] Implement SSO buttons integration
+- [x] Add loading states for all forms
+- [x] Implement error state UI
+- [x] Add success feedback messages
+- [x] Create password visibility toggle
+- [x] Add form validation indicators
+- [x] Implement responsive layouts
 
 ### Form Validation
-- [ ] Add email format validation
-- [ ] Implement password strength validation
-- [ ] Add username format validation
-- [ ] Create name validation rules
-- [ ] Implement real-time field validation
-- [ ] Add form-level validation
-- [ ] Create custom validation error messages
-- [ ] Implement client-side validation
-- [ ] Add server-side validation
+- [x] Add email format validation
+- [x] Implement password strength validation
+- [x] Add username format validation
+- [x] Create name validation rules
+- [x] Implement real-time field validation
+- [x] Add form-level validation
+- [x] Create custom validation error messages
+- [x] Implement client-side validation
+- [x] Add server-side validation
 
 ### Error Handling
-- [ ] Handle invalid credentials
-- [ ] Implement network failure handling
-- [ ] Handle email already in use
-- [ ] Handle username already taken
-- [ ] Add weak password errors
-- [ ] Handle invalid email errors
-- [ ] Implement user not found errors
-- [ ] Add retry mechanisms
-- [ ] Show user-friendly error messages
-- [ ] Log errors for debugging
+- [x] Handle invalid credentials
+- [x] Implement network failure handling
+- [x] Handle email already in use
+- [x] Handle username already taken
+- [x] Add weak password errors
+- [x] Handle invalid email errors
+- [x] Implement user not found errors
+- [x] Add retry mechanisms
+- [x] Show user-friendly error messages
+- [x] Log errors for debugging
 
 ### Security
-- [ ] Hash passwords (handled by Firebase Auth)
-- [ ] Implement secure token storage
-- [ ] Add input sanitization
-- [ ] Validate all user inputs
-- [ ] Configure Firebase Security Rules
+- [x] Hash passwords (handled by Firebase Auth)
+- [x] Implement secure token storage
+- [x] Add input sanitization
+- [x] Validate all user inputs
+- [x] Configure Firebase Security Rules
 - [ ] Setup environment variables for sensitive data
 - [ ] Implement rate limiting for auth attempts
 - [ ] Add CAPTCHA for registration (optional)
@@ -105,7 +105,7 @@ Complete authentication system supporting traditional email/password login, user
 - [ ] Aim for >70% code coverage
 
 ### Documentation
-- [ ] Document setup instructions
+- [x] Document setup instructions
 - [ ] Add inline code documentation
 - [ ] Create troubleshooting guide
 - [ ] Document migration strategy for databases

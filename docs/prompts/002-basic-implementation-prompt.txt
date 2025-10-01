@@ -1,0 +1,1 @@
+You are an expert Flutter Software engineer and must use the best code standard and practices including @docs/000-base/001-good-practices.md.

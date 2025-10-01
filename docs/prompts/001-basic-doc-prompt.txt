@@ -1,0 +1,1 @@
+You are an expert Flutter Software engineer and must use the best code standard and practices including @docs/000-base/001-good-practices.md. Create the documentation md file adding checkboxes to the requirements and the items in it that should be checked when the feature item is implemented.
