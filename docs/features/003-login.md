@@ -6,6 +6,7 @@ Complete authentication system supporting traditional email/password login, user
 ## Implementation Checklist
 
 ### Configuration & Setup
+- [ ] Implement a easy and centralized way to setup firebase and single-slign-on. Using something like .env file or the best alternative to Flutter.
 - [ ] Configure Firebase project for Authentication
 - [ ] Setup Firestore for user data storage
 - [ ] Add required dependencies to `pubspec.yaml`
@@ -15,6 +16,8 @@ Complete authentication system supporting traditional email/password login, user
 - [ ] Configure password reset email templates
 
 ### Core Implementation
+- [ ] This page must be the new initial page of the application.
+- [ ] Add authentication to avoid unautorized access to the internal pages.
 - [ ] Create repository pattern abstraction layer
 - [ ] Implement Firebase authentication repository
 - [ ] Create Person model with all required attributes
