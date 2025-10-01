@@ -1,0 +1,62 @@
+{
+  "@@locale": "en",
+  "appTitle": "Farm Manager",
+  "@appTitle": {
+    "description": "The application title"
+  },
+  "homePageTitle": "Farm Manager Home",
+  "@homePageTitle": {
+    "description": "The home page title"
+  },
+  "counterMessage": "You have pushed the button this many times:",
+  "@counterMessage": {
+    "description": "Message shown above the counter"
+  },
+  "incrementTooltip": "Increment",
+  "@incrementTooltip": {
+    "description": "Tooltip for the increment button"
+  },
+  "welcome": "Welcome, {name}!",
+  "@welcome": {
+    "description": "Welcome message with user name",
+    "placeholders": {
+      "name": {
+        "type": "String",
+        "example": "John"
+      }
+    }
+  },
+  "itemCount": "{count, plural, =0{No items} =1{1 item} other{{count} items}}",
+  "@itemCount": {
+    "description": "Number of items with plural support",
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "settingsTitle": "Settings",
+  "@settingsTitle": {
+    "description": "Settings page title"
+  },
+  "languageSettings": "Language",
+  "@languageSettings": {
+    "description": "Language settings label"
+  },
+  "english": "English",
+  "@english": {
+    "description": "English language option"
+  },
+  "spanish": "Spanish",
+  "@spanish": {
+    "description": "Spanish language option"
+  },
+  "portuguese": "Portuguese",
+  "@portuguese": {
+    "description": "Portuguese language option"
+  },
+  "mandarin": "Mandarin Chinese",
+  "@mandarin": {
+    "description": "Mandarin Chinese language option"
+  }
+}

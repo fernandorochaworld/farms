@@ -1,0 +1,15 @@
+{
+  "@@locale": "pt",
+  "appTitle": "Gerenciador de Fazenda",
+  "homePageTitle": "7777777 Início do Gerenciador de Fazenda",
+  "counterMessage": "Você pressionou o botão esta quantidade de vezes:",
+  "incrementTooltip": "Incrementar",
+  "welcome": "Bem-vindo, {name}!",
+  "itemCount": "{count, plural, =0{Nenhum item} =1{1 item} other{{count} itens}}",
+  "settingsTitle": "Configurações",
+  "languageSettings": "Idioma",
+  "english": "Inglês",
+  "spanish": "Espanhol",
+  "portuguese": "Português",
+  "mandarin": "Chinês Mandarim"
+}

@@ -1,0 +1,15 @@
+{
+  "@@locale": "es",
+  "appTitle": "Administrador de Granja",
+  "homePageTitle": "Inicio del Administrador de Granja",
+  "counterMessage": "Has presionado el botón esta cantidad de veces:",
+  "incrementTooltip": "Incrementar",
+  "welcome": "¡Bienvenido, {name}!",
+  "itemCount": "{count, plural, =0{Sin elementos} =1{1 elemento} other{{count} elementos}}",
+  "settingsTitle": "Configuración",
+  "languageSettings": "Idioma",
+  "english": "Inglés",
+  "spanish": "Español",
+  "portuguese": "Portugués",
+  "mandarin": "Chino Mandarín"
+}
