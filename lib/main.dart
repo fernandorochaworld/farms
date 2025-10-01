@@ -1,9 +1,30 @@
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
-import 'generated/app_localizations.dart';
-import 'core/i18n/language_controller.dart';
 
-void main() {
+import 'core/di/injection.dart';
+import 'core/i18n/language_controller.dart';
+import 'features/authentication/bloc/auth_bloc.dart';
+import 'features/authentication/bloc/auth_event.dart';
+import 'features/authentication/bloc/auth_state.dart';
+import 'features/authentication/repositories/user_repository.dart';
+import 'features/authentication/screens/login_screen.dart';
+import 'firebase_options.dart';
+import 'generated/app_localizations.dart';
+import 'screens/home_screen.dart';
+
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+
+  // Initialize Firebase
+  await Firebase.initializeApp(
+    options: DefaultFirebaseOptions.currentPlatform,
+  );
+
+  // Setup dependency injection
+  setupDependencies();
+
   runApp(const MyApp());
 }
 
@@ -25,108 +46,65 @@ class _MyAppState extends State<MyApp> {
 
   @override
   Widget build(BuildContext context) {
-    return AnimatedBuilder(
-      animation: _languageController,
-      builder: (context, child) {
-        return MaterialApp(
-          localizationsDelegates: const [
-            AppLocalizations.delegate,
-            GlobalMaterialLocalizations.delegate,
-            GlobalWidgetsLocalizations.delegate,
-            GlobalCupertinoLocalizations.delegate,
-          ],
-          supportedLocales: const [
-            Locale('en'),
-            Locale('es'),
-            Locale('pt'),
-            Locale('zh'),
-          ],
-          locale: _languageController.locale,
-          theme: ThemeData(
-            colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
-          ),
-          home: MyHomePage(languageController: _languageController),
-        );
-      },
+    return BlocProvider(
+      create: (context) => AuthBloc(
+        userRepository: getIt<UserRepository>(),
+      )..add(const AuthStatusRequested()),
+      child: AnimatedBuilder(
+        animation: _languageController,
+        builder: (context, child) {
+          return MaterialApp(
+            title: 'Farms',
+            localizationsDelegates: const [
+              AppLocalizations.delegate,
+              GlobalMaterialLocalizations.delegate,
+              GlobalWidgetsLocalizations.delegate,
+              GlobalCupertinoLocalizations.delegate,
+            ],
+            supportedLocales: const [
+              Locale('en'),
+              Locale('es'),
+              Locale('pt'),
+              Locale('zh'),
+            ],
+            locale: _languageController.locale,
+            theme: ThemeData(
+              colorScheme: ColorScheme.fromSeed(seedColor: Colors.green),
+              useMaterial3: true,
+            ),
+            home: AuthGate(languageController: _languageController),
+          );
+        },
+      ),
     );
   }
 }
 
-class MyHomePage extends StatefulWidget {
-  const MyHomePage({super.key, required this.languageController});
+/// Authentication gate that routes to appropriate screen based on auth state
+class AuthGate extends StatelessWidget {
+  const AuthGate({super.key, required this.languageController});
 
   final LanguageController languageController;
 
   @override
-  State<MyHomePage> createState() => _MyHomePageState();
-}
-
-class _MyHomePageState extends State<MyHomePage> {
-  int _counter = 0;
-
-  void _incrementCounter() {
-    setState(() {
-      // This call to setState tells the Flutter framework that something has
-      // changed in this State, which causes it to rerun the build method below
-      // so that the display can reflect the updated values. If we changed
-      // _counter without calling setState(), then the build method would not be
-      // called again, and so nothing would appear to happen.
-      _counter++;
-    });
-  }
-
-  @override
   Widget build(BuildContext context) {
-    final l10n = AppLocalizations.of(context)!;
-
-    return Scaffold(
-      appBar: AppBar(
-        backgroundColor: Theme.of(context).colorScheme.inversePrimary,
-        title: Text(l10n.homePageTitle),
-        actions: [
-          PopupMenuButton<String>(
-            icon: const Icon(Icons.language),
-            onSelected: (String languageCode) {
-              widget.languageController.changeLanguage(languageCode);
-            },
-            itemBuilder: (BuildContext context) => <PopupMenuEntry<String>>[
-              PopupMenuItem<String>(
-                value: 'en',
-                child: Text(l10n.english),
-              ),
-              PopupMenuItem<String>(
-                value: 'es',
-                child: Text(l10n.spanish),
-              ),
-              PopupMenuItem<String>(
-                value: 'pt',
-                child: Text(l10n.portuguese),
-              ),
-              PopupMenuItem<String>(
-                value: 'zh',
-                child: Text(l10n.mandarin),
-              ),
-            ],
-          ),
-        ],
-      ),
-      body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            Text(l10n.counterMessage),
-            Text(
-              '$_counter',
-              style: Theme.of(context).textTheme.headlineMedium,
+    return BlocBuilder<AuthBloc, AuthState>(
+      builder: (context, state) {
+        if (state is AuthLoading || state is AuthInitial) {
+          // Show loading screen while checking auth status
+          return const Scaffold(
+            body: Center(
+              child: CircularProgressIndicator(),
             ),
-          ],
-        ),
-      ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: _incrementCounter,
-        tooltip: l10n.incrementTooltip,
-        child: const Icon(Icons.add),
-      ),
+          );
+        } else if (state is AuthAuthenticated) {
+          // User is authenticated, show home screen
+          return HomeScreen(languageController: languageController);
+        } else {
+          // User is not authenticated, show login screen
+          return const LoginScreen();
+        }
+      },
     );
   }
 }
