@@ -1,7 +1,7 @@
 {
   "@@locale": "pt",
   "appTitle": "Gerenciador de Fazenda",
-  "homePageTitle": "7777777 Início do Gerenciador de Fazenda",
+  "homePageTitle": "Início do Gerenciador de Fazenda",
   "counterMessage": "Você pressionou o botão esta quantidade de vezes:",
   "incrementTooltip": "Incrementar",
   "welcome": "Bem-vindo, {name}!",

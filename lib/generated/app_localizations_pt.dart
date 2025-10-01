@@ -12,7 +12,7 @@ class AppLocalizationsPt extends AppLocalizations {
   String get appTitle => 'Gerenciador de Fazenda';
 
   @override
-  String get homePageTitle => '7777777 Início do Gerenciador de Fazenda';
+  String get homePageTitle => 'Início do Gerenciador de Fazenda';
 
   @override
   String get counterMessage =>
