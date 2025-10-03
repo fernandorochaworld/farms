@@ -51,15 +51,28 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
     }
   }
 
-  /// Handle email/password login
+  /// Handle email/password login (supports username or email)
   Future<void> _onAuthLoginRequested(
     AuthLoginRequested event,
     Emitter<AuthState> emit,
   ) async {
     emit(const AuthLoading());
     try {
+      String emailToUse = event.email;
+
+      // Check if input is a username (doesn't contain @)
+      if (!event.email.contains('@')) {
+        // Try to get email from username
+        final email = await _userRepository.getEmailFromUsername(event.email);
+        if (email == null) {
+          emit(const AuthFailure('Username not found'));
+          return;
+        }
+        emailToUse = email;
+      }
+
       final user = await _userRepository.signInWithEmailAndPassword(
-        event.email,
+        emailToUse,
         event.password,
       );
       emit(AuthAuthenticated(user));

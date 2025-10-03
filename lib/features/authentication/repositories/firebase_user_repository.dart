@@ -258,6 +258,25 @@ class FirebaseUserRepository implements UserRepository {
   }
 
   @override
+  Future<String?> getEmailFromUsername(String username) async {
+    try {
+      final querySnapshot = await _firestore
+          .collection('users')
+          .where('username', isEqualTo: username)
+          .limit(1)
+          .get();
+
+      if (querySnapshot.docs.isEmpty) {
+        return null;
+      }
+
+      return querySnapshot.docs.first.data()['email'] as String?;
+    } catch (e) {
+      return null;
+    }
+  }
+
+  @override
   Future<Person> updateProfile(Person person) async {
     try {
       final updatedPerson = person.copyWith(

@@ -5,10 +5,12 @@ class AuthErrorMessages {
     final errorString = error.toString().toLowerCase();
 
     if (errorString.contains('user not found')) {
-      return 'No account found with this email';
+      return 'Invalid email, username, or password';
     } else if (errorString.contains('wrong password') ||
         errorString.contains('invalid password')) {
-      return 'Invalid email or password';
+      return 'Invalid email, username, or password';
+    } else if (errorString.contains('username not found')) {
+      return 'Invalid email, username, or password';
     } else if (errorString.contains('email already in use')) {
       return 'An account already exists with this email';
     } else if (errorString.contains('username already taken')) {

@@ -48,6 +48,9 @@ abstract class UserRepository {
   /// Check if email is available
   Future<bool> isEmailAvailable(String email);
 
+  /// Get email from username
+  Future<String?> getEmailFromUsername(String username);
+
   /// Update user profile
   Future<Person> updateProfile(Person person);
 

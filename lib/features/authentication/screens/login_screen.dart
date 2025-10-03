@@ -43,11 +43,12 @@ class _LoginScreenState extends State<LoginScreen> {
   }
 
   void _validateForm() {
-    final email = Email.dirty(_emailController.text);
+    final input = _emailController.text.trim();
     final password = Password.dirty(_passwordController.text);
 
     setState(() {
-      _isFormValid = email.isValid && password.isValid;
+      // Valid if input is not empty and password is valid
+      _isFormValid = input.isNotEmpty && password.isValid;
     });
   }
 
@@ -69,12 +70,16 @@ class _LoginScreenState extends State<LoginScreen> {
         child: BlocConsumer<AuthBloc, AuthState>(
           listener: (context, state) {
             if (state is AuthFailure) {
-              ScaffoldMessenger.of(context).showSnackBar(
-                SnackBar(
-                  content: Text(state.error),
-                  backgroundColor: Colors.red,
-                ),
-              );
+              ScaffoldMessenger.of(context)
+                ..hideCurrentSnackBar()
+                ..showSnackBar(
+                  SnackBar(
+                    content: Text(state.error),
+                    backgroundColor: Colors.red,
+                    duration: const Duration(seconds: 4),
+                    behavior: SnackBarBehavior.floating,
+                  ),
+                );
             }
           },
           builder: (context, state) {
@@ -115,18 +120,20 @@ class _LoginScreenState extends State<LoginScreen> {
                       ),
                       const SizedBox(height: 48),
 
-                      // Email field
+                      // Email or Username field
                       CustomTextField(
                         controller: _emailController,
-                        label: 'Email',
-                        hint: 'Enter your email',
-                        keyboardType: TextInputType.emailAddress,
-                        prefixIcon: const Icon(Icons.email_outlined),
+                        label: 'Email or Username',
+                        hint: 'Enter your email or username',
+                        keyboardType: TextInputType.text,
+                        prefixIcon: const Icon(Icons.person_outlined),
                         textInputAction: TextInputAction.next,
                         enabled: !isLoading,
                         validator: (value) {
-                          final email = Email.dirty(value ?? '');
-                          return email.errorMessage;
+                          if (value == null || value.trim().isEmpty) {
+                            return 'Email or username is required';
+                          }
+                          return null;
                         },
                       ),
                       const SizedBox(height: 16),
