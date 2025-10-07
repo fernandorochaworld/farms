@@ -91,7 +91,7 @@ class FirebaseUserRepository implements UserRepository {
   }
 
   @override
-  Future<Person> signInWithGoogle() async {
+  Future<dynamic> signInWithGoogle() async {
     try {
       final userCredential = await _googleAuthService.signIn();
 
@@ -108,20 +108,13 @@ class FirebaseUserRepository implements UserRepository {
       if (docSnapshot.exists) {
         return Person.fromJson(docSnapshot.data()!);
       } else {
-        // Create new person for SSO user
-        final username = await _generateUniqueUsernameFromEmail(user.email!);
-        final person = Person(
-          id: user.uid,
-          name: user.displayName ?? '',
-          username: username,
-          email: user.email!,
-          createdAt: DateTime.now(),
-          photoURL: user.photoURL,
-          emailVerified: user.emailVerified,
-        );
-
-        await _firestore.collection('users').doc(user.uid).set(person.toJson());
-        return person;
+        // Return user data for profile completion
+        return {
+          'userId': user.uid,
+          'email': user.email!,
+          'name': user.displayName ?? '',
+          'photoURL': user.photoURL,
+        };
       }
     } catch (e) {
       throw Exception('Google sign-in failed: $e');
@@ -129,7 +122,7 @@ class FirebaseUserRepository implements UserRepository {
   }
 
   @override
-  Future<Person> signInWithFacebook() async {
+  Future<dynamic> signInWithFacebook() async {
     try {
       final userCredential = await _facebookAuthService.signIn();
 
@@ -146,23 +139,32 @@ class FirebaseUserRepository implements UserRepository {
       if (docSnapshot.exists) {
         return Person.fromJson(docSnapshot.data()!);
       } else {
-        // Create new person for SSO user
-        final username = await _generateUniqueUsernameFromEmail(user.email!);
-        final person = Person(
-          id: user.uid,
-          name: user.displayName ?? '',
-          username: username,
-          email: user.email!,
-          createdAt: DateTime.now(),
-          photoURL: user.photoURL,
-          emailVerified: user.emailVerified,
-        );
-
-        await _firestore.collection('users').doc(user.uid).set(person.toJson());
-        return person;
+        // Return user data for profile completion
+        return {
+          'userId': user.uid,
+          'email': user.email!,
+          'name': user.displayName ?? '',
+          'photoURL': user.photoURL,
+        };
       }
     } catch (e) {
       throw Exception('Facebook sign-in failed: $e');
+    }
+  }
+
+  @override
+  Future<Person> completeSSOProfile(Person person) async {
+    try {
+      // Check username availability
+      final usernameAvailable = await isUsernameAvailable(person.username);
+      if (!usernameAvailable) {
+        throw Exception('Username already taken');
+      }
+
+      await _firestore.collection('users').doc(person.id).set(person.toJson());
+      return person;
+    } catch (e) {
+      throw Exception('Failed to complete profile: $e');
     }
   }
 

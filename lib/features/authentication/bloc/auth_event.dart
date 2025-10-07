@@ -84,6 +84,41 @@ class AuthPasswordResetRequested extends AuthEvent {
   List<Object?> get props => [email];
 }
 
+/// Event for completing SSO user profile
+class AuthSSOProfileCompletionRequested extends AuthEvent {
+  final String userId;
+  final String email;
+  final String name;
+  final String username;
+  final String? description;
+  final bool isOwner;
+  final bool isWorker;
+  final String? photoURL;
+
+  const AuthSSOProfileCompletionRequested({
+    required this.userId,
+    required this.email,
+    required this.name,
+    required this.username,
+    this.description,
+    required this.isOwner,
+    required this.isWorker,
+    this.photoURL,
+  });
+
+  @override
+  List<Object?> get props => [
+        userId,
+        email,
+        name,
+        username,
+        description,
+        isOwner,
+        isWorker,
+        photoURL,
+      ];
+}
+
 /// Event when authentication state changes
 class AuthUserChanged extends AuthEvent {
   final dynamic user;

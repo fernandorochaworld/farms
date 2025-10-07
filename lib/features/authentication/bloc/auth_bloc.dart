@@ -23,6 +23,7 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
     on<AuthSignUpRequested>(_onAuthSignUpRequested);
     on<AuthGoogleSignInRequested>(_onAuthGoogleSignInRequested);
     on<AuthFacebookSignInRequested>(_onAuthFacebookSignInRequested);
+    on<AuthSSOProfileCompletionRequested>(_onAuthSSOProfileCompletionRequested);
     on<AuthLogoutRequested>(_onAuthLogoutRequested);
     on<AuthPasswordResetRequested>(_onAuthPasswordResetRequested);
     on<AuthUserChanged>(_onAuthUserChanged);
@@ -110,8 +111,20 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
   ) async {
     emit(const AuthLoading());
     try {
-      final user = await _userRepository.signInWithGoogle();
-      emit(AuthAuthenticated(user));
+      final result = await _userRepository.signInWithGoogle();
+
+      // Check if result is a Person or requires profile completion
+      if (result is Person) {
+        emit(AuthAuthenticated(result));
+      } else if (result is Map<String, dynamic>) {
+        // New user needs profile completion
+        emit(AuthSSOProfileCompletionRequired(
+          userId: result['userId'] as String,
+          email: result['email'] as String,
+          name: result['name'] as String,
+          photoURL: result['photoURL'] as String?,
+        ));
+      }
     } catch (e) {
       final errorMessage = AuthErrorMessages.getErrorMessage(e);
       // Don't show error for user cancellation
@@ -130,8 +143,20 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
   ) async {
     emit(const AuthLoading());
     try {
-      final user = await _userRepository.signInWithFacebook();
-      emit(AuthAuthenticated(user));
+      final result = await _userRepository.signInWithFacebook();
+
+      // Check if result is a Person or requires profile completion
+      if (result is Person) {
+        emit(AuthAuthenticated(result));
+      } else if (result is Map<String, dynamic>) {
+        // New user needs profile completion
+        emit(AuthSSOProfileCompletionRequired(
+          userId: result['userId'] as String,
+          email: result['email'] as String,
+          name: result['name'] as String,
+          photoURL: result['photoURL'] as String?,
+        ));
+      }
     } catch (e) {
       final errorMessage = AuthErrorMessages.getErrorMessage(e);
       // Don't show error for user cancellation
@@ -140,6 +165,33 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
       } else {
         emit(AuthFailure(errorMessage));
       }
+    }
+  }
+
+  /// Handle SSO profile completion
+  Future<void> _onAuthSSOProfileCompletionRequested(
+    AuthSSOProfileCompletionRequested event,
+    Emitter<AuthState> emit,
+  ) async {
+    emit(const AuthLoading());
+    try {
+      final person = Person(
+        id: event.userId,
+        name: event.name,
+        username: event.username,
+        email: event.email,
+        description: event.description,
+        isOwner: event.isOwner,
+        isWorker: event.isWorker,
+        createdAt: DateTime.now(),
+        photoURL: event.photoURL,
+        emailVerified: true, // SSO users are already verified
+      );
+
+      final user = await _userRepository.completeSSOProfile(person);
+      emit(AuthAuthenticated(user));
+    } catch (e) {
+      emit(AuthFailure(AuthErrorMessages.getErrorMessage(e)));
     }
   }
 

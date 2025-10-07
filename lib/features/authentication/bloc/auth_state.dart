@@ -49,3 +49,21 @@ class AuthFailure extends AuthState {
 class AuthPasswordResetSent extends AuthState {
   const AuthPasswordResetSent();
 }
+
+/// State when SSO user needs to complete profile
+class AuthSSOProfileCompletionRequired extends AuthState {
+  final String userId;
+  final String email;
+  final String name;
+  final String? photoURL;
+
+  const AuthSSOProfileCompletionRequired({
+    required this.userId,
+    required this.email,
+    required this.name,
+    this.photoURL,
+  });
+
+  @override
+  List<Object?> get props => [userId, email, name, photoURL];
+}

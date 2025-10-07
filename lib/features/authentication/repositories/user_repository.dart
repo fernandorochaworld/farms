@@ -19,10 +19,15 @@ abstract class UserRepository {
   });
 
   /// Sign in with Google (SSO)
-  Future<Person> signInWithGoogle();
+  /// Returns Person if existing user, or Map with user data if new user needs profile completion
+  Future<dynamic> signInWithGoogle();
 
   /// Sign in with Facebook (SSO)
-  Future<Person> signInWithFacebook();
+  /// Returns Person if existing user, or Map with user data if new user needs profile completion
+  Future<dynamic> signInWithFacebook();
+
+  /// Complete SSO user profile
+  Future<Person> completeSSOProfile(Person person);
 
   /// Send password reset email
   Future<void> sendPasswordResetEmail(String email);

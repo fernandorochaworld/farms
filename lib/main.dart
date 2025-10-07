@@ -10,6 +10,7 @@ import 'features/authentication/bloc/auth_event.dart';
 import 'features/authentication/bloc/auth_state.dart';
 import 'features/authentication/repositories/user_repository.dart';
 import 'features/authentication/screens/login_screen.dart';
+import 'features/authentication/screens/sso_profile_completion_screen.dart';
 import 'firebase_options.dart';
 import 'generated/app_localizations.dart';
 import 'screens/home_screen.dart';
@@ -100,6 +101,14 @@ class AuthGate extends StatelessWidget {
         } else if (state is AuthAuthenticated) {
           // User is authenticated, show home screen
           return HomeScreen(languageController: languageController);
+        } else if (state is AuthSSOProfileCompletionRequired) {
+          // SSO user needs to complete profile
+          return SSOProfileCompletionScreen(
+            userId: state.userId,
+            email: state.email,
+            name: state.name,
+            photoURL: state.photoURL,
+          );
         } else {
           // User is not authenticated, show login screen
           return const LoginScreen();
