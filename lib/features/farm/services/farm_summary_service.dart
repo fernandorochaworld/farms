@@ -2,6 +2,7 @@ import '../models/farm_model.dart';
 import '../models/transaction_model.dart' as farm_transaction;
 import '../repositories/cattle_lot_repository.dart';
 import '../repositories/transaction_repository.dart';
+import '../repositories/person_repository.dart';
 
 /// Summary data for a farm
 class FarmSummary {
@@ -9,12 +10,14 @@ class FarmSummary {
   final int activeLots;
   final List<farm_transaction.Transaction> recentTransactions;
   final double capacityUsagePercent;
+  final int totalMembers;
 
   const FarmSummary({
     required this.totalCattle,
     required this.activeLots,
     required this.recentTransactions,
     required this.capacityUsagePercent,
+    required this.totalMembers,
   });
 }
 
@@ -22,12 +25,15 @@ class FarmSummary {
 class FarmSummaryService {
   final CattleLotRepository _lotRepository;
   final TransactionRepository _transactionRepository;
+  final PersonRepository _personRepository;
 
   FarmSummaryService({
     required CattleLotRepository lotRepository,
     required TransactionRepository transactionRepository,
+    required PersonRepository personRepository,
   })  : _lotRepository = lotRepository,
-        _transactionRepository = transactionRepository;
+        _transactionRepository = transactionRepository,
+        _personRepository = personRepository;
 
   /// Get summary data for a specific farm
   Future<FarmSummary> getSummary(Farm farm) async {
@@ -53,11 +59,16 @@ class FarmSummaryService {
           ? (totalCattle / farm.capacity * 100).clamp(0.0, 100.0).toDouble()
           : 0.0;
 
+      // Get total member count
+      final members = await _personRepository.getByFarmId(farm.id);
+      final totalMembers = members.length;
+
       return FarmSummary(
         totalCattle: totalCattle,
         activeLots: activeLots,
         recentTransactions: recentTransactions,
         capacityUsagePercent: capacityUsagePercent,
+        totalMembers: totalMembers,
       );
     } catch (e) {
       // Return empty summary on error
@@ -66,6 +77,7 @@ class FarmSummaryService {
         activeLots: 0,
         recentTransactions: [],
         capacityUsagePercent: 0.0,
+        totalMembers: 0,
       );
     }
   }

@@ -34,13 +34,56 @@ class DashboardScreen extends StatefulWidget {
   State<DashboardScreen> createState() => _DashboardScreenState();
 }
 
-class _DashboardScreenState extends State<DashboardScreen> {
+class _DashboardScreenState extends State<DashboardScreen> with RouteAware {
   Map<String, FarmSummary> _summaries = {};
+  List<String>? _loadedFarmIds;
+  FarmBloc? _farmBloc;
+  RouteObserver<ModalRoute<void>>? _routeObserver;
 
   @override
   void initState() {
     super.initState();
-    _loadFarms();
+    _loadFarmsIfNeeded();
+  }
+
+  @override
+  void didChangeDependencies() {
+    super.didChangeDependencies();
+    // Save reference to FarmBloc for use in lifecycle callbacks
+    _farmBloc = context.read<FarmBloc>();
+
+    final navigator = Navigator.of(context);
+    if (navigator.widget.observers.isNotEmpty) {
+      _routeObserver = navigator.widget.observers.whereType<RouteObserver<ModalRoute<void>>>().firstOrNull;
+      _routeObserver?.subscribe(this, ModalRoute.of(context)!);
+    }
+  }
+
+  @override
+  void dispose() {
+    _routeObserver?.unsubscribe(this);
+    super.dispose();
+  }
+
+  @override
+  void didPopNext() {
+    // When returning to this screen (e.g., from details)
+    // Use saved reference instead of accessing context
+    _farmBloc?.add(const RestoreCachedFarms());
+    if (mounted) {
+      _loadFarmsIfNeeded();
+    }
+  }
+
+  void _loadFarmsIfNeeded() {
+    final user = FirebaseAuth.instance.currentUser;
+    if (user != null) {
+      final currentState = context.read<FarmBloc>().state;
+      // Only load farms if not already loaded or in error state
+      if (currentState is FarmInitial || currentState is FarmError) {
+        context.read<FarmBloc>().add(LoadFarms(userId: user.uid));
+      }
+    }
   }
 
   void _loadFarms() {
@@ -58,6 +101,17 @@ class _DashboardScreenState extends State<DashboardScreen> {
   }
 
   Future<void> _loadSummaries(List<Farm> farms) async {
+    // Check if we already loaded summaries for these exact farms
+    final currentFarmIds = farms.map((f) => f.id).toList()..sort();
+    final loadedIds = _loadedFarmIds ?? [];
+
+    if (_loadedFarmIds != null &&
+        currentFarmIds.length == loadedIds.length &&
+        currentFarmIds.every((id) => loadedIds.contains(id))) {
+      return; // Already loaded summaries for these farms
+    }
+
+    _loadedFarmIds = currentFarmIds;
     final summaryService = getIt<FarmSummaryService>();
     final summaries = await summaryService.getSummaries(farms);
     if (mounted) {
@@ -370,8 +424,8 @@ class _DashboardScreenState extends State<DashboardScreen> {
                           farm: farm,
                           cattleCount: summary?.totalCattle ?? 0,
                           activeLots: summary?.activeLots ?? 0,
-                          onTap: () {
-                            Navigator.push(
+                          onTap: () async {
+                            await Navigator.push(
                               context,
                               MaterialPageRoute(
                                 builder: (newContext) => BlocProvider.value(
@@ -380,6 +434,10 @@ class _DashboardScreenState extends State<DashboardScreen> {
                                 ),
                               ),
                             );
+                            // Restore cached farms when returning from detail screen
+                            if (mounted) {
+                              context.read<FarmBloc>().add(const RestoreCachedFarms());
+                            }
                           },
                         );
                       },

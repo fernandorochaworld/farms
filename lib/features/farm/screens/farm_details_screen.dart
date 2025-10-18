@@ -31,6 +31,7 @@ class FarmDetailsScreen extends StatefulWidget {
 
 class _FarmDetailsScreenState extends State<FarmDetailsScreen> {
   FarmSummary? _summary;
+  String? _loadedFarmId;
 
   @override
   void initState() {
@@ -39,10 +40,19 @@ class _FarmDetailsScreenState extends State<FarmDetailsScreen> {
   }
 
   void _loadFarm() {
-    context.read<FarmBloc>().add(LoadFarmById(farmId: widget.farmId));
+    final currentState = context.read<FarmBloc>().state;
+    // Only load if we're not already showing this specific farm
+    if (currentState is! FarmDetailLoaded ||
+        (currentState as FarmDetailLoaded).farm.id != widget.farmId) {
+      context.read<FarmBloc>().add(LoadFarmById(farmId: widget.farmId));
+    }
   }
 
   Future<void> _loadSummary(Farm farm) async {
+    // Only load summary once per farm
+    if (_loadedFarmId == farm.id) return;
+
+    _loadedFarmId = farm.id;
     final summaryService = getIt<FarmSummaryService>();
     final summary = await summaryService.getSummary(farm);
     if (mounted) {
@@ -178,6 +188,13 @@ class _FarmDetailsScreenState extends State<FarmDetailsScreen> {
                           ),
                         ),
                       );
+                      // .then((updated) {
+                      //   if (updated == true) {
+                      //     context
+                      //         .read<FarmBloc>()
+                      //         .add(LoadFarmById(farmId: widget.farmId));
+                      //   }
+                      // });
                     } else if (value == 'delete') {
                       _handleDelete(state.farm);
                     }
@@ -340,7 +357,7 @@ class _FarmDetailsScreenState extends State<FarmDetailsScreen> {
                                 _buildStatRow(
                                   icon: Icons.people,
                                   label: 'People',
-                                  value: '0', // Placeholder for now
+                                  value: '${_summary?.totalMembers ?? 0}',
                                   color: Colors.purple,
                                 ),
                               ],
@@ -428,7 +445,7 @@ class _FarmDetailsScreenState extends State<FarmDetailsScreen> {
                         _buildSectionTile(
                           icon: Icons.people,
                           title: 'People',
-                          subtitle: '0 members', // Placeholder
+                          subtitle: '${_summary?.totalMembers ?? 0} members',
                           onTap: () => _navigateToManagePeople(context, farm),
                         ),
                         _buildSectionTile(

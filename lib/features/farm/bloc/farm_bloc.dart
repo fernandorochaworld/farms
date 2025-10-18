@@ -1,5 +1,6 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
 import '../models/person_model.dart';
+import '../models/farm_model.dart';
 import '../repositories/farm_repository.dart';
 import '../repositories/person_repository.dart';
 import '../constants/enums.dart';
@@ -10,6 +11,10 @@ import 'farm_state.dart';
 class FarmBloc extends Bloc<FarmEvent, FarmState> {
   final FarmRepository _farmRepository;
   final PersonRepository _personRepository;
+
+  // Cache the current user ID and farms list to restore after detail views
+  String? _currentUserId;
+  List<Farm>? _cachedFarms;
 
   FarmBloc({
     required FarmRepository farmRepository,
@@ -25,6 +30,7 @@ class FarmBloc extends Bloc<FarmEvent, FarmState> {
     on<SearchFarms>(_onSearchFarms);
     on<FilterFarms>(_onFilterFarms);
     on<RefreshFarms>(_onRefreshFarms);
+    on<RestoreCachedFarms>(_onRestoreCachedFarms);
   }
 
   /// Handle loading all farms for a user
@@ -32,9 +38,13 @@ class FarmBloc extends Bloc<FarmEvent, FarmState> {
     LoadFarms event,
     Emitter<FarmState> emit,
   ) async {
+    // Cache the user ID for reloading after operations
+    _currentUserId = event.userId;
+
     emit(const FarmLoading());
     try {
       final farms = await _farmRepository.getByUserId(event.userId);
+      _cachedFarms = farms; // Cache the farms list
       emit(FarmLoaded(farms: farms));
     } catch (e) {
       emit(FarmError(message: e.toString()));
@@ -62,6 +72,9 @@ class FarmBloc extends Bloc<FarmEvent, FarmState> {
   ) async {
     emit(const FarmOperationInProgress());
     try {
+      // Cache user ID
+      _currentUserId = event.userId;
+
       // Generate a new ID for the farm if not provided
       final farmId = event.farm.id.isEmpty
           ? _farmRepository.generateId()
@@ -87,13 +100,10 @@ class FarmBloc extends Bloc<FarmEvent, FarmState> {
 
       await _personRepository.create(createdFarm.id, person);
 
-      emit(FarmOperationSuccess(
-        farm: createdFarm,
-        message: 'Farm created successfully',
-      ));
-
-      // Reload farms list
-      add(LoadFarms(userId: event.userId));
+      // Reload farms list silently
+      final farms = await _farmRepository.getByUserId(event.userId);
+      _cachedFarms = farms; // Update cache
+      emit(FarmLoaded(farms: farms));
     } catch (e) {
       emit(FarmOperationFailure(message: e.toString()));
     }
@@ -107,10 +117,18 @@ class FarmBloc extends Bloc<FarmEvent, FarmState> {
     emit(const FarmOperationInProgress());
     try {
       await _farmRepository.update(event.farm);
-      emit(FarmOperationSuccess(
-        farm: event.farm,
-        message: 'Farm updated successfully',
-      ));
+
+      // Reload farms list silently if we have a cached user ID
+      if (_currentUserId != null) {
+        final farms = await _farmRepository.getByUserId(_currentUserId!);
+        _cachedFarms = farms; // Update cache
+        emit(FarmLoaded(farms: farms));
+      } else {
+        emit(FarmOperationSuccess(
+          farm: event.farm,
+          message: 'Farm updated successfully',
+        ));
+      }
     } catch (e) {
       emit(FarmOperationFailure(message: e.toString()));
     }
@@ -123,11 +141,15 @@ class FarmBloc extends Bloc<FarmEvent, FarmState> {
   ) async {
     emit(const FarmOperationInProgress());
     try {
-      await _farmRepository.delete(event.farmId);
-      emit(const FarmOperationSuccess(message: 'Farm deleted successfully'));
+      // Cache user ID
+      _currentUserId = event.userId;
 
-      // Reload farms list
-      add(LoadFarms(userId: event.userId));
+      await _farmRepository.delete(event.farmId);
+
+      // Reload farms list silently
+      final farms = await _farmRepository.getByUserId(event.userId);
+      _cachedFarms = farms; // Update cache
+      emit(FarmLoaded(farms: farms));
     } catch (e) {
       emit(FarmOperationFailure(message: e.toString()));
     }
@@ -194,9 +216,20 @@ class FarmBloc extends Bloc<FarmEvent, FarmState> {
   ) async {
     try {
       final farms = await _farmRepository.getByUserId(event.userId);
+      _cachedFarms = farms; // Update cache
       emit(FarmLoaded(farms: farms));
     } catch (e) {
       emit(FarmError(message: e.toString()));
+    }
+  }
+
+  /// Handle restoring cached farms list
+  void _onRestoreCachedFarms(
+    RestoreCachedFarms event,
+    Emitter<FarmState> emit,
+  ) {
+    if (_cachedFarms != null) {
+      emit(FarmLoaded(farms: _cachedFarms!));
     }
   }
 }

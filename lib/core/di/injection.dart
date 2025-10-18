@@ -123,6 +123,7 @@ void setupDependencies() {
     () => FarmSummaryService(
       lotRepository: getIt<CattleLotRepository>(),
       transactionRepository: getIt<TransactionRepository>(),
+      personRepository: getIt<PersonRepository>(),
     ),
   );
 
@@ -130,8 +131,8 @@ void setupDependencies() {
   // Farm Feature BLoCs
   // ============================================================================
 
-  // Farm BLoC - using factory so each screen gets a new instance
-  getIt.registerFactory<FarmBloc>(
+  // Farm BLoC - using lazySingleton to persist state across navigation
+  getIt.registerLazySingleton<FarmBloc>(
     () => FarmBloc(
       farmRepository: getIt<FarmRepository>(),
       personRepository: getIt<PersonRepository>(),

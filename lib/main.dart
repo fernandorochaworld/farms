@@ -57,6 +57,7 @@ class _MyAppState extends State<MyApp> {
         builder: (context, child) {
           return MaterialApp(
             title: 'Farms',
+            navigatorObservers: [RouteObserver<ModalRoute<void>>()],
             localizationsDelegates: const [
               AppLocalizations.delegate,
               GlobalMaterialLocalizations.delegate,

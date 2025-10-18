@@ -24,6 +24,7 @@ class _FarmCreateScreenState extends State<FarmCreateScreen> {
   final _descriptionController = TextEditingController();
   final _capacityController = TextEditingController();
   bool _isFormValid = false;
+  bool _isSubmitting = false;
 
   @override
   void initState() {
@@ -93,7 +94,19 @@ class _FarmCreateScreenState extends State<FarmCreateScreen> {
       ),
       body: BlocConsumer<FarmBloc, FarmState>(
         listener: (context, state) {
-          if (state is FarmOperationSuccess) {
+          if (state is FarmOperationInProgress) {
+            setState(() => _isSubmitting = true);
+          } else if (state is FarmLoaded && _isSubmitting) {
+            // Farm was created successfully and list was reloaded
+            ScaffoldMessenger.of(context).showSnackBar(
+              const SnackBar(
+                content: Text('Farm created successfully'),
+                backgroundColor: Colors.green,
+                duration: Duration(seconds: 2),
+              ),
+            );
+            Navigator.of(context).pop();
+          } else if (state is FarmOperationSuccess) {
             ScaffoldMessenger.of(context).showSnackBar(
               SnackBar(
                 content: Text(state.message ?? 'Farm created successfully'),
@@ -103,6 +116,7 @@ class _FarmCreateScreenState extends State<FarmCreateScreen> {
             );
             Navigator.of(context).pop();
           } else if (state is FarmOperationFailure) {
+            setState(() => _isSubmitting = false);
             ScaffoldMessenger.of(context).showSnackBar(
               SnackBar(
                 content: Text(state.message),

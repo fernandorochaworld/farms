@@ -97,3 +97,8 @@ class RefreshFarms extends FarmEvent {
   @override
   List<Object?> get props => [userId];
 }
+
+/// Event to restore cached farms list (used when returning from detail view)
+class RestoreCachedFarms extends FarmEvent {
+  const RestoreCachedFarms();
+}
