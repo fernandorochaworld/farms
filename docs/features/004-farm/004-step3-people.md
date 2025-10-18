@@ -15,40 +15,40 @@ Implement people management for farms, allowing farm owners/managers to add, edi
 ## Implementation Checklist
 
 ### People Listing
-- [ ] Create PeopleListScreen UI
-  - [ ] Display list of people for a farm
-  - [ ] Show person name, type, and admin status
-  - [ ] Add floating action button to add person
-  - [ ] Add search functionality
-  - [ ] Add filter by person type
-  - [ ] Show empty state
-  - [ ] Add pull-to-refresh
-- [ ] Create PersonCard/PersonTile widget
-  - [ ] Display person info
-  - [ ] Show role badge
-  - [ ] Show admin indicator
-  - [ ] Add tap to view details
-  - [ ] Add swipe actions (edit, remove)
-- [ ] Implement PeopleListController/Bloc
-  - [ ] Fetch people by farm ID
-  - [ ] Handle real-time updates
-  - [ ] Implement search and filter
+- [x] Create PeopleListScreen UI
+  - [x] Display list of people for a farm
+  - [x] Show person name, type, and admin status
+  - [x] Add floating action button to add person
+  - [x] Add search functionality
+  - [x] Add filter by person type
+  - [x] Show empty state
+  - [x] Add pull-to-refresh
+- [x] Create PersonCard/PersonTile widget
+  - [x] Display person info
+  - [x] Show role badge
+  - [x] Show admin indicator
+  - [x] Add tap to view details
+  - [x] Add swipe actions (edit, remove)
+- [x] Implement PeopleListController/Bloc
+  - [x] Fetch people by farm ID
+  - [x] Handle real-time updates
+  - [x] Implement search and filter
 - [ ] Add widget tests
 
 ### Person Creation
-- [ ] Create PersonFormScreen (create mode) UI
-  - [ ] Add name input field
-  - [ ] Add description text area
-  - [ ] Add person type selector (dropdown/radio)
-  - [ ] Add admin toggle switch
-  - [ ] Add user search/link field (optional for existing users)
-  - [ ] Add form validation
-  - [ ] Add submit button
-- [ ] Implement PersonController/Bloc
-  - [ ] Handle form submission
-  - [ ] Validate data
-  - [ ] Create person record
-  - [ ] Handle success/error states
+- [x] Create PersonFormScreen (create mode) UI
+  - [x] Add name input field
+  - [x] Add description text area
+  - [x] Add person type selector (dropdown/radio)
+  - [x] Add admin toggle switch
+  - [x] Add user search/link field (optional for existing users)
+  - [x] Add form validation
+  - [x] Add submit button
+- [x] Implement PersonController/Bloc
+  - [x] Handle form submission
+  - [x] Validate data
+  - [x] Create person record
+  - [x] Handle success/error states
 - [ ] Add user search functionality
   - [ ] Search by email or username
   - [ ] Link existing user to farm
@@ -56,63 +56,63 @@ Implement people management for farms, allowing farm owners/managers to add, edi
 - [ ] Add widget tests
 
 ### Person Details
-- [ ] Create PersonDetailsScreen UI
-  - [ ] Display person information
-  - [ ] Show associated user info
-  - [ ] Display activity log (future)
-  - [ ] Add edit button
-  - [ ] Add remove button
-- [ ] Implement PersonDetailsController/Bloc
-  - [ ] Fetch person by ID
-  - [ ] Handle real-time updates
+- [x] Create PersonDetailsScreen UI
+  - [x] Display person information
+  - [x] Show associated user info
+  - [x] Display activity log (future)
+  - [x] Add edit button
+  - [x] Add remove button
+- [x] Implement PersonDetailsController/Bloc
+  - [x] Fetch person by ID
+  - [x] Handle real-time updates
 - [ ] Add widget tests
 
 ### Person Editing
-- [ ] Create PersonFormScreen (edit mode) UI
-  - [ ] Pre-populate form with person data
-  - [ ] Allow editing all fields except user_id
-  - [ ] Add form validation
-  - [ ] Add save button
-- [ ] Implement edit logic in controller
-  - [ ] Update person record
-  - [ ] Handle success/error states
+- [x] Create PersonFormScreen (edit mode) UI
+  - [x] Pre-populate form with person data
+  - [x] Allow editing all fields except user_id
+  - [x] Add form validation
+  - [x] Add save button
+- [x] Implement edit logic in controller
+  - [x] Update person record
+  - [x] Handle success/error states
 - [ ] Add widget tests
 
 ### Person Removal
-- [ ] Implement removal confirmation dialog
-  - [ ] Show warning message
-  - [ ] Prevent removing last owner
-  - [ ] Add confirm and cancel buttons
-- [ ] Implement removal logic
-  - [ ] Validate can be removed
-  - [ ] Delete person record
-  - [ ] Handle errors
+- [x] Implement removal confirmation dialog
+  - [x] Show warning message
+  - [x] Prevent removing last owner
+  - [x] Add confirm and cancel buttons
+- [x] Implement removal logic
+  - [x] Validate can be removed
+  - [x] Delete person record
+  - [x] Handle errors
 - [ ] Add widget tests
 
 ### Permission Validation
-- [ ] Implement permission checks
-  - [ ] Only Owner/Manager can add people
-  - [ ] Only Owner/Manager can edit people
-  - [ ] Only Owner can remove people
-  - [ ] Admin can override
-- [ ] Add UI permission guards
-  - [ ] Hide/disable buttons based on permissions
-  - [ ] Show permission denied messages
+- [x] Implement permission checks
+  - [x] Only Owner/Manager can add people
+  - [x] Only Owner/Manager can edit people
+  - [x] Only Owner can remove people
+  - [x] Admin can override
+- [x] Add UI permission guards
+  - [x] Hide/disable buttons based on permissions
+  - [x] Show permission denied messages
 - [ ] Add backend validation (Firestore rules)
 
 ### Person Type Management
-- [ ] Create PersonType enum
-  - [ ] Owner
-  - [ ] Manager
-  - [ ] Worker
-  - [ ] Arrendatario
-- [ ] Create PersonTypeSelector widget
-  - [ ] Display all types with descriptions
-  - [ ] Add icons for each type
-  - [ ] Handle selection
-- [ ] Add type-specific validation
-  - [ ] At least one Owner required
-  - [ ] Validate permissions for type changes
+- [x] Create PersonType enum
+  - [x] Owner
+  - [x] Manager
+  - [x] Worker
+  - [x] Arrendatario
+- [x] Create PersonTypeSelector widget
+  - [x] Display all types with descriptions
+  - [x] Add icons for each type
+  - [x] Handle selection
+- [x] Add type-specific validation
+  - [x] At least one Owner required
+  - [x] Validate permissions for type changes
 
 ### User Linking
 - [ ] Implement user search
@@ -128,40 +128,40 @@ Implement people management for farms, allowing farm owners/managers to add, edi
   - [ ] Preserve person record data
 
 ### State Management
-- [ ] Create PersonState
-  - [ ] PersonInitial
-  - [ ] PersonLoading
-  - [ ] PersonLoaded
-  - [ ] PersonError
-  - [ ] PersonOperationInProgress
-  - [ ] PersonOperationSuccess
-  - [ ] PersonOperationFailure
-- [ ] Create PersonEvent
-  - [ ] LoadPeople
-  - [ ] LoadPersonDetails
-  - [ ] CreatePerson
-  - [ ] UpdatePerson
-  - [ ] RemovePerson
-  - [ ] SearchUsers
-- [ ] Implement PersonBloc
+- [x] Create PersonState
+  - [x] PersonInitial
+  - [x] PersonLoading
+  - [x] PersonLoaded
+  - [x] PersonError
+  - [x] PersonOperationInProgress
+  - [x] PersonOperationSuccess
+  - [x] PersonOperationFailure
+- [x] Create PersonEvent
+  - [x] LoadPeople
+  - [x] LoadPersonDetails
+  - [x] CreatePerson
+  - [x] UpdatePerson
+  - [x] RemovePerson
+  - [x] SearchUsers
+- [x] Implement PersonBloc
 
 ### Validation
-- [ ] Person name validation
-  - [ ] Required, 3-100 characters
-- [ ] Person type validation
-  - [ ] Required, must be valid enum
-- [ ] User ID validation
-  - [ ] Must exist in users collection
-  - [ ] Cannot duplicate in same farm
-- [ ] At least one owner rule
-  - [ ] Prevent removing last owner
-  - [ ] Prevent changing last owner to different type
+- [x] Person name validation
+  - [x] Required, 3-100 characters
+- [x] Person type validation
+  - [x] Required, must be valid enum
+- [x] User ID validation
+  - [x] Must exist in users collection
+  - [x] Cannot duplicate in same farm
+- [x] At least one owner rule
+  - [x] Prevent removing last owner
+  - [x] Prevent changing last owner to different type
 
 ### Internationalization
-- [ ] Add translation keys for people screens
-- [ ] Add person type labels
-- [ ] Add validation messages
-- [ ] Add confirmation messages
+- [x] Add translation keys for people screens
+- [x] Add person type labels
+- [x] Add validation messages
+- [x] Add confirmation messages
 
 ### Testing
 - [ ] Unit tests for PersonBloc
@@ -384,14 +384,14 @@ match /farms/{farmId}/people/{personId} {
 
 ## Completion Criteria
 
-- [ ] All CRUD operations for people working
-- [ ] Person type selection working
-- [ ] Admin flag management working
-- [ ] Permission checks enforced
+- [x] All CRUD operations for people working
+- [x] Person type selection working
+- [x] Admin flag management working
+- [x] Permission checks enforced
 - [ ] User linking functional
-- [ ] Validation rules enforced
+- [x] Validation rules enforced
 - [ ] All tests passing (>70% coverage)
-- [ ] Internationalization complete
+- [x] Internationalization complete
 - [ ] Code reviewed
 
 ## Next Step

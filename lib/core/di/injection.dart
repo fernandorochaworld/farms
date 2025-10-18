@@ -23,6 +23,8 @@ import '../../features/farm/repositories/weight_history_repository.dart';
 import '../../features/farm/services/firestore_service.dart';
 import '../../features/farm/services/farm_summary_service.dart';
 import '../../features/farm/bloc/farm_bloc.dart';
+import '../../features/farm/bloc/person_bloc.dart';
+import '../../features/authentication/bloc/user_bloc.dart';
 import '../../shared/services/token_storage_service.dart';
 
 final getIt = GetIt.instance;
@@ -133,6 +135,21 @@ void setupDependencies() {
     () => FarmBloc(
       farmRepository: getIt<FarmRepository>(),
       personRepository: getIt<PersonRepository>(),
+    ),
+  );
+
+  // Person BLoC - using factory so each screen gets a new instance
+  getIt.registerFactory<PersonBloc>(
+    () => PersonBloc(
+      personRepository: getIt<PersonRepository>(),
+      userRepository: getIt<UserRepository>(),
+    ),
+  );
+
+  // User BLoC - using factory so each screen gets a new instance
+  getIt.registerFactory<UserBloc>(
+    () => UserBloc(
+      userRepository: getIt<UserRepository>(),
     ),
   );
 }

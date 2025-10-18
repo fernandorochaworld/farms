@@ -96,16 +96,22 @@ class FirebasePersonRepository implements PersonRepository {
   @override
   Future<Person?> getByUserIdInFarm(String farmId, String userId) async {
     try {
-      final snapshot = await _peopleCollection(farmId)
-          .where(FirestoreFields.userId, isEqualTo: userId)
-          .limit(1)
-          .get();
+      // Get all people for the farm and filter in memory to avoid index requirement
+      final snapshot = await _peopleCollection(farmId).get();
 
       if (snapshot.docs.isEmpty) {
         return null;
       }
 
-      return Person.fromJson(snapshot.docs.first.data());
+      // Find person with matching userId
+      for (final doc in snapshot.docs) {
+        final person = Person.fromJson(doc.data());
+        if (person.userId == userId) {
+          return person;
+        }
+      }
+
+      return null;
     } on FirebaseException catch (e) {
       throw Exception('Failed to get person by user in farm: ${e.message}');
     } catch (e) {

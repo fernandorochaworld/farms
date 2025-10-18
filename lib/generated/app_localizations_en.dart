@@ -116,4 +116,94 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get farmCapacityPositive => 'Capacity must be greater than 0';
+
+  @override
+  String get peopleListTitle => 'People';
+
+  @override
+  String get personDetailsTitle => 'Person Details';
+
+  @override
+  String get personAddTitle => 'Add Person';
+
+  @override
+  String get personEditTitle => 'Edit Person';
+
+  @override
+  String get personNameLabel => 'Person Name';
+
+  @override
+  String get personDescriptionLabel => 'Description';
+
+  @override
+  String get personTypeLabel => 'Person Type';
+
+  @override
+  String get personAdminLabel => 'Admin Privileges';
+
+  @override
+  String get personAdminDescription =>
+      'Grant admin access to manage farm settings';
+
+  @override
+  String get personTypeOwner => 'Owner';
+
+  @override
+  String get personTypeManager => 'Manager';
+
+  @override
+  String get personTypeWorker => 'Worker';
+
+  @override
+  String get personTypeArrendatario => 'Arrendatario';
+
+  @override
+  String get personAddButton => 'Add Person';
+
+  @override
+  String get personUpdateButton => 'Update Person';
+
+  @override
+  String get personRemoveButton => 'Remove';
+
+  @override
+  String get personRemoveConfirmTitle => 'Remove Person';
+
+  @override
+  String get personRemoveConfirmMessage =>
+      'Are you sure you want to remove this person from the farm?';
+
+  @override
+  String get personEmptyStateMessage => 'No people found';
+
+  @override
+  String get personSearchHint => 'Search people...';
+
+  @override
+  String get personNameRequired => 'Name is required';
+
+  @override
+  String get personNameMinLength => 'Name must be at least 3 characters';
+
+  @override
+  String get personNameMaxLength => 'Name must not exceed 100 characters';
+
+  @override
+  String get personAddedSuccess => 'Person added successfully';
+
+  @override
+  String get personUpdatedSuccess => 'Person updated successfully';
+
+  @override
+  String get personRemovedSuccess => 'Person removed successfully';
+
+  @override
+  String get personAlreadyMember => 'User is already a member of this farm';
+
+  @override
+  String get personLastOwnerError => 'Cannot remove the last owner';
+
+  @override
+  String get personPermissionDenied =>
+      'You do not have permission to perform this action';
 }

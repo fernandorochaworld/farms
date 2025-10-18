@@ -64,4 +64,16 @@ abstract class UserRepository {
 
   /// Reload user data from backend
   Future<Person?> reloadUser();
+
+  /// Search users by email
+  Future<List<Person>> searchUsersByEmail(String email);
+
+  /// Get user by ID
+  Future<Person?> getUserById(String userId);
+
+  /// Get all users in the system
+  Future<List<Person>> getAllUsers();
+
+  /// Create a new user document in Firestore
+  Future<void> createUser(Person user);
 }

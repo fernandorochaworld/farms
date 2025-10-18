@@ -293,6 +293,180 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Capacity must be greater than 0'**
   String get farmCapacityPositive;
+
+  /// Title for people list screen
+  ///
+  /// In en, this message translates to:
+  /// **'People'**
+  String get peopleListTitle;
+
+  /// Title for person details screen
+  ///
+  /// In en, this message translates to:
+  /// **'Person Details'**
+  String get personDetailsTitle;
+
+  /// Title for add person screen
+  ///
+  /// In en, this message translates to:
+  /// **'Add Person'**
+  String get personAddTitle;
+
+  /// Title for edit person screen
+  ///
+  /// In en, this message translates to:
+  /// **'Edit Person'**
+  String get personEditTitle;
+
+  /// Label for person name field
+  ///
+  /// In en, this message translates to:
+  /// **'Person Name'**
+  String get personNameLabel;
+
+  /// Label for person description field
+  ///
+  /// In en, this message translates to:
+  /// **'Description'**
+  String get personDescriptionLabel;
+
+  /// Label for person type field
+  ///
+  /// In en, this message translates to:
+  /// **'Person Type'**
+  String get personTypeLabel;
+
+  /// Label for admin privileges toggle
+  ///
+  /// In en, this message translates to:
+  /// **'Admin Privileges'**
+  String get personAdminLabel;
+
+  /// Description for admin privileges toggle
+  ///
+  /// In en, this message translates to:
+  /// **'Grant admin access to manage farm settings'**
+  String get personAdminDescription;
+
+  /// Person type: Owner
+  ///
+  /// In en, this message translates to:
+  /// **'Owner'**
+  String get personTypeOwner;
+
+  /// Person type: Manager
+  ///
+  /// In en, this message translates to:
+  /// **'Manager'**
+  String get personTypeManager;
+
+  /// Person type: Worker
+  ///
+  /// In en, this message translates to:
+  /// **'Worker'**
+  String get personTypeWorker;
+
+  /// Person type: Arrendatario
+  ///
+  /// In en, this message translates to:
+  /// **'Arrendatario'**
+  String get personTypeArrendatario;
+
+  /// Button text for adding a person
+  ///
+  /// In en, this message translates to:
+  /// **'Add Person'**
+  String get personAddButton;
+
+  /// Button text for updating a person
+  ///
+  /// In en, this message translates to:
+  /// **'Update Person'**
+  String get personUpdateButton;
+
+  /// Button text for removing a person
+  ///
+  /// In en, this message translates to:
+  /// **'Remove'**
+  String get personRemoveButton;
+
+  /// Title for remove person confirmation dialog
+  ///
+  /// In en, this message translates to:
+  /// **'Remove Person'**
+  String get personRemoveConfirmTitle;
+
+  /// Confirmation message for removing a person
+  ///
+  /// In en, this message translates to:
+  /// **'Are you sure you want to remove this person from the farm?'**
+  String get personRemoveConfirmMessage;
+
+  /// Message shown when no people found
+  ///
+  /// In en, this message translates to:
+  /// **'No people found'**
+  String get personEmptyStateMessage;
+
+  /// Hint text for person search field
+  ///
+  /// In en, this message translates to:
+  /// **'Search people...'**
+  String get personSearchHint;
+
+  /// Validation error for required person name
+  ///
+  /// In en, this message translates to:
+  /// **'Name is required'**
+  String get personNameRequired;
+
+  /// Validation error for person name minimum length
+  ///
+  /// In en, this message translates to:
+  /// **'Name must be at least 3 characters'**
+  String get personNameMinLength;
+
+  /// Validation error for person name maximum length
+  ///
+  /// In en, this message translates to:
+  /// **'Name must not exceed 100 characters'**
+  String get personNameMaxLength;
+
+  /// Success message when person is added
+  ///
+  /// In en, this message translates to:
+  /// **'Person added successfully'**
+  String get personAddedSuccess;
+
+  /// Success message when person is updated
+  ///
+  /// In en, this message translates to:
+  /// **'Person updated successfully'**
+  String get personUpdatedSuccess;
+
+  /// Success message when person is removed
+  ///
+  /// In en, this message translates to:
+  /// **'Person removed successfully'**
+  String get personRemovedSuccess;
+
+  /// Error message when user is already a farm member
+  ///
+  /// In en, this message translates to:
+  /// **'User is already a member of this farm'**
+  String get personAlreadyMember;
+
+  /// Error message when trying to remove last owner
+  ///
+  /// In en, this message translates to:
+  /// **'Cannot remove the last owner'**
+  String get personLastOwnerError;
+
+  /// Error message for permission denied
+  ///
+  /// In en, this message translates to:
+  /// **'You do not have permission to perform this action'**
+  String get personPermissionDenied;
 }
 
 class _AppLocalizationsDelegate

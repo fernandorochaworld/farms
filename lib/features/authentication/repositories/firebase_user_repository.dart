@@ -354,6 +354,62 @@ class FirebaseUserRepository implements UserRepository {
     return username;
   }
 
+  @override
+  Future<List<Person>> searchUsersByEmail(String email) async {
+    try {
+      final querySnapshot = await _firestore
+          .collection('users')
+          .where('email', isGreaterThanOrEqualTo: email)
+          .where('email', isLessThanOrEqualTo: '$email\uf8ff')
+          .limit(10)
+          .get();
+
+      return querySnapshot.docs
+          .map((doc) => Person.fromJson(doc.data()))
+          .toList();
+    } catch (e) {
+      throw Exception('Failed to search users: $e');
+    }
+  }
+
+  @override
+  Future<Person?> getUserById(String userId) async {
+    try {
+      final doc = await _firestore.collection('users').doc(userId).get();
+      if (doc.exists && doc.data() != null) {
+        return Person.fromJson(doc.data()!);
+      }
+      return null;
+    } catch (e) {
+      throw Exception('Failed to get user: $e');
+    }
+  }
+
+  @override
+  Future<List<Person>> getAllUsers() async {
+    try {
+      final querySnapshot = await _firestore
+          .collection('users')
+          .orderBy('email')
+          .get();
+
+      return querySnapshot.docs
+          .map((doc) => Person.fromJson(doc.data()))
+          .toList();
+    } catch (e) {
+      throw Exception('Failed to get all users: ${e.toString()}');
+    }
+  }
+
+  @override
+  Future<void> createUser(Person user) async {
+    try {
+      await _firestore.collection('users').doc(user.id).set(user.toJson());
+    } catch (e) {
+      throw Exception('Failed to create user: ${e.toString()}');
+    }
+  }
+
   /// Handles Firebase Auth exceptions and returns user-friendly error messages
   Exception _handleAuthException(FirebaseAuthException e) {
     switch (e.code) {

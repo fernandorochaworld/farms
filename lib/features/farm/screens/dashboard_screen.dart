@@ -7,6 +7,7 @@ import '../../../core/i18n/language_controller.dart';
 import '../../../generated/app_localizations.dart';
 import '../../authentication/bloc/auth_bloc.dart';
 import '../../authentication/bloc/auth_event.dart';
+import '../../authentication/bloc/user_bloc.dart';
 import '../bloc/farm_bloc.dart';
 import '../bloc/farm_event.dart';
 import '../bloc/farm_state.dart';
@@ -16,6 +17,7 @@ import '../widgets/farm_summary_card.dart';
 import 'farm_create_screen.dart';
 import 'farm_details_screen.dart';
 import 'farm_list_screen.dart';
+import '../../authentication/screens/user_list_screen.dart';
 
 /// Main dashboard screen showing farm summaries
 class DashboardScreen extends StatefulWidget {
@@ -92,6 +94,21 @@ class _DashboardScreenState extends State<DashboardScreen> {
                   builder: (newContext) => BlocProvider.value(
                     value: context.read<FarmBloc>(),
                     child: const FarmListScreen(),
+                  ),
+                ),
+              );
+            },
+          ),
+          IconButton(
+            icon: const Icon(Icons.people),
+            tooltip: 'Manage Users',
+            onPressed: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => BlocProvider<UserBloc>(
+                    create: (context) => getIt<UserBloc>(),
+                    child: const UserListScreen(),
                   ),
                 ),
               );

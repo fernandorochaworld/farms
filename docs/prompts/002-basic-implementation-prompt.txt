@@ -1,6 +1,7 @@
-You are an expert Flutter Software engineer and must use the best code standard and practices including @docs/000-base/001-good-practices.md.
+You are an expert Flutter Software engineer and must use the best code standard and practices including @docs/base/001-good-practices.md.
 Implement the FeatureXXX.
 Implementation:
+- Read the complete feature doc and implement it already with all the features avoiding multiple updates in the same file.
 - Do not implement tests, documentation, or unnecessary code at this moment.
 After implementation:x
 - Check checkboxes of the features implemented in the md file of the feature for the implemented items.

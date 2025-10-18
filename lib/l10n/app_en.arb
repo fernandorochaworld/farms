@@ -138,5 +138,121 @@
   "farmCapacityPositive": "Capacity must be greater than 0",
   "@farmCapacityPositive": {
     "description": "Validation error for capacity must be positive"
+  },
+  "peopleListTitle": "People",
+  "@peopleListTitle": {
+    "description": "Title for people list screen"
+  },
+  "personDetailsTitle": "Person Details",
+  "@personDetailsTitle": {
+    "description": "Title for person details screen"
+  },
+  "personAddTitle": "Add Person",
+  "@personAddTitle": {
+    "description": "Title for add person screen"
+  },
+  "personEditTitle": "Edit Person",
+  "@personEditTitle": {
+    "description": "Title for edit person screen"
+  },
+  "personNameLabel": "Person Name",
+  "@personNameLabel": {
+    "description": "Label for person name field"
+  },
+  "personDescriptionLabel": "Description",
+  "@personDescriptionLabel": {
+    "description": "Label for person description field"
+  },
+  "personTypeLabel": "Person Type",
+  "@personTypeLabel": {
+    "description": "Label for person type field"
+  },
+  "personAdminLabel": "Admin Privileges",
+  "@personAdminLabel": {
+    "description": "Label for admin privileges toggle"
+  },
+  "personAdminDescription": "Grant admin access to manage farm settings",
+  "@personAdminDescription": {
+    "description": "Description for admin privileges toggle"
+  },
+  "personTypeOwner": "Owner",
+  "@personTypeOwner": {
+    "description": "Person type: Owner"
+  },
+  "personTypeManager": "Manager",
+  "@personTypeManager": {
+    "description": "Person type: Manager"
+  },
+  "personTypeWorker": "Worker",
+  "@personTypeWorker": {
+    "description": "Person type: Worker"
+  },
+  "personTypeArrendatario": "Arrendatario",
+  "@personTypeArrendatario": {
+    "description": "Person type: Arrendatario"
+  },
+  "personAddButton": "Add Person",
+  "@personAddButton": {
+    "description": "Button text for adding a person"
+  },
+  "personUpdateButton": "Update Person",
+  "@personUpdateButton": {
+    "description": "Button text for updating a person"
+  },
+  "personRemoveButton": "Remove",
+  "@personRemoveButton": {
+    "description": "Button text for removing a person"
+  },
+  "personRemoveConfirmTitle": "Remove Person",
+  "@personRemoveConfirmTitle": {
+    "description": "Title for remove person confirmation dialog"
+  },
+  "personRemoveConfirmMessage": "Are you sure you want to remove this person from the farm?",
+  "@personRemoveConfirmMessage": {
+    "description": "Confirmation message for removing a person"
+  },
+  "personEmptyStateMessage": "No people found",
+  "@personEmptyStateMessage": {
+    "description": "Message shown when no people found"
+  },
+  "personSearchHint": "Search people...",
+  "@personSearchHint": {
+    "description": "Hint text for person search field"
+  },
+  "personNameRequired": "Name is required",
+  "@personNameRequired": {
+    "description": "Validation error for required person name"
+  },
+  "personNameMinLength": "Name must be at least 3 characters",
+  "@personNameMinLength": {
+    "description": "Validation error for person name minimum length"
+  },
+  "personNameMaxLength": "Name must not exceed 100 characters",
+  "@personNameMaxLength": {
+    "description": "Validation error for person name maximum length"
+  },
+  "personAddedSuccess": "Person added successfully",
+  "@personAddedSuccess": {
+    "description": "Success message when person is added"
+  },
+  "personUpdatedSuccess": "Person updated successfully",
+  "@personUpdatedSuccess": {
+    "description": "Success message when person is updated"
+  },
+  "personRemovedSuccess": "Person removed successfully",
+  "@personRemovedSuccess": {
+    "description": "Success message when person is removed"
+  },
+  "personAlreadyMember": "User is already a member of this farm",
+  "@personAlreadyMember": {
+    "description": "Error message when user is already a farm member"
+  },
+  "personLastOwnerError": "Cannot remove the last owner",
+  "@personLastOwnerError": {
+    "description": "Error message when trying to remove last owner"
+  },
+  "personPermissionDenied": "You do not have permission to perform this action",
+  "@personPermissionDenied": {
+    "description": "Error message for permission denied"
   }
 }

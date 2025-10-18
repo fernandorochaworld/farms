@@ -6,9 +6,13 @@ import '../../../core/di/injection.dart';
 import '../bloc/farm_bloc.dart';
 import '../bloc/farm_event.dart';
 import '../bloc/farm_state.dart';
+import '../bloc/person_bloc.dart';
 import '../models/farm_model.dart';
+import '../models/person_model.dart' as farm_person;
+import '../repositories/person_repository.dart';
 import '../services/farm_summary_service.dart';
 import 'farm_edit_screen.dart';
+import 'people_list_screen.dart';
 
 /// Screen displaying detailed information about a specific farm
 class FarmDetailsScreen extends StatefulWidget {
@@ -45,6 +49,52 @@ class _FarmDetailsScreenState extends State<FarmDetailsScreen> {
       setState(() {
         _summary = summary;
       });
+    }
+  }
+
+  Future<void> _navigateToManagePeople(BuildContext context, Farm farm) async {
+    final user = FirebaseAuth.instance.currentUser;
+    if (user == null) return;
+
+    try {
+      // Get current user's person record for this farm
+      final personRepository = getIt<PersonRepository>();
+      final currentUserPerson = await personRepository.getByUserIdInFarm(
+        farm.id,
+        user.uid,
+      );
+
+      if (currentUserPerson != null && mounted) {
+        Navigator.push(
+          context,
+          MaterialPageRoute(
+            builder: (newContext) => BlocProvider<PersonBloc>(
+              create: (context) => getIt<PersonBloc>(),
+              child: PeopleListScreen(
+                farmId: farm.id,
+                farmName: farm.name,
+                currentUser: currentUserPerson,
+              ),
+            ),
+          ),
+        );
+      } else if (mounted) {
+        ScaffoldMessenger.of(context).showSnackBar(
+          const SnackBar(
+            content: Text('You must be a member of this farm to manage people'),
+            backgroundColor: Colors.red,
+          ),
+        );
+      }
+    } catch (e) {
+      if (mounted) {
+        ScaffoldMessenger.of(context).showSnackBar(
+          SnackBar(
+            content: Text('Error: ${e.toString()}'),
+            backgroundColor: Colors.red,
+          ),
+        );
+      }
     }
   }
 
@@ -379,9 +429,7 @@ class _FarmDetailsScreenState extends State<FarmDetailsScreen> {
                           icon: Icons.people,
                           title: 'People',
                           subtitle: '0 members', // Placeholder
-                          onTap: () {
-                            // TODO: Navigate to people
-                          },
+                          onTap: () => _navigateToManagePeople(context, farm),
                         ),
                         _buildSectionTile(
                           icon: Icons.history,
