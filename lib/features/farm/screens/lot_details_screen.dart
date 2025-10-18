@@ -52,7 +52,13 @@ class _LotDetailsScreenState extends State<LotDetailsScreen> {
                           lot: state.lot,
                         ),
                       ),
-                    ).then((_) => _lotBloc.add(LoadLotDetails(farmId: widget.farm.id, lotId: widget.lotId)));
+                    ).then((deleted) {
+                      if (deleted == true) {
+                        Navigator.of(context).pop();
+                      } else {
+                        _lotBloc.add(LoadLotDetails(farmId: widget.farm.id, lotId: widget.lotId));
+                      }
+                    });
                   },
                 );
               }

@@ -62,7 +62,7 @@ class _LotFormScreenState extends State<LotFormScreen> {
     super.dispose();
   }
 
-  Future<void> _selectDate(BuildContext context, bool isStart) async {
+  Future<DateTime?> _selectDate(BuildContext context, bool isStart) async {
     final picked = await showDatePicker(
       context: context,
       initialDate: (isStart ? _birthStart : _birthEnd) ?? DateTime.now(),
@@ -78,6 +78,7 @@ class _LotFormScreenState extends State<LotFormScreen> {
         }
       });
     }
+    return picked;
   }
 
   void _submit() {
@@ -88,7 +89,7 @@ class _LotFormScreenState extends State<LotFormScreen> {
           cattleType: _selectedType,
           gender: _selectedGender,
           birthStart: _birthStart,
-          birthEnd: _birthEnd,
+          birthEnd: _birthStart, // Keep birthEnd same as birthStart
         );
         _lotBloc.add(UpdateLot(lot: updatedLot));
       } else {
@@ -99,7 +100,7 @@ class _LotFormScreenState extends State<LotFormScreen> {
           cattleType: _selectedType!,
           gender: _selectedGender,
           birthStart: _birthStart!,
-          birthEnd: _birthEnd!,
+          birthEnd: _birthStart!,
           qtdAdded: 0, // Will be set by BLoC
           qtdRemoved: 0,
           startDate: DateTime.now(), // Will be set by BLoC
@@ -108,9 +109,16 @@ class _LotFormScreenState extends State<LotFormScreen> {
         _lotBloc.add(CreateLot(
           lot: newLot,
           initialQuantity: int.parse(_quantityController.text),
-          initialWeight: double.tryParse(_weightController.text),
+          initialWeight: (double.tryParse(_weightController.text) ?? 0.0) * 15.0,
         ));
       }
+    } else {
+      ScaffoldMessenger.of(context).showSnackBar(
+        const SnackBar(
+          content: Text('Please correct the errors in the form.'),
+          backgroundColor: Colors.red,
+        ),
+      );
     }
   }
 
@@ -124,7 +132,9 @@ class _LotFormScreenState extends State<LotFormScreen> {
         value: _lotBloc,
         child: BlocListener<LotBloc, LotState>(
           listener: (context, state) {
-            if (state is LotOperationSuccess) {
+            if (state is LotDeleteSuccess) {
+              Navigator.of(context).pop(true);
+            } else if (state is LotOperationSuccess) {
               Navigator.of(context).pop();
             }
             if (state is LotOperationFailure) {
@@ -135,6 +145,7 @@ class _LotFormScreenState extends State<LotFormScreen> {
           },
           child: Form(
             key: _formKey,
+            autovalidateMode: AutovalidateMode.onUserInteraction,
             child: SingleChildScrollView(
               padding: const EdgeInsets.all(16.0),
               child: Column(
@@ -148,12 +159,37 @@ class _LotFormScreenState extends State<LotFormScreen> {
                   ),
                   const SizedBox(height: 16),
                   const Text('Cattle Type', style: TextStyle(fontWeight: FontWeight.bold)),
-                  CattleTypeSelector(
-                    selectedType: _selectedType,
-                    onChanged: (type) => setState(() => _selectedType = type as CattleType?),
+                  FormField<CattleType>(
+                    builder: (state) {
+                      return Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          CattleTypeSelector(
+                            selectedType: _selectedType,
+                            onChanged: (type) {
+                              setState(() => _selectedType = type as CattleType?);
+                              state.didChange(type);
+                            },
+                          ),
+                          if (state.hasError) ...[
+                            Padding(
+                              padding: const EdgeInsets.only(left: 8.0, top: 8.0),
+                              child: Text(
+                                state.errorText!,
+                                style: TextStyle(color: Theme.of(context).colorScheme.error, fontSize: 12),
+                              ),
+                            ),
+                          ],
+                        ],
+                      );
+                    },
+                    validator: (value) {
+                      if (_selectedType == null) {
+                        return 'Please select a cattle type';
+                      }
+                      return null;
+                    },
                   ),
-                  if (_selectedType == null)
-                    const Text('Please select a type', style: TextStyle(color: Colors.red)),
                   const SizedBox(height: 16),
                   const Text('Gender', style: TextStyle(fontWeight: FontWeight.bold)),
                   GenderSelector(
@@ -161,28 +197,42 @@ class _LotFormScreenState extends State<LotFormScreen> {
                     onGenderSelected: (gender) => setState(() => _selectedGender = gender as CattleGender),
                   ),
                   const SizedBox(height: 16),
-                  const Text('Birth Date Range', style: TextStyle(fontWeight: FontWeight.bold)),
-                  Row(
-                    children: [
-                      Expanded(
-                        child: ListTile(
-                          title: const Text('Start'),
-                          subtitle: Text(_birthStart == null
-                              ? 'Select Date'
-                              : DateFormat.yMd().format(_birthStart!)),
-                          onTap: () => _selectDate(context, true),
-                        ),
-                      ),
-                      Expanded(
-                        child: ListTile(
-                          title: const Text('End'),
-                          subtitle: Text(_birthEnd == null
-                              ? 'Select Date'
-                              : DateFormat.yMd().format(_birthEnd!)),
-                          onTap: () => _selectDate(context, false),
-                        ),
-                      ),
-                    ],
+                  const Text('Birth Date', style: TextStyle(fontWeight: FontWeight.bold)),
+                  FormField<DateTime>(
+                    builder: (state) {
+                      return Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          ListTile(
+                            title: const Text('Date'),
+                            subtitle: Text(_birthStart == null
+                                ? 'Select Date'
+                                : DateFormat.yMd().format(_birthStart!)),
+                            onTap: () async {
+                              final date = await _selectDate(context, true);
+                              if (date != null) {
+                                state.didChange(date);
+                              }
+                            },
+                          ),
+                          if (state.hasError) ...[
+                            Padding(
+                              padding: const EdgeInsets.only(left: 16.0),
+                              child: Text(
+                                state.errorText!,
+                                style: TextStyle(color: Theme.of(context).colorScheme.error, fontSize: 12),
+                              ),
+                            ),
+                          ],
+                        ],
+                      );
+                    },
+                    validator: (value) {
+                      if (_birthStart == null) {
+                        return 'Please select a birth date';
+                      }
+                      return null;
+                    },
                   ),
                   if (!isEditMode) ...[
                     const SizedBox(height: 16),
@@ -201,8 +251,21 @@ class _LotFormScreenState extends State<LotFormScreen> {
                     const SizedBox(height: 16),
                     CustomTextField(
                       controller: _weightController,
-                      label: 'Average Weight (kg, optional)',
+                      label: 'Average Weight (@)',
                       keyboardType: TextInputType.number,
+                      validator: (value) {
+                        if (value == null || value.trim().isEmpty) {
+                          return 'Average weight is required';
+                        }
+                        final weight = double.tryParse(value.trim());
+                        if (weight == null) {
+                          return 'Weight must be a valid number';
+                        }
+                        if (weight <= 0) {
+                          return 'Weight must be greater than 0';
+                        }
+                        return null;
+                      },
                     ),
                   ],
                   const SizedBox(height: 24),
@@ -210,11 +273,55 @@ class _LotFormScreenState extends State<LotFormScreen> {
                     onPressed: _submit,
                     child: Text(isEditMode ? 'Save Changes' : 'Create Lot'),
                   ),
+                  if (isEditMode) ...[
+                    const SizedBox(height: 16),
+                    ElevatedButton(
+                      onPressed: widget.lot?.currentQuantity == 0
+                          ? () {
+                              _lotBloc.add(CloseLot(
+                                  farmId: widget.farm.id, lotId: widget.lot!.id));
+                            }
+                          : null,
+                      style: ElevatedButton.styleFrom(backgroundColor: Colors.orange),
+                      child: const Text('Close Lot'),
+                    ),
+                    const SizedBox(height: 16),
+                    OutlinedButton(
+                      onPressed: () => _showDeleteConfirmation(context),
+                      style: OutlinedButton.styleFrom(foregroundColor: Colors.red),
+                      child: const Text('Delete Lot'),
+                    ),
+                  ],
                 ],
               ),
             ),
           ),
         ),
+      ),
+    );
+  }
+
+  void _showDeleteConfirmation(BuildContext context) {
+    showDialog(
+      context: context,
+      builder: (ctx) => AlertDialog(
+        title: const Text('Delete Lot'),
+        content: const Text(
+            'Are you sure you want to delete this lot? This action cannot be undone.'),
+        actions: [
+          TextButton(
+            onPressed: () => Navigator.of(ctx).pop(),
+            child: const Text('Cancel'),
+          ),
+          TextButton(
+            onPressed: () {
+              _lotBloc.add(DeleteLot(farmId: widget.farm.id, lotId: widget.lot!.id));
+              Navigator.of(ctx).pop();
+            },
+            style: TextButton.styleFrom(foregroundColor: Colors.red),
+            child: const Text('Delete'),
+          ),
+        ],
       ),
     );
   }

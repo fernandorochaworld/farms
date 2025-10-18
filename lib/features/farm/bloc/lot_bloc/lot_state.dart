@@ -72,3 +72,5 @@ class LotOperationFailure extends LotState {
   @override
   List<Object> get props => [message];
 }
+
+class LotDeleteSuccess extends LotState {}

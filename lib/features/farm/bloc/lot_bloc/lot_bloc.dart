@@ -158,9 +158,14 @@ class LotBloc extends Bloc<LotEvent, LotState> {
   Future<void> _onDeleteLot(DeleteLot event, Emitter<LotState> emit) async {
     emit(LotOperationInProgress());
     try {
-      // TODO: Add logic to delete subcollections (transactions, weight history)
+      final transactions = await _transactionRepository.getByLotId(event.farmId, event.lotId);
+      if (transactions.length > 1) {
+        emit(const LotOperationFailure(message: 'Cannot delete a lot with existing transactions.'));
+        return;
+      }
+
       await _lotRepository.delete(event.farmId, event.lotId);
-      emit(const LotOperationSuccess(message: 'Lot deleted successfully'));
+      emit(LotDeleteSuccess());
     } catch (e) {
       emit(LotOperationFailure(
           message: 'Failed to delete lot: ${e.toString()}'));
