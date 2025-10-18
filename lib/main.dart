@@ -103,7 +103,7 @@ class AuthGate extends StatelessWidget {
           // User is authenticated, show dashboard screen
           return BlocProvider<FarmBloc>(
             create: (context) => getIt<FarmBloc>(),
-            child: const DashboardScreen(),
+            child: DashboardScreen(languageController: languageController),
           );
         } else if (state is AuthSSOProfileCompletionRequired) {
           // SSO user needs to complete profile

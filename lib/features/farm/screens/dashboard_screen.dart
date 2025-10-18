@@ -3,6 +3,10 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 
 import '../../../core/di/injection.dart';
+import '../../../core/i18n/language_controller.dart';
+import '../../../generated/app_localizations.dart';
+import '../../authentication/bloc/auth_bloc.dart';
+import '../../authentication/bloc/auth_event.dart';
 import '../bloc/farm_bloc.dart';
 import '../bloc/farm_event.dart';
 import '../bloc/farm_state.dart';
@@ -15,7 +19,12 @@ import 'farm_list_screen.dart';
 
 /// Main dashboard screen showing farm summaries
 class DashboardScreen extends StatefulWidget {
-  const DashboardScreen({super.key});
+  final LanguageController languageController;
+
+  const DashboardScreen({
+    super.key,
+    required this.languageController,
+  });
 
   static const String routeName = '/dashboard';
 
@@ -88,11 +97,92 @@ class _DashboardScreenState extends State<DashboardScreen> {
               );
             },
           ),
-          IconButton(
+          PopupMenuButton<String>(
             icon: const Icon(Icons.account_circle),
-            tooltip: 'Profile',
-            onPressed: () {
-              // TODO: Navigate to profile
+            tooltip: 'User Menu',
+            onSelected: (value) {
+              if (value == 'logout') {
+                _handleLogout();
+              } else if (value.startsWith('lang_')) {
+                final languageCode = value.substring(5);
+                widget.languageController.changeLanguage(languageCode);
+              }
+            },
+            itemBuilder: (context) {
+              final l10n = AppLocalizations.of(context)!;
+              return [
+                PopupMenuItem(
+                  enabled: false,
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text(
+                        l10n.languageSettings,
+                        style: const TextStyle(
+                          fontWeight: FontWeight.bold,
+                          fontSize: 12,
+                          color: Colors.grey,
+                        ),
+                      ),
+                      const Divider(),
+                    ],
+                  ),
+                ),
+                PopupMenuItem(
+                  value: 'lang_en',
+                  child: Row(
+                    children: [
+                      const Icon(Icons.language, size: 20),
+                      const SizedBox(width: 12),
+                      Text(l10n.english),
+                    ],
+                  ),
+                ),
+                PopupMenuItem(
+                  value: 'lang_es',
+                  child: Row(
+                    children: [
+                      const Icon(Icons.language, size: 20),
+                      const SizedBox(width: 12),
+                      Text(l10n.spanish),
+                    ],
+                  ),
+                ),
+                PopupMenuItem(
+                  value: 'lang_pt',
+                  child: Row(
+                    children: [
+                      const Icon(Icons.language, size: 20),
+                      const SizedBox(width: 12),
+                      Text(l10n.portuguese),
+                    ],
+                  ),
+                ),
+                PopupMenuItem(
+                  value: 'lang_zh',
+                  child: Row(
+                    children: [
+                      const Icon(Icons.language, size: 20),
+                      const SizedBox(width: 12),
+                      Text(l10n.mandarin),
+                    ],
+                  ),
+                ),
+                const PopupMenuDivider(),
+                const PopupMenuItem(
+                  value: 'logout',
+                  child: Row(
+                    children: [
+                      Icon(Icons.logout, size: 20, color: Colors.red),
+                      SizedBox(width: 12),
+                      Text(
+                        'Sign Out',
+                        style: TextStyle(color: Colors.red),
+                      ),
+                    ],
+                  ),
+                ),
+              ];
             },
           ),
         ],
@@ -402,6 +492,32 @@ class _DashboardScreenState extends State<DashboardScreen> {
     return _summaries.values.fold<int>(
       0,
       (sum, summary) => sum + summary.activeLots,
+    );
+  }
+
+  void _handleLogout() {
+    showDialog(
+      context: context,
+      builder: (dialogContext) => AlertDialog(
+        title: const Text('Sign Out'),
+        content: const Text('Are you sure you want to sign out?'),
+        actions: [
+          TextButton(
+            onPressed: () => Navigator.of(dialogContext).pop(),
+            child: const Text('Cancel'),
+          ),
+          TextButton(
+            onPressed: () {
+              Navigator.of(dialogContext).pop();
+              context.read<AuthBloc>().add(const AuthLogoutRequested());
+            },
+            child: const Text(
+              'Sign Out',
+              style: TextStyle(color: Colors.red),
+            ),
+          ),
+        ],
+      ),
     );
   }
 }
