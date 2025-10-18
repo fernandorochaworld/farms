@@ -254,5 +254,41 @@
   "personPermissionDenied": "You do not have permission to perform this action",
   "@personPermissionDenied": {
     "description": "Error message for permission denied"
-  }
+  },
+
+  "lotListTitle": "Cattle Lots",
+  "lotCreateTitle": "Create Lot",
+  "lotDetailsTitle": "Lot Details",
+  "lotEditTitle": "Edit Lot",
+  "lotNameLabel": "Lot Name",
+  "lotCattleTypeLabel": "Cattle Type",
+  "lotGenderLabel": "Gender",
+  "lotBirthDatesLabel": "Birth Date Range",
+  "lotQuantityLabel": "Initial Quantity",
+  "lotStatusActive": "Active",
+  "lotStatusClosed": "Closed",
+
+  "cattleTypeBezerro": "Bezerro",
+  "cattleTypeNovilho": "Novilho",
+  "cattleTypeBoi3Anos": "Boi 3 anos",
+  "cattleTypeBoi4Anos": "Boi 4 anos",
+  "cattleTypeBoi5MaisAnos": "Boi 5+ anos",
+
+  "genderMale": "Male",
+  "genderFemale": "Female",
+  "genderMixed": "Mixed",
+
+  "lotNameRequired": "Lot name is required",
+  "lotTypeRequired": "Cattle type is required",
+  "lotGenderRequired": "Gender is required",
+  "lotBirthDateRequired": "Birth dates are required",
+  "lotQuantityRequired": "Initial quantity is required",
+  "lotQuantityInvalid": "Please enter a valid quantity",
+
+  "lotCloseConfirmTitle": "Close Lot",
+  "lotCloseConfirmMessage": "Are you sure you want to close this lot? No new transactions can be added.",
+  "lotReopenConfirmTitle": "Reopen Lot",
+  "lotReopenConfirmMessage": "Are you sure you want to reopen this lot?",
+  "lotDeleteConfirmTitle": "Delete Lot",
+  "lotDeleteConfirmMessage": "Are you sure you want to permanently delete this lot and all its associated data? This action cannot be undone."
 }

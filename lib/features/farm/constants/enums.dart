@@ -1,3 +1,5 @@
+import 'package:flutter/material.dart';
+
 /// Enums for Farm Management System - Feature 004
 ///
 /// This file contains all enum definitions used across the farm feature.
@@ -86,6 +88,19 @@ extension CattleTypeExtension on CattleType {
     }
   }
 
+  IconData get icon {
+    switch (this) {
+      case CattleType.bezerro:
+        return Icons.child_friendly;
+      case CattleType.novilho:
+        return Icons.pets;
+      case CattleType.boi3anos:
+      case CattleType.boi4anos:
+      case CattleType.boi5maisAnos:
+        return Icons.agriculture;
+    }
+  }
+
   int get maxAgeInMonths {
     switch (this) {
       case CattleType.bezerro:
@@ -142,6 +157,17 @@ extension CattleGenderExtension on CattleGender {
         return '♀';
       case CattleGender.mixed:
         return '⚥';
+    }
+  }
+
+  IconData get icon {
+    switch (this) {
+      case CattleGender.male:
+        return Icons.male;
+      case CattleGender.female:
+        return Icons.female;
+      case CattleGender.mixed:
+        return Icons.compost;
     }
   }
 

@@ -2,6 +2,10 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:equatable/equatable.dart';
 import '../constants/enums.dart';
 import '../constants/firestore_paths.dart';
+import '../services/age_calculator_service.dart';
+
+
+
 
 /// CattleLot model representing a group of cattle
 ///
@@ -82,6 +86,15 @@ class CattleLot extends Equatable {
 
   /// Check if lot is closed (has end date)
   bool get isClosed => endDate != null;
+
+  int get daysActive {
+    final end = endDate ?? DateTime.now();
+    return end.difference(startDate).inDays;
+  }
+
+  AgeRange get ageRange {
+    return AgeCalculator.calculateAgeRange(birthStart, birthEnd);
+  }
 
   /// Calculate average age of cattle in months (from birth start to now)
   int get averageAgeInMonths {

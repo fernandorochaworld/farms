@@ -467,6 +467,192 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'You do not have permission to perform this action'**
   String get personPermissionDenied;
+
+  /// No description provided for @lotListTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Cattle Lots'**
+  String get lotListTitle;
+
+  /// No description provided for @lotCreateTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Create Lot'**
+  String get lotCreateTitle;
+
+  /// No description provided for @lotDetailsTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Lot Details'**
+  String get lotDetailsTitle;
+
+  /// No description provided for @lotEditTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Edit Lot'**
+  String get lotEditTitle;
+
+  /// No description provided for @lotNameLabel.
+  ///
+  /// In en, this message translates to:
+  /// **'Lot Name'**
+  String get lotNameLabel;
+
+  /// No description provided for @lotCattleTypeLabel.
+  ///
+  /// In en, this message translates to:
+  /// **'Cattle Type'**
+  String get lotCattleTypeLabel;
+
+  /// No description provided for @lotGenderLabel.
+  ///
+  /// In en, this message translates to:
+  /// **'Gender'**
+  String get lotGenderLabel;
+
+  /// No description provided for @lotBirthDatesLabel.
+  ///
+  /// In en, this message translates to:
+  /// **'Birth Date Range'**
+  String get lotBirthDatesLabel;
+
+  /// No description provided for @lotQuantityLabel.
+  ///
+  /// In en, this message translates to:
+  /// **'Initial Quantity'**
+  String get lotQuantityLabel;
+
+  /// No description provided for @lotStatusActive.
+  ///
+  /// In en, this message translates to:
+  /// **'Active'**
+  String get lotStatusActive;
+
+  /// No description provided for @lotStatusClosed.
+  ///
+  /// In en, this message translates to:
+  /// **'Closed'**
+  String get lotStatusClosed;
+
+  /// No description provided for @cattleTypeBezerro.
+  ///
+  /// In en, this message translates to:
+  /// **'Bezerro'**
+  String get cattleTypeBezerro;
+
+  /// No description provided for @cattleTypeNovilho.
+  ///
+  /// In en, this message translates to:
+  /// **'Novilho'**
+  String get cattleTypeNovilho;
+
+  /// No description provided for @cattleTypeBoi3Anos.
+  ///
+  /// In en, this message translates to:
+  /// **'Boi 3 anos'**
+  String get cattleTypeBoi3Anos;
+
+  /// No description provided for @cattleTypeBoi4Anos.
+  ///
+  /// In en, this message translates to:
+  /// **'Boi 4 anos'**
+  String get cattleTypeBoi4Anos;
+
+  /// No description provided for @cattleTypeBoi5MaisAnos.
+  ///
+  /// In en, this message translates to:
+  /// **'Boi 5+ anos'**
+  String get cattleTypeBoi5MaisAnos;
+
+  /// No description provided for @genderMale.
+  ///
+  /// In en, this message translates to:
+  /// **'Male'**
+  String get genderMale;
+
+  /// No description provided for @genderFemale.
+  ///
+  /// In en, this message translates to:
+  /// **'Female'**
+  String get genderFemale;
+
+  /// No description provided for @genderMixed.
+  ///
+  /// In en, this message translates to:
+  /// **'Mixed'**
+  String get genderMixed;
+
+  /// No description provided for @lotNameRequired.
+  ///
+  /// In en, this message translates to:
+  /// **'Lot name is required'**
+  String get lotNameRequired;
+
+  /// No description provided for @lotTypeRequired.
+  ///
+  /// In en, this message translates to:
+  /// **'Cattle type is required'**
+  String get lotTypeRequired;
+
+  /// No description provided for @lotGenderRequired.
+  ///
+  /// In en, this message translates to:
+  /// **'Gender is required'**
+  String get lotGenderRequired;
+
+  /// No description provided for @lotBirthDateRequired.
+  ///
+  /// In en, this message translates to:
+  /// **'Birth dates are required'**
+  String get lotBirthDateRequired;
+
+  /// No description provided for @lotQuantityRequired.
+  ///
+  /// In en, this message translates to:
+  /// **'Initial quantity is required'**
+  String get lotQuantityRequired;
+
+  /// No description provided for @lotQuantityInvalid.
+  ///
+  /// In en, this message translates to:
+  /// **'Please enter a valid quantity'**
+  String get lotQuantityInvalid;
+
+  /// No description provided for @lotCloseConfirmTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Close Lot'**
+  String get lotCloseConfirmTitle;
+
+  /// No description provided for @lotCloseConfirmMessage.
+  ///
+  /// In en, this message translates to:
+  /// **'Are you sure you want to close this lot? No new transactions can be added.'**
+  String get lotCloseConfirmMessage;
+
+  /// No description provided for @lotReopenConfirmTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Reopen Lot'**
+  String get lotReopenConfirmTitle;
+
+  /// No description provided for @lotReopenConfirmMessage.
+  ///
+  /// In en, this message translates to:
+  /// **'Are you sure you want to reopen this lot?'**
+  String get lotReopenConfirmMessage;
+
+  /// No description provided for @lotDeleteConfirmTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Delete Lot'**
+  String get lotDeleteConfirmTitle;
+
+  /// No description provided for @lotDeleteConfirmMessage.
+  ///
+  /// In en, this message translates to:
+  /// **'Are you sure you want to permanently delete this lot and all its associated data? This action cannot be undone.'**
+  String get lotDeleteConfirmMessage;
 }
 
 class _AppLocalizationsDelegate

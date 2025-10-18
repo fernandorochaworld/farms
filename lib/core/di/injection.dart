@@ -22,8 +22,11 @@ import '../../features/farm/repositories/transaction_repository.dart';
 import '../../features/farm/repositories/weight_history_repository.dart';
 import '../../features/farm/services/firestore_service.dart';
 import '../../features/farm/services/farm_summary_service.dart';
+import '../../features/farm/services/lot_statistics_service.dart';
+import '../../features/farm/services/age_calculator_service.dart';
 import '../../features/farm/bloc/farm_bloc.dart';
 import '../../features/farm/bloc/person_bloc.dart';
+import '../../features/farm/bloc/lot_bloc/lot_bloc.dart';
 import '../../features/authentication/bloc/user_bloc.dart';
 import '../../shared/services/token_storage_service.dart';
 
@@ -118,6 +121,9 @@ void setupDependencies() {
   // Farm Feature Services
   // ============================================================================
 
+  getIt.registerLazySingleton<LotStatisticsService>(() => LotStatisticsService());
+  getIt.registerLazySingleton<AgeCalculator>(() => AgeCalculator());
+
   // Farm Summary Service
   getIt.registerLazySingleton<FarmSummaryService>(
     () => FarmSummaryService(
@@ -144,6 +150,14 @@ void setupDependencies() {
     () => PersonBloc(
       personRepository: getIt<PersonRepository>(),
       userRepository: getIt<UserRepository>(),
+    ),
+  );
+
+  getIt.registerFactory<LotBloc>(
+    () => LotBloc(
+      lotRepository: getIt<CattleLotRepository>(),
+      transactionRepository: getIt<TransactionRepository>(),
+      weightHistoryRepository: getIt<WeightHistoryRepository>(),
     ),
   );
 

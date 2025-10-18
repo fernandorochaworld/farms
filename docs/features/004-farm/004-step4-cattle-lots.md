@@ -16,78 +16,78 @@ Implement cattle lot management with full lifecycle tracking, including creation
 ## Implementation Checklist
 
 ### Lot Listing
-- [ ] Create LotListScreen UI
-  - [ ] Display list of lots for a farm
-  - [ ] Show lot name, type, quantity, status
-  - [ ] Add floating action button to create lot
+- [x] Create LotListScreen UI
+  - [x] Display list of lots for a farm
+  - [x] Show lot name, type, quantity, status
+  - [x] Add floating action button to create lot
   - [ ] Add search functionality
   - [ ] Add filter by cattle type, gender, status
   - [ ] Add sort options (name, date, quantity)
-  - [ ] Show empty state
-  - [ ] Add pull-to-refresh
+  - [x] Show empty state
+  - [x] Add pull-to-refresh
   - [ ] Add skeleton loading
-- [ ] Create LotCard widget
-  - [ ] Display lot name and type
-  - [ ] Show current quantity with icon
-  - [ ] Display cattle type badge
-  - [ ] Show gender indicator
-  - [ ] Show status indicator (active/closed)
-  - [ ] Add tap to view details
+- [x] Create LotCard widget
+  - [x] Display lot name and type
+  - [x] Show current quantity with icon
+  - [x] Display cattle type badge
+  - [x] Show gender indicator
+  - [x] Show status indicator (active/closed)
+  - [x] Add tap to view details
   - [ ] Add swipe actions (edit, close)
-- [ ] Implement LotListController/Bloc
-  - [ ] Fetch lots by farm ID
+- [x] Implement LotListController/Bloc
+  - [x] Fetch lots by farm ID
   - [ ] Handle real-time updates
-  - [ ] Implement search and filter
+  - [x] Implement search and filter
   - [ ] Handle pagination if needed
 - [ ] Add widget tests
 
 ### Lot Creation
-- [ ] Create LotFormScreen (create mode) UI
-  - [ ] Add lot name input field
-  - [ ] Add cattle type selector
-  - [ ] Add gender selector (Male, Female, Mixed)
-  - [ ] Add birth start date picker
-  - [ ] Add birth end date picker
-  - [ ] Add initial quantity input
-  - [ ] Add average weight input (optional)
+- [x] Create LotFormScreen (create mode) UI
+  - [x] Add lot name input field
+  - [x] Add cattle type selector
+  - [x] Add gender selector (Male, Female, Mixed)
+  - [x] Add birth start date picker
+  - [x] Add birth end date picker
+  - [x] Add initial quantity input
+  - [x] Add average weight input (optional)
   - [ ] Add notes/description field
-  - [ ] Add form validation
-  - [ ] Add submit button
-- [ ] Create CattleTypeSelector widget
-  - [ ] List all cattle types with descriptions
-  - [ ] Bezerro (até 1 ano)
-  - [ ] Novilho (até 2 anos)
-  - [ ] Boi 3 anos (até 3 anos)
-  - [ ] Boi 4 anos (até 4 anos)
-  - [ ] Boi 5+ anos (5 anos ou mais)
+  - [x] Add form validation
+  - [x] Add submit button
+- [x] Create CattleTypeSelector widget
+  - [x] List all cattle types with descriptions
+  - [x] Bezerro (até 1 ano)
+  - [x] Novilho (até 2 anos)
+  - [x] Boi 3 anos (até 3 anos)
+  - [x] Boi 4 anos (até 4 anos)
+  - [x] Boi 5+ anos (5 anos ou mais)
   - [ ] Add icons for each type
-  - [ ] Handle selection
-- [ ] Create GenderSelector widget
-  - [ ] Male option with icon
-  - [ ] Female option with icon
-  - [ ] Mixed option with icon
-  - [ ] Handle selection
-- [ ] Implement LotController/Bloc
-  - [ ] Handle form submission
-  - [ ] Validate data
-  - [ ] Create lot record
-  - [ ] Create initial transaction (Buy) with quantity
-  - [ ] Create initial weight history if provided
-  - [ ] Handle success/error states
+  - [x] Handle selection
+- [x] Create GenderSelector widget
+  - [x] Male option with icon
+  - [x] Female option with icon
+  - [x] Mixed option with icon
+  - [x] Handle selection
+- [x] Implement LotController/Bloc
+  - [x] Handle form submission
+  - [x] Validate data
+  - [x] Create lot record
+  - [x] Create initial transaction (Buy) with quantity
+  - [x] Create initial weight history if provided
+  - [x] Handle success/error states
 - [ ] Add widget tests
 
 ### Lot Details
-- [ ] Create LotDetailsScreen UI
-  - [ ] Display lot information
-  - [ ] Show current quantity prominently
-  - [ ] Display cattle type and gender
-  - [ ] Show birth date range
-  - [ ] Calculate and display age range
+- [x] Create LotDetailsScreen UI
+  - [x] Display lot information
+  - [x] Show current quantity prominently
+  - [x] Display cattle type and gender
+  - [x] Show birth date range
+  - [x] Calculate and display age range
   - [ ] Show start/end dates
-  - [ ] Display status (Active/Closed)
-  - [ ] Add edit button
+  - [x] Display status (Active/Closed)
+  - [x] Add edit button
   - [ ] Add close lot button
-  - [ ] Show statistics section
+  - [x] Show statistics section
   - [ ] Show recent transactions list
   - [ ] Show weight history chart
   - [ ] Add quick action buttons
@@ -99,8 +99,8 @@ Implement cattle lot management with full lifecycle tracking, including creation
   - [ ] Average weight (latest)
   - [ ] Days active
   - [ ] Mortality count (Die transactions)
-- [ ] Implement LotDetailsController/Bloc
-  - [ ] Fetch lot by ID
+- [x] Implement LotDetailsController/Bloc
+  - [x] Fetch lot by ID
   - [ ] Fetch transactions for lot
   - [ ] Fetch weight history
   - [ ] Calculate statistics
@@ -108,42 +108,42 @@ Implement cattle lot management with full lifecycle tracking, including creation
 - [ ] Add widget tests
 
 ### Lot Editing
-- [ ] Create LotFormScreen (edit mode) UI
-  - [ ] Pre-populate form with lot data
-  - [ ] Allow editing name, description
-  - [ ] Allow editing cattle type (with validation)
-  - [ ] Allow editing gender (with validation)
-  - [ ] Allow editing birth dates (with validation)
+- [x] Create LotFormScreen (edit mode) UI
+  - [x] Pre-populate form with lot data
+  - [x] Allow editing name, description
+  - [x] Allow editing cattle type (with validation)
+  - [x] Allow editing gender (with validation)
+  - [x] Allow editing birth dates (with validation)
   - [ ] Cannot edit quantities directly (use transactions)
-  - [ ] Add form validation
-  - [ ] Add save button
-- [ ] Implement edit logic in controller
-  - [ ] Update lot record
-  - [ ] Validate changes
-  - [ ] Handle success/error states
+  - [x] Add form validation
+  - [x] Add save button
+- [x] Implement edit logic in controller
+  - [x] Update lot record
+  - [x] Validate changes
+  - [x] Handle success/error states
 - [ ] Add widget tests
 
 ### Lot Closure
-- [ ] Implement lot closure logic
+- [x] Implement lot closure logic
   - [ ] Automatic closure when current_quantity = 0
-  - [ ] Manual closure option (with confirmation)
-  - [ ] Set end_date to closure date
+  - [x] Manual closure option (with confirmation)
+  - [x] Set end_date to closure date
   - [ ] Prevent new transactions after closure
-  - [ ] Allow reopening if needed
-- [ ] Create closure confirmation dialog
+  - [x] Allow reopening if needed
+- [x] Create closure confirmation dialog
   - [ ] Show warning message
   - [ ] Confirm all cattle removed/sold
-  - [ ] Add confirm and cancel buttons
-- [ ] Implement reopening logic
-  - [ ] Clear end_date
+  - [x] Add confirm and cancel buttons
+- [x] Implement reopening logic
+  - [x] Clear end_date
   - [ ] Validate can be reopened
   - [ ] Add confirmation dialog
 - [ ] Add widget tests
 
 ### Quantity Calculations
-- [ ] Implement currentQuantity getter
-  - [ ] Formula: qtd_added - qtd_removed
-  - [ ] Display in UI with icon
+- [x] Implement currentQuantity getter
+  - [x] Formula: qtd_added - qtd_removed
+  - [x] Display in UI with icon
   - [ ] Color-code based on capacity
 - [ ] Create QuantityService
   - [ ] Calculate total added
@@ -151,47 +151,47 @@ Implement cattle lot management with full lifecycle tracking, including creation
   - [ ] Calculate current quantity
   - [ ] Validate quantity consistency
   - [ ] Handle edge cases (negative values)
-- [ ] Add quantity validation
-  - [ ] Current quantity >= 0
+- [x] Add quantity validation
+  - [x] Current quantity >= 0
   - [ ] Quantities match transaction sums
   - [ ] Alert on discrepancies
 - [ ] Add unit tests for calculations
 
 ### Age Calculation
-- [ ] Implement age calculation logic
-  - [ ] Use birth_start for minimum age
-  - [ ] Use birth_end for maximum age
-  - [ ] Display age range (e.g., "8-10 months")
-  - [ ] Handle null birth dates
-- [ ] Create AgeCalculator service
-  - [ ] Calculate age in months/years
-  - [ ] Validate cattle type matches age
-  - [ ] Suggest type changes based on age
+- [x] Implement age calculation logic
+  - [x] Use birth_start for minimum age
+  - [x] Use birth_end for maximum age
+  - [x] Display age range (e.g., "8-10 months")
+  - [x] Handle null birth dates
+- [x] Create AgeCalculator service
+  - [x] Calculate age in months/years
+  - [x] Validate cattle type matches age
+  - [x] Suggest type changes based on age
   - [ ] Add warnings for age discrepancies
-- [ ] Display age information in UI
-  - [ ] Age range in lot details
+- [x] Display age information in UI
+  - [x] Age range in lot details
   - [ ] Age validation warnings
   - [ ] Age-based type suggestions
 - [ ] Add unit tests
 
 ### Lot Statistics
-- [ ] Calculate lot statistics
-  - [ ] Total transactions count
-  - [ ] Buy transactions count
-  - [ ] Sell transactions count
-  - [ ] Move transactions count
-  - [ ] Die transactions count
+- [x] Calculate lot statistics
+  - [x] Total transactions count
+  - [x] Buy transactions count
+  - [x] Sell transactions count
+  - [x] Move transactions count
+  - [x] Die transactions count
   - [ ] Total value (buy - sell)
   - [ ] Average weight progression
-  - [ ] Days since creation
-  - [ ] Mortality rate
-- [ ] Create StatisticsService
-  - [ ] Aggregate transaction data
+  - [x] Days since creation
+  - [x] Mortality rate
+- [x] Create StatisticsService
+  - [x] Aggregate transaction data
   - [ ] Calculate financial metrics
   - [ ] Calculate performance metrics
   - [ ] Generate trend data
-- [ ] Display statistics in UI
-  - [ ] Statistics cards
+- [x] Display statistics in UI
+  - [x] Statistics cards
   - [ ] Charts and graphs
   - [ ] Trend indicators
 - [ ] Add unit tests
@@ -212,78 +212,78 @@ Implement cattle lot management with full lifecycle tracking, including creation
 - [ ] Add widget tests
 
 ### Validation & Business Rules
-- [ ] Lot name validation
-  - [ ] Required, 3-100 characters
+- [x] Lot name validation
+  - [x] Required, 3-100 characters
   - [ ] Unique within farm
-- [ ] Birth date validation
-  - [ ] birth_end >= birth_start
+- [x] Birth date validation
+  - [x] birth_end >= birth_start
   - [ ] Dates not in future
   - [ ] Reasonable date range
-- [ ] Cattle type validation
-  - [ ] Required, valid enum value
-  - [ ] Matches age range (suggestion)
-- [ ] Quantity validation
-  - [ ] Initial quantity > 0
-  - [ ] Current quantity >= 0
+- [x] Cattle type validation
+  - [x] Required, valid enum value
+  - [x] Matches age range (suggestion)
+- [x] Quantity validation
+  - [x] Initial quantity > 0
+  - [x] Current quantity >= 0
   - [ ] Cannot go negative
-- [ ] Lot status validation
+- [x] Lot status validation
   - [ ] Cannot add transactions to closed lot
-  - [ ] Auto-close when quantity = 0
+  - [x] Auto-close when quantity = 0
   - [ ] Validate before manual closure
 
 ### Permission Checks
-- [ ] Implement lot permission checks
-  - [ ] Create: All person types can create
-  - [ ] Edit: Owner, Manager, Worker can edit
-  - [ ] Close: Owner, Manager can close
-  - [ ] Delete: Owner, Manager can delete
-  - [ ] View: All can view
-  - [ ] Admin can override
-- [ ] Add UI permission guards
+- [x] Implement lot permission checks
+  - [x] Create: All person types can create
+  - [x] Edit: Owner, Manager, Worker can edit
+  - [x] Close: Owner, Manager can close
+  - [x] Delete: Owner, Manager can delete
+  - [x] View: All can view
+  - [x] Admin can override
+- [x] Add UI permission guards
 - [ ] Add backend validation
 
 ### State Management
-- [ ] Create LotState
-  - [ ] LotInitial
-  - [ ] LotLoading
-  - [ ] LotLoaded
-  - [ ] LotDetailsLoaded
-  - [ ] LotError
-  - [ ] LotOperationInProgress
-  - [ ] LotOperationSuccess
-  - [ ] LotOperationFailure
-- [ ] Create LotEvent
-  - [ ] LoadLots
-  - [ ] LoadLotDetails
-  - [ ] CreateLot
-  - [ ] UpdateLot
-  - [ ] CloseLot
-  - [ ] ReopenLot
-  - [ ] SearchLots
-  - [ ] FilterLots
-- [ ] Implement LotBloc
-  - [ ] Handle all events
-  - [ ] Emit appropriate states
-  - [ ] Call repository methods
-  - [ ] Handle errors
+- [x] Create LotState
+  - [x] LotInitial
+  - [x] LotLoading
+  - [x] LotLoaded
+  - [x] LotDetailsLoaded
+  - [x] LotError
+  - [x] LotOperationInProgress
+  - [x] LotOperationSuccess
+  - [x] LotOperationFailure
+- [x] Create LotEvent
+  - [x] LoadLots
+  - [x] LoadLotDetails
+  - [x] CreateLot
+  - [x] UpdateLot
+  - [x] CloseLot
+  - [x] ReopenLot
+  - [x] SearchLots
+  - [x] FilterLots
+- [x] Implement LotBloc
+  - [x] Handle all events
+  - [x] Emit appropriate states
+  - [x] Call repository methods
+  - [x] Handle errors
 
 ### Internationalization
-- [ ] Add translation keys
-  - [ ] lot_list_title
-  - [ ] lot_create_title
-  - [ ] lot_details_title
-  - [ ] lot_edit_title
-  - [ ] lot_name_label
-  - [ ] lot_cattle_type_label
-  - [ ] lot_gender_label
-  - [ ] lot_birth_dates_label
-  - [ ] lot_quantity_label
-  - [ ] lot_status_active
-  - [ ] lot_status_closed
-  - [ ] Cattle type labels
-  - [ ] Gender labels
-  - [ ] Validation messages
-  - [ ] Confirmation messages
+- [x] Add translation keys
+  - [x] lot_list_title
+  - [x] lot_create_title
+  - [x] lot_details_title
+  - [x] lot_edit_title
+  - [x] lot_name_label
+  - [x] lot_cattle_type_label
+  - [x] lot_gender_label
+  - [x] lot_birth_dates_label
+  - [x] lot_quantity_label
+  - [x] lot_status_active
+  - [x] lot_status_closed
+  - [x] Cattle type labels
+  - [x] Gender labels
+  - [x] Validation messages
+  - [x] Confirmation messages
 
 ### Testing
 - [ ] Unit tests for LotBloc

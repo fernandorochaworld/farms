@@ -206,4 +206,100 @@ class AppLocalizationsZh extends AppLocalizations {
   @override
   String get personPermissionDenied =>
       'You do not have permission to perform this action';
+
+  @override
+  String get lotListTitle => 'Cattle Lots';
+
+  @override
+  String get lotCreateTitle => 'Create Lot';
+
+  @override
+  String get lotDetailsTitle => 'Lot Details';
+
+  @override
+  String get lotEditTitle => 'Edit Lot';
+
+  @override
+  String get lotNameLabel => 'Lot Name';
+
+  @override
+  String get lotCattleTypeLabel => 'Cattle Type';
+
+  @override
+  String get lotGenderLabel => 'Gender';
+
+  @override
+  String get lotBirthDatesLabel => 'Birth Date Range';
+
+  @override
+  String get lotQuantityLabel => 'Initial Quantity';
+
+  @override
+  String get lotStatusActive => 'Active';
+
+  @override
+  String get lotStatusClosed => 'Closed';
+
+  @override
+  String get cattleTypeBezerro => 'Bezerro';
+
+  @override
+  String get cattleTypeNovilho => 'Novilho';
+
+  @override
+  String get cattleTypeBoi3Anos => 'Boi 3 anos';
+
+  @override
+  String get cattleTypeBoi4Anos => 'Boi 4 anos';
+
+  @override
+  String get cattleTypeBoi5MaisAnos => 'Boi 5+ anos';
+
+  @override
+  String get genderMale => 'Male';
+
+  @override
+  String get genderFemale => 'Female';
+
+  @override
+  String get genderMixed => 'Mixed';
+
+  @override
+  String get lotNameRequired => 'Lot name is required';
+
+  @override
+  String get lotTypeRequired => 'Cattle type is required';
+
+  @override
+  String get lotGenderRequired => 'Gender is required';
+
+  @override
+  String get lotBirthDateRequired => 'Birth dates are required';
+
+  @override
+  String get lotQuantityRequired => 'Initial quantity is required';
+
+  @override
+  String get lotQuantityInvalid => 'Please enter a valid quantity';
+
+  @override
+  String get lotCloseConfirmTitle => 'Close Lot';
+
+  @override
+  String get lotCloseConfirmMessage =>
+      'Are you sure you want to close this lot? No new transactions can be added.';
+
+  @override
+  String get lotReopenConfirmTitle => 'Reopen Lot';
+
+  @override
+  String get lotReopenConfirmMessage =>
+      'Are you sure you want to reopen this lot?';
+
+  @override
+  String get lotDeleteConfirmTitle => 'Delete Lot';
+
+  @override
+  String get lotDeleteConfirmMessage =>
+      'Are you sure you want to permanently delete this lot and all its associated data? This action cannot be undone.';
 }

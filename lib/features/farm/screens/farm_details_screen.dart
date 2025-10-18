@@ -13,6 +13,7 @@ import '../repositories/person_repository.dart';
 import '../services/farm_summary_service.dart';
 import 'farm_edit_screen.dart';
 import 'people_list_screen.dart';
+import 'lot_list_screen.dart';
 
 /// Screen displaying detailed information about a specific farm
 class FarmDetailsScreen extends StatefulWidget {
@@ -439,7 +440,12 @@ class _FarmDetailsScreenState extends State<FarmDetailsScreen> {
                           title: 'Cattle Lots',
                           subtitle: '${_summary?.activeLots ?? 0} active',
                           onTap: () {
-                            // TODO: Navigate to lots
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder: (_) => LotListScreen(farm: farm),
+                              ),
+                            );
                           },
                         ),
                         _buildSectionTile(
