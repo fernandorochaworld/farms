@@ -11,9 +11,10 @@ import 'features/authentication/bloc/auth_state.dart';
 import 'features/authentication/repositories/user_repository.dart';
 import 'features/authentication/screens/login_screen.dart';
 import 'features/authentication/screens/sso_profile_completion_screen.dart';
+import 'features/farm/bloc/farm_bloc.dart';
+import 'features/farm/screens/dashboard_screen.dart';
 import 'firebase_options.dart';
 import 'generated/app_localizations.dart';
-import 'screens/home_screen.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -99,8 +100,11 @@ class AuthGate extends StatelessWidget {
             ),
           );
         } else if (state is AuthAuthenticated) {
-          // User is authenticated, show home screen
-          return HomeScreen(languageController: languageController);
+          // User is authenticated, show dashboard screen
+          return BlocProvider<FarmBloc>(
+            create: (context) => getIt<FarmBloc>(),
+            child: const DashboardScreen(),
+          );
         } else if (state is AuthSSOProfileCompletionRequired) {
           // SSO user needs to complete profile
           return SSOProfileCompletionScreen(

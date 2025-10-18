@@ -58,5 +58,85 @@
   "mandarin": "Mandarin Chinese",
   "@mandarin": {
     "description": "Mandarin Chinese language option"
+  },
+  "farmCreateTitle": "Create Farm",
+  "@farmCreateTitle": {
+    "description": "Title for create farm screen"
+  },
+  "farmEditTitle": "Edit Farm",
+  "@farmEditTitle": {
+    "description": "Title for edit farm screen"
+  },
+  "farmListTitle": "My Farms",
+  "@farmListTitle": {
+    "description": "Title for farm list screen"
+  },
+  "farmDetailsTitle": "Farm Details",
+  "@farmDetailsTitle": {
+    "description": "Title for farm details screen"
+  },
+  "dashboardTitle": "Dashboard",
+  "@dashboardTitle": {
+    "description": "Title for dashboard screen"
+  },
+  "farmNameLabel": "Farm Name",
+  "@farmNameLabel": {
+    "description": "Label for farm name field"
+  },
+  "farmDescriptionLabel": "Description",
+  "@farmDescriptionLabel": {
+    "description": "Label for farm description field"
+  },
+  "farmCapacityLabel": "Capacity (head)",
+  "@farmCapacityLabel": {
+    "description": "Label for farm capacity field"
+  },
+  "farmCreateButton": "Create Farm",
+  "@farmCreateButton": {
+    "description": "Button text for creating a farm"
+  },
+  "farmUpdateButton": "Update Farm",
+  "@farmUpdateButton": {
+    "description": "Button text for updating a farm"
+  },
+  "farmDeleteButton": "Delete",
+  "@farmDeleteButton": {
+    "description": "Button text for deleting a farm"
+  },
+  "farmDeleteConfirmMessage": "Are you sure you want to delete this farm?",
+  "@farmDeleteConfirmMessage": {
+    "description": "Confirmation message for deleting a farm"
+  },
+  "farmEmptyStateMessage": "No farms found. Create your first farm to get started!",
+  "@farmEmptyStateMessage": {
+    "description": "Message shown when user has no farms"
+  },
+  "dashboardWelcomeMessage": "Welcome to your farm dashboard",
+  "@dashboardWelcomeMessage": {
+    "description": "Welcome message on dashboard"
+  },
+  "farmNameRequired": "Farm name is required",
+  "@farmNameRequired": {
+    "description": "Validation error for required farm name"
+  },
+  "farmNameMinLength": "Farm name must be at least 3 characters",
+  "@farmNameMinLength": {
+    "description": "Validation error for farm name minimum length"
+  },
+  "farmNameMaxLength": "Farm name must not exceed 100 characters",
+  "@farmNameMaxLength": {
+    "description": "Validation error for farm name maximum length"
+  },
+  "farmCapacityRequired": "Capacity is required",
+  "@farmCapacityRequired": {
+    "description": "Validation error for required capacity"
+  },
+  "farmCapacityInvalid": "Capacity must be a valid number",
+  "@farmCapacityInvalid": {
+    "description": "Validation error for invalid capacity"
+  },
+  "farmCapacityPositive": "Capacity must be greater than 0",
+  "@farmCapacityPositive": {
+    "description": "Validation error for capacity must be positive"
   }
 }

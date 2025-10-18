@@ -65,4 +65,9 @@ abstract class FarmRepository {
 
   /// Get total count of farms
   Future<int> count();
+
+  /// Generate a new unique ID for a farm
+  ///
+  /// Returns a Firestore-generated document ID
+  String generateId();
 }

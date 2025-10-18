@@ -62,3 +62,10 @@ help:
 	@echo "  make build-windows - Build for Windows"
 	@echo "  make build-web     - Build for Web"
 	@echo "  make test          - Run tests"
+
+
+# firebase use farms-2025 && firebase deploy --only firestore:indexes
+# firebase deploy --project farms-2025 --only firestore:indexes 2>&1 | head -20
+# firebase projects:list
+# flutterfire configure
+# flutter pub run build_runner build --delete-conflicting-outputs

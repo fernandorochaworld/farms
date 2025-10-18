@@ -73,4 +73,9 @@ abstract class PersonRepository {
 
   /// Get total count of people in a farm
   Future<int> count(String farmId);
+
+  /// Generate a new unique ID for a person in a farm
+  ///
+  /// Returns a Firestore-generated document ID
+  String generateId(String farmId);
 }

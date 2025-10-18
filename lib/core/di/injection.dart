@@ -21,6 +21,8 @@ import '../../features/farm/repositories/person_repository.dart';
 import '../../features/farm/repositories/transaction_repository.dart';
 import '../../features/farm/repositories/weight_history_repository.dart';
 import '../../features/farm/services/firestore_service.dart';
+import '../../features/farm/services/farm_summary_service.dart';
+import '../../features/farm/bloc/farm_bloc.dart';
 import '../../shared/services/token_storage_service.dart';
 
 final getIt = GetIt.instance;
@@ -107,6 +109,30 @@ void setupDependencies() {
   getIt.registerLazySingleton<FarmServiceRepository>(
     () => FirebaseFarmServiceRepository(
       firestore: getIt<FirebaseFirestore>(),
+    ),
+  );
+
+  // ============================================================================
+  // Farm Feature Services
+  // ============================================================================
+
+  // Farm Summary Service
+  getIt.registerLazySingleton<FarmSummaryService>(
+    () => FarmSummaryService(
+      lotRepository: getIt<CattleLotRepository>(),
+      transactionRepository: getIt<TransactionRepository>(),
+    ),
+  );
+
+  // ============================================================================
+  // Farm Feature BLoCs
+  // ============================================================================
+
+  // Farm BLoC - using factory so each screen gets a new instance
+  getIt.registerFactory<FarmBloc>(
+    () => FarmBloc(
+      farmRepository: getIt<FarmRepository>(),
+      personRepository: getIt<PersonRepository>(),
     ),
   );
 }

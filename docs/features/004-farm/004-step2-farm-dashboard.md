@@ -15,215 +15,215 @@ Implement farm creation, reading, updating, and deletion operations, along with 
 ## Implementation Checklist
 
 ### Farm Creation
-- [ ] Create FarmCreateScreen UI
-  - [ ] Add farm name input field with validation
-  - [ ] Add description text area
-  - [ ] Add capacity number input
-  - [ ] Add form validation
-  - [ ] Add submit button with loading state
-  - [ ] Add cancel button
-- [ ] Implement FarmCreateController/Bloc
-  - [ ] Handle form submission
-  - [ ] Validate form data
-  - [ ] Call repository to create farm
-  - [ ] Automatically create Person record (Owner, is_admin=true)
-  - [ ] Handle success/error states
-  - [ ] Navigate to dashboard on success
-- [ ] Add internationalization strings
+- [x] Create FarmCreateScreen UI
+  - [x] Add farm name input field with validation
+  - [x] Add description text area
+  - [x] Add capacity number input
+  - [x] Add form validation
+  - [x] Add submit button with loading state
+  - [x] Add cancel button
+- [x] Implement FarmCreateController/Bloc
+  - [x] Handle form submission
+  - [x] Validate form data
+  - [x] Call repository to create farm
+  - [x] Automatically create Person record (Owner, is_admin=true)
+  - [x] Handle success/error states
+  - [x] Navigate to dashboard on success
+- [x] Add internationalization strings
 - [ ] Create widget tests for form
 
 ### Farm Listing
-- [ ] Create FarmListScreen UI
-  - [ ] Display list of farms
-  - [ ] Add search bar
-  - [ ] Add filter options (sort by name, date, capacity)
-  - [ ] Add pull-to-refresh
-  - [ ] Add floating action button to create farm
-  - [ ] Show empty state when no farms
-  - [ ] Add skeleton loading state
-- [ ] Implement FarmListController/Bloc
-  - [ ] Fetch farms by user ID
-  - [ ] Implement search functionality
-  - [ ] Implement filtering
-  - [ ] Handle real-time updates
+- [x] Create FarmListScreen UI
+  - [x] Display list of farms
+  - [x] Add search bar
+  - [x] Add filter options (sort by name, date, capacity)
+  - [x] Add pull-to-refresh
+  - [x] Add floating action button to create farm
+  - [x] Show empty state when no farms
+  - [x] Add skeleton loading state
+- [x] Implement FarmListController/Bloc
+  - [x] Fetch farms by user ID
+  - [x] Implement search functionality
+  - [x] Implement filtering
+  - [x] Handle real-time updates
   - [ ] Handle pagination (if needed)
-- [ ] Create FarmCard widget
-  - [ ] Display farm name
-  - [ ] Display farm description (truncated)
-  - [ ] Display cattle count (placeholder for now)
-  - [ ] Add tap to view details
-  - [ ] Add swipe actions (edit, delete)
+- [x] Create FarmCard widget
+  - [x] Display farm name
+  - [x] Display farm description (truncated)
+  - [x] Display cattle count (placeholder for now)
+  - [x] Add tap to view details
+  - [x] Add swipe actions (edit, delete)
 - [ ] Add widget tests
 
 ### Farm Details
-- [ ] Create FarmDetailsScreen UI
-  - [ ] Display farm information
-  - [ ] Display farm statistics (placeholder)
-  - [ ] Add edit button
-  - [ ] Add delete button (with confirmation)
-  - [ ] Show people count
-  - [ ] Show lots count (placeholder)
-  - [ ] Add navigation to sections
-- [ ] Implement FarmDetailsController/Bloc
-  - [ ] Fetch farm by ID
+- [x] Create FarmDetailsScreen UI
+  - [x] Display farm information
+  - [x] Display farm statistics (placeholder)
+  - [x] Add edit button
+  - [x] Add delete button (with confirmation)
+  - [x] Show people count
+  - [x] Show lots count (placeholder)
+  - [x] Add navigation to sections
+- [x] Implement FarmDetailsController/Bloc
+  - [x] Fetch farm by ID
   - [ ] Handle real-time updates
-  - [ ] Handle navigation to edit screen
-  - [ ] Handle delete operation
-- [ ] Add confirmation dialog for delete
+  - [x] Handle navigation to edit screen
+  - [x] Handle delete operation
+- [x] Add confirmation dialog for delete
 - [ ] Add widget tests
 
 ### Farm Editing
-- [ ] Create FarmEditScreen UI
-  - [ ] Pre-populate form with farm data
-  - [ ] Allow editing name, description, capacity
-  - [ ] Add form validation
-  - [ ] Add save button with loading state
-  - [ ] Add cancel button
-- [ ] Implement FarmEditController/Bloc
-  - [ ] Load current farm data
-  - [ ] Handle form submission
-  - [ ] Validate form data
-  - [ ] Call repository to update farm
-  - [ ] Handle success/error states
-  - [ ] Navigate back on success
+- [x] Create FarmEditScreen UI
+  - [x] Pre-populate form with farm data
+  - [x] Allow editing name, description, capacity
+  - [x] Add form validation
+  - [x] Add save button with loading state
+  - [x] Add cancel button
+- [x] Implement FarmEditController/Bloc
+  - [x] Load current farm data
+  - [x] Handle form submission
+  - [x] Validate form data
+  - [x] Call repository to update farm
+  - [x] Handle success/error states
+  - [x] Navigate back on success
 - [ ] Add widget tests
 
 ### Farm Deletion
-- [ ] Implement delete confirmation dialog
-  - [ ] Show warning message
-  - [ ] List what will be deleted (people, lots, etc.)
-  - [ ] Add confirm and cancel buttons
-- [ ] Implement delete logic in controller
-  - [ ] Delete farm document
+- [x] Implement delete confirmation dialog
+  - [x] Show warning message
+  - [x] List what will be deleted (people, lots, etc.)
+  - [x] Add confirm and cancel buttons
+- [x] Implement delete logic in controller
+  - [x] Delete farm document
   - [ ] Handle subcollections (discuss cascade vs archive)
-  - [ ] Handle errors
-  - [ ] Navigate to dashboard on success
-- [ ] Add proper error messages
+  - [x] Handle errors
+  - [x] Navigate to dashboard on success
+- [x] Add proper error messages
 - [ ] Add widget tests
 
 ### Dashboard
-- [ ] Create DashboardScreen UI
-  - [ ] Add app bar with title
-  - [ ] Add welcome message with user name
-  - [ ] Add "Create Farm" button prominently
-  - [ ] Display grid/list of FarmSummaryCard widgets
-  - [ ] Add pull-to-refresh
-  - [ ] Add skeleton loading state
-  - [ ] Handle empty state (no farms)
-- [ ] Create FarmSummaryCard widget
-  - [ ] Display farm name
-  - [ ] Display total cattle count (basic calculation)
-  - [ ] Display active lots count
-  - [ ] Display capacity usage percentage
-  - [ ] Add visual indicators (progress bar, icons)
-  - [ ] Add tap to navigate to farm details
-  - [ ] Make responsive for different screen sizes
-- [ ] Implement DashboardController/Bloc
-  - [ ] Fetch all farms for user
-  - [ ] Calculate summary data per farm
+- [x] Create DashboardScreen UI
+  - [x] Add app bar with title
+  - [x] Add welcome message with user name
+  - [x] Add "Create Farm" button prominently
+  - [x] Display grid/list of FarmSummaryCard widgets
+  - [x] Add pull-to-refresh
+  - [x] Add skeleton loading state
+  - [x] Handle empty state (no farms)
+- [x] Create FarmSummaryCard widget
+  - [x] Display farm name
+  - [x] Display total cattle count (basic calculation)
+  - [x] Display active lots count
+  - [x] Display capacity usage percentage
+  - [x] Add visual indicators (progress bar, icons)
+  - [x] Add tap to navigate to farm details
+  - [x] Make responsive for different screen sizes
+- [x] Implement DashboardController/Bloc
+  - [x] Fetch all farms for user
+  - [x] Calculate summary data per farm
   - [ ] Handle real-time updates
-  - [ ] Handle errors
-- [ ] Create FarmSummaryService
-  - [ ] Calculate total cattle count per farm
-  - [ ] Count active lots per farm
-  - [ ] Calculate capacity usage
-  - [ ] Prepare for future enhancements
-- [ ] Add internationalization strings
+  - [x] Handle errors
+- [x] Create FarmSummaryService
+  - [x] Calculate total cattle count per farm
+  - [x] Count active lots per farm
+  - [x] Calculate capacity usage
+  - [x] Prepare for future enhancements
+- [x] Add internationalization strings
 - [ ] Add widget tests
 
 ### Navigation
-- [ ] Setup navigation routes
-  - [ ] Dashboard route (/)
-  - [ ] Farm list route
-  - [ ] Farm create route
-  - [ ] Farm edit route (/farm/:id/edit)
-  - [ ] Farm details route (/farm/:id)
-- [ ] Implement navigation guards
-  - [ ] Check authentication
+- [x] Setup navigation routes
+  - [x] Dashboard route (/)
+  - [x] Farm list route
+  - [x] Farm create route
+  - [x] Farm edit route (/farm/:id/edit)
+  - [x] Farm details route (/farm/:id)
+- [x] Implement navigation guards
+  - [x] Check authentication
   - [ ] Verify farm access permissions
 - [ ] Add deep linking support (optional)
 
 ### Person Auto-Creation
-- [ ] Implement auto-creation logic
-  - [ ] When farm is created, create Person record
-  - [ ] Set person_type = Owner
-  - [ ] Set is_admin = true
-  - [ ] Link to current user (user_id)
-  - [ ] Copy user name to person name
+- [x] Implement auto-creation logic
+  - [x] When farm is created, create Person record
+  - [x] Set person_type = Owner
+  - [x] Set is_admin = true
+  - [x] Link to current user (user_id)
+  - [x] Copy user name to person name
   - [ ] Handle transaction (both operations must succeed)
-- [ ] Add error handling for failed person creation
+- [x] Add error handling for failed person creation
 - [ ] Add rollback logic if person creation fails
 - [ ] Test auto-creation flow
 
 ### State Management
-- [ ] Create FarmState (Bloc/Cubit states)
-  - [ ] FarmInitial
-  - [ ] FarmLoading
-  - [ ] FarmLoaded
-  - [ ] FarmError
-  - [ ] FarmOperationInProgress
-  - [ ] FarmOperationSuccess
-  - [ ] FarmOperationFailure
-- [ ] Create FarmEvent (Bloc events)
-  - [ ] LoadFarms
-  - [ ] CreateFarm
-  - [ ] UpdateFarm
-  - [ ] DeleteFarm
-  - [ ] SearchFarms
-  - [ ] FilterFarms
-- [ ] Implement FarmBloc
-  - [ ] Handle all events
-  - [ ] Emit appropriate states
-  - [ ] Call repository methods
-  - [ ] Handle errors gracefully
+- [x] Create FarmState (Bloc/Cubit states)
+  - [x] FarmInitial
+  - [x] FarmLoading
+  - [x] FarmLoaded
+  - [x] FarmError
+  - [x] FarmOperationInProgress
+  - [x] FarmOperationSuccess
+  - [x] FarmOperationFailure
+- [x] Create FarmEvent (Bloc events)
+  - [x] LoadFarms
+  - [x] CreateFarm
+  - [x] UpdateFarm
+  - [x] DeleteFarm
+  - [x] SearchFarms
+  - [x] FilterFarms
+- [x] Implement FarmBloc
+  - [x] Handle all events
+  - [x] Emit appropriate states
+  - [x] Call repository methods
+  - [x] Handle errors gracefully
 
 ### Error Handling
-- [ ] Create error message mapping
-  - [ ] Network errors
-  - [ ] Permission errors
-  - [ ] Validation errors
-  - [ ] Not found errors
-- [ ] Implement error display
-  - [ ] Show snackbar for transient errors
+- [x] Create error message mapping
+  - [x] Network errors
+  - [x] Permission errors
+  - [x] Validation errors
+  - [x] Not found errors
+- [x] Implement error display
+  - [x] Show snackbar for transient errors
   - [ ] Show dialog for critical errors
-  - [ ] Show inline errors for form validation
+  - [x] Show inline errors for form validation
 - [ ] Add retry mechanisms where appropriate
 - [ ] Log errors for debugging
 
 ### Form Validation
-- [ ] Farm name validation
-  - [ ] Required field
-  - [ ] Min 3 characters
-  - [ ] Max 100 characters
+- [x] Farm name validation
+  - [x] Required field
+  - [x] Min 3 characters
+  - [x] Max 100 characters
   - [ ] No special characters (optional)
-- [ ] Description validation
-  - [ ] Optional field
-  - [ ] Max 500 characters
-- [ ] Capacity validation
-  - [ ] Required field
-  - [ ] Must be number > 0
-  - [ ] Max reasonable value (e.g., 100000)
-- [ ] Real-time validation feedback
-- [ ] Form-level validation before submit
+- [x] Description validation
+  - [x] Optional field
+  - [x] Max 500 characters
+- [x] Capacity validation
+  - [x] Required field
+  - [x] Must be number > 0
+  - [x] Max reasonable value (e.g., 100000)
+- [x] Real-time validation feedback
+- [x] Form-level validation before submit
 
 ### Internationalization
-- [ ] Add translation keys
-  - [ ] `farm_create_title`
-  - [ ] `farm_edit_title`
-  - [ ] `farm_list_title`
-  - [ ] `farm_details_title`
-  - [ ] `farm_name_label`
-  - [ ] `farm_description_label`
-  - [ ] `farm_capacity_label`
-  - [ ] `farm_create_button`
-  - [ ] `farm_update_button`
-  - [ ] `farm_delete_button`
-  - [ ] `farm_delete_confirm_message`
-  - [ ] `farm_empty_state_message`
-  - [ ] `dashboard_title`
-  - [ ] `dashboard_welcome_message`
-  - [ ] Error messages
-  - [ ] Validation messages
+- [x] Add translation keys
+  - [x] `farm_create_title`
+  - [x] `farm_edit_title`
+  - [x] `farm_list_title`
+  - [x] `farm_details_title`
+  - [x] `farm_name_label`
+  - [x] `farm_description_label`
+  - [x] `farm_capacity_label`
+  - [x] `farm_create_button`
+  - [x] `farm_update_button`
+  - [x] `farm_delete_button`
+  - [x] `farm_delete_confirm_message`
+  - [x] `farm_empty_state_message`
+  - [x] `dashboard_title`
+  - [x] `dashboard_welcome_message`
+  - [x] Error messages
+  - [x] Validation messages
 - [ ] Add translations for all supported languages
 
 ### Testing

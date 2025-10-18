@@ -1,4 +1,7 @@
 You are an expert Flutter Software engineer and must use the best code standard and practices including @docs/000-base/001-good-practices.md.
-After implementation:
+Implement the FeatureXXX.
+Implementation:
+- Do not implement tests, documentation, or unnecessary code at this moment.
+After implementation:x
 - Check checkboxes of the features implemented in the md file of the feature for the implemented items.
 - Add the summary of implementation to the @CHANGELOG.md file.

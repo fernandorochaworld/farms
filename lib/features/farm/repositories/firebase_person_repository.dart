@@ -19,6 +19,9 @@ class FirebasePersonRepository implements PersonRepository {
       _firestore.collection(FirestorePaths.peopleCollectionPath(farmId));
 
   @override
+  String generateId(String farmId) => _peopleCollection(farmId).doc().id;
+
+  @override
   Future<Person> create(String farmId, Person person) async {
     try {
       // Validate person before creating

@@ -9,7 +9,8 @@
       "Bash(awk:*)",
       "Bash(flutter pub:*)",
       "mcp__ide__getDiagnostics",
-      "Bash(flutter analyze:*)"
+      "Bash(flutter analyze:*)",
+      "Bash(firebase deploy --only firestore:indexes)"
     ],
     "deny": [],
     "ask": []

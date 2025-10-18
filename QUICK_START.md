@@ -15,6 +15,7 @@ flutter pub get
 
 ### 2️⃣ Configure Firebase
 ```bash
+firebase login
 flutterfire configure
 ```
 - Select or create Firebase project

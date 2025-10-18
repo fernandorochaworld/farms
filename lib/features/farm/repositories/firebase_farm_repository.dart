@@ -18,6 +18,9 @@ class FirebaseFarmRepository implements FarmRepository {
       _firestore.collection(FirestorePaths.farmsCollection);
 
   @override
+  String generateId() => _farmsCollection.doc().id;
+
+  @override
   Future<Farm> create(Farm farm) async {
     try {
       // Validate farm before creating

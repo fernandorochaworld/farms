@@ -173,6 +173,126 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Mandarin Chinese'**
   String get mandarin;
+
+  /// Title for create farm screen
+  ///
+  /// In en, this message translates to:
+  /// **'Create Farm'**
+  String get farmCreateTitle;
+
+  /// Title for edit farm screen
+  ///
+  /// In en, this message translates to:
+  /// **'Edit Farm'**
+  String get farmEditTitle;
+
+  /// Title for farm list screen
+  ///
+  /// In en, this message translates to:
+  /// **'My Farms'**
+  String get farmListTitle;
+
+  /// Title for farm details screen
+  ///
+  /// In en, this message translates to:
+  /// **'Farm Details'**
+  String get farmDetailsTitle;
+
+  /// Title for dashboard screen
+  ///
+  /// In en, this message translates to:
+  /// **'Dashboard'**
+  String get dashboardTitle;
+
+  /// Label for farm name field
+  ///
+  /// In en, this message translates to:
+  /// **'Farm Name'**
+  String get farmNameLabel;
+
+  /// Label for farm description field
+  ///
+  /// In en, this message translates to:
+  /// **'Description'**
+  String get farmDescriptionLabel;
+
+  /// Label for farm capacity field
+  ///
+  /// In en, this message translates to:
+  /// **'Capacity (head)'**
+  String get farmCapacityLabel;
+
+  /// Button text for creating a farm
+  ///
+  /// In en, this message translates to:
+  /// **'Create Farm'**
+  String get farmCreateButton;
+
+  /// Button text for updating a farm
+  ///
+  /// In en, this message translates to:
+  /// **'Update Farm'**
+  String get farmUpdateButton;
+
+  /// Button text for deleting a farm
+  ///
+  /// In en, this message translates to:
+  /// **'Delete'**
+  String get farmDeleteButton;
+
+  /// Confirmation message for deleting a farm
+  ///
+  /// In en, this message translates to:
+  /// **'Are you sure you want to delete this farm?'**
+  String get farmDeleteConfirmMessage;
+
+  /// Message shown when user has no farms
+  ///
+  /// In en, this message translates to:
+  /// **'No farms found. Create your first farm to get started!'**
+  String get farmEmptyStateMessage;
+
+  /// Welcome message on dashboard
+  ///
+  /// In en, this message translates to:
+  /// **'Welcome to your farm dashboard'**
+  String get dashboardWelcomeMessage;
+
+  /// Validation error for required farm name
+  ///
+  /// In en, this message translates to:
+  /// **'Farm name is required'**
+  String get farmNameRequired;
+
+  /// Validation error for farm name minimum length
+  ///
+  /// In en, this message translates to:
+  /// **'Farm name must be at least 3 characters'**
+  String get farmNameMinLength;
+
+  /// Validation error for farm name maximum length
+  ///
+  /// In en, this message translates to:
+  /// **'Farm name must not exceed 100 characters'**
+  String get farmNameMaxLength;
+
+  /// Validation error for required capacity
+  ///
+  /// In en, this message translates to:
+  /// **'Capacity is required'**
+  String get farmCapacityRequired;
+
+  /// Validation error for invalid capacity
+  ///
+  /// In en, this message translates to:
+  /// **'Capacity must be a valid number'**
+  String get farmCapacityInvalid;
+
+  /// Validation error for capacity must be positive
+  ///
+  /// In en, this message translates to:
+  /// **'Capacity must be greater than 0'**
+  String get farmCapacityPositive;
 }
 
 class _AppLocalizationsDelegate
