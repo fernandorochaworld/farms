@@ -308,5 +308,14 @@
   "addWeightRecordTitle": "Add Weight Record",
   "averageWeightLabel": "Average Weight",
   "measurementDateLabel": "Measurement Date",
-  "addRecordButton": "Add Record"
+  "addRecordButton": "Add Record",
+
+  "goalsTitle": "Goals",
+  "addGoalTitle": "New Goal",
+  "goalDescriptionLabel": "Description",
+  "goalWeightTargetLabel": "Average Weight Target (@)",
+  "goalBirthQuantityTargetLabel": "Birth Quantity Target",
+  "goalDefinitionDateLabel": "Definition Date",
+  "goalDateLabel": "Goal Date",
+  "addGoalButton": "Add Goal"
 }

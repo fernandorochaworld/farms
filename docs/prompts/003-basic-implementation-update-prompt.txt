@@ -1,5 +1,6 @@
-You are an expert Flutter Software engineer and must use the best code standard and practices including @docs/base/001-good-practices.md.
-Implement the FeatureXXX.
+Now lets add a way to XXXX in the XXXXPAGEXXXX.
+You are an expert Flutter Software engineer and must use the best code standar and practices including @docs/base/001-good-practices.md.
+Implement the FeatureXXXX.
 Implementation:
 - Read the complete feature doc and implement it already with all the features avoiding multiple updates in the same file.
 - Do not implement tests, documentation, or unnecessary code at this moment.

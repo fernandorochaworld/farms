@@ -14,6 +14,7 @@ import '../services/farm_summary_service.dart';
 import 'farm_edit_screen.dart';
 import 'people_list_screen.dart';
 import 'lot_list_screen.dart';
+import 'goal_list_screen.dart';
 
 /// Screen displaying detailed information about a specific farm
 class FarmDetailsScreen extends StatefulWidget {
@@ -467,7 +468,12 @@ class _FarmDetailsScreenState extends State<FarmDetailsScreen> {
                           title: 'Goals',
                           subtitle: 'Track your goals',
                           onTap: () {
-                            // TODO: Navigate to goals
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder: (_) => GoalListScreen(farm: farm),
+                              ),
+                            );
                           },
                         ),
                         _buildSectionTile(

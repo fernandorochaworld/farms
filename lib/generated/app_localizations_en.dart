@@ -350,4 +350,28 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get addRecordButton => 'Add Record';
+
+  @override
+  String get goalsTitle => 'Goals';
+
+  @override
+  String get addGoalTitle => 'New Goal';
+
+  @override
+  String get goalDescriptionLabel => 'Description';
+
+  @override
+  String get goalWeightTargetLabel => 'Average Weight Target (@)';
+
+  @override
+  String get goalBirthQuantityTargetLabel => 'Birth Quantity Target';
+
+  @override
+  String get goalDefinitionDateLabel => 'Definition Date';
+
+  @override
+  String get goalDateLabel => 'Goal Date';
+
+  @override
+  String get addGoalButton => 'Add Goal';
 }

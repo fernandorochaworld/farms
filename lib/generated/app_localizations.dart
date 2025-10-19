@@ -749,6 +749,54 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Add Record'**
   String get addRecordButton;
+
+  /// No description provided for @goalsTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Goals'**
+  String get goalsTitle;
+
+  /// No description provided for @addGoalTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'New Goal'**
+  String get addGoalTitle;
+
+  /// No description provided for @goalDescriptionLabel.
+  ///
+  /// In en, this message translates to:
+  /// **'Description'**
+  String get goalDescriptionLabel;
+
+  /// No description provided for @goalWeightTargetLabel.
+  ///
+  /// In en, this message translates to:
+  /// **'Average Weight Target (@)'**
+  String get goalWeightTargetLabel;
+
+  /// No description provided for @goalBirthQuantityTargetLabel.
+  ///
+  /// In en, this message translates to:
+  /// **'Birth Quantity Target'**
+  String get goalBirthQuantityTargetLabel;
+
+  /// No description provided for @goalDefinitionDateLabel.
+  ///
+  /// In en, this message translates to:
+  /// **'Definition Date'**
+  String get goalDefinitionDateLabel;
+
+  /// No description provided for @goalDateLabel.
+  ///
+  /// In en, this message translates to:
+  /// **'Goal Date'**
+  String get goalDateLabel;
+
+  /// No description provided for @addGoalButton.
+  ///
+  /// In en, this message translates to:
+  /// **'Add Goal'**
+  String get addGoalButton;
 }
 
 class _AppLocalizationsDelegate

@@ -15,36 +15,36 @@ Implement farm goal management with progress tracking, deadline notifications, a
 ## Implementation Checklist
 
 ### Goal Listing
-- [ ] Create GoalListScreen UI
-  - [ ] Display goals for a farm
+- [x] Create GoalListScreen UI
+  - [x] Display goals for a farm
   - [ ] Show goal type (weight/birth)
   - [ ] Display target and current progress
   - [ ] Show deadline and status
-  - [ ] Add floating action button
+  - [x] Add floating action button
   - [ ] Filter by status (active/completed/overdue)
-  - [ ] Show empty state
-- [ ] Create GoalCard widget
-  - [ ] Show goal information
-  - [ ] Display progress bar
+  - [x] Show empty state
+- [x] Create GoalCard widget
+  - [x] Show goal information
+  - [x] Display progress bar
   - [ ] Show status badge
   - [ ] Show days remaining
-- [ ] Implement GoalListController/Bloc
+- [x] Implement GoalListController/Bloc
 - [ ] Add widget tests
 
 ### Goal Creation
-- [ ] Create GoalFormScreen UI
-  - [ ] Add definition date picker
-  - [ ] Add target date picker
+- [x] Create GoalFormScreen UI
+  - [x] Add definition date picker
+  - [x] Add target date picker
   - [ ] Add goal type selector
-  - [ ] Add average weight target (optional)
-  - [ ] Add birth quantity target (optional)
-  - [ ] Add description field
+  - [x] Add average weight target (optional)
+  - [x] Add birth quantity target (optional)
+  - [x] Add description field
   - [ ] Validate at least one target set
-- [ ] Implement goal creation logic
+- [x] Implement goal creation logic
 - [ ] Add widget tests
 
 ### Goal Details
-- [ ] Create GoalDetailsScreen UI
+- [x] Create GoalDetailsScreen UI
   - [ ] Display goal information
   - [ ] Show progress metrics
   - [ ] Display timeline

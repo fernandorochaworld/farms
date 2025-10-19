@@ -20,6 +20,7 @@ class Goal extends Equatable {
 
   /// Farm this goal belongs to
   final String farmId;
+  final String description;
 
   /// Date when goal was defined
   final DateTime definitionDate;
@@ -45,6 +46,7 @@ class Goal extends Equatable {
   const Goal({
     required this.id,
     required this.farmId,
+    required this.description,
     required this.definitionDate,
     required this.goalDate,
     this.averageWeight,
@@ -95,6 +97,7 @@ class Goal extends Equatable {
     return Goal(
       id: json[FirestoreFields.id] as String,
       farmId: json[FirestoreFields.farmId] as String,
+      description: json[FirestoreFields.description] as String? ?? '',
       definitionDate:
           (json[FirestoreFields.definitionDate] as Timestamp).toDate(),
       goalDate: (json[FirestoreFields.goalDate] as Timestamp).toDate(),
@@ -117,6 +120,7 @@ class Goal extends Equatable {
     return {
       FirestoreFields.id: id,
       FirestoreFields.farmId: farmId,
+      FirestoreFields.description: description,
       FirestoreFields.definitionDate: Timestamp.fromDate(definitionDate),
       FirestoreFields.goalDate: Timestamp.fromDate(goalDate),
       if (averageWeight != null)
@@ -134,6 +138,7 @@ class Goal extends Equatable {
   Goal copyWith({
     String? id,
     String? farmId,
+    String? description,
     DateTime? definitionDate,
     DateTime? goalDate,
     double? averageWeight,
@@ -145,6 +150,7 @@ class Goal extends Equatable {
     return Goal(
       id: id ?? this.id,
       farmId: farmId ?? this.farmId,
+      description: description ?? this.description,
       definitionDate: definitionDate ?? this.definitionDate,
       goalDate: goalDate ?? this.goalDate,
       averageWeight: averageWeight ?? this.averageWeight,
@@ -158,6 +164,9 @@ class Goal extends Equatable {
   /// Validate goal data
   /// Returns null if valid, error message if invalid
   String? validate() {
+    if (description.trim().isEmpty) {
+      return 'Description is required';
+    }
     if (goalDate.isBefore(definitionDate)) {
       return 'Goal date must be after definition date';
     }
@@ -186,6 +195,7 @@ class Goal extends Equatable {
   List<Object?> get props => [
         id,
         farmId,
+        description,
         definitionDate,
         goalDate,
         averageWeight,
