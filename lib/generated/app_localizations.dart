@@ -719,6 +719,36 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Transaction Date'**
   String get transactionDateLabel;
+
+  /// No description provided for @weightHistoryTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Weight History'**
+  String get weightHistoryTitle;
+
+  /// No description provided for @addWeightRecordTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Add Weight Record'**
+  String get addWeightRecordTitle;
+
+  /// No description provided for @averageWeightLabel.
+  ///
+  /// In en, this message translates to:
+  /// **'Average Weight'**
+  String get averageWeightLabel;
+
+  /// No description provided for @measurementDateLabel.
+  ///
+  /// In en, this message translates to:
+  /// **'Measurement Date'**
+  String get measurementDateLabel;
+
+  /// No description provided for @addRecordButton.
+  ///
+  /// In en, this message translates to:
+  /// **'Add Record'**
+  String get addRecordButton;
 }
 
 class _AppLocalizationsDelegate

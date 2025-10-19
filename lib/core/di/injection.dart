@@ -24,10 +24,12 @@ import '../../features/farm/services/firestore_service.dart';
 import '../../features/farm/services/farm_summary_service.dart';
 import '../../features/farm/services/lot_statistics_service.dart';
 import '../../features/farm/services/age_calculator_service.dart';
+import '../../features/farm/services/adg_calculator_service.dart';
 import '../../features/farm/bloc/farm_bloc.dart';
 import '../../features/farm/bloc/person_bloc.dart';
 import '../../features/farm/bloc/lot_bloc/lot_bloc.dart';
 import '../../features/farm/bloc/transaction_bloc/transaction_bloc.dart';
+import '../../features/farm/bloc/weight_history_bloc/weight_history_bloc.dart';
 import '../../features/authentication/bloc/user_bloc.dart';
 import '../../shared/services/token_storage_service.dart';
 import '../../features/farm/services/transaction_service.dart';
@@ -125,6 +127,7 @@ void setupDependencies() {
 
   getIt.registerLazySingleton<LotStatisticsService>(() => LotStatisticsService());
   getIt.registerLazySingleton<AgeCalculator>(() => AgeCalculator());
+  getIt.registerLazySingleton<ADGCalculator>(() => ADGCalculator());
 
   getIt.registerLazySingleton<TransactionService>(
     () => TransactionService(
@@ -175,6 +178,12 @@ void setupDependencies() {
     () => TransactionBloc(
       transactionRepository: getIt<TransactionRepository>(),
       transactionService: getIt<TransactionService>(),
+    ),
+  );
+
+  getIt.registerFactory<WeightHistoryBloc>(
+    () => WeightHistoryBloc(
+      weightHistoryRepository: getIt<WeightHistoryRepository>(),
     ),
   );
 

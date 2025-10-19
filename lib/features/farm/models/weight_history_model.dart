@@ -18,6 +18,7 @@ class WeightHistory extends Equatable {
 
   /// Lot ID this weight record belongs to
   final String lotId;
+  final String farmId;
 
   /// Date when weight was measured
   final DateTime date;
@@ -34,6 +35,7 @@ class WeightHistory extends Equatable {
   const WeightHistory({
     required this.id,
     required this.lotId,
+    required this.farmId,
     required this.date,
     required this.averageWeight,
     required this.createdAt,
@@ -67,6 +69,7 @@ class WeightHistory extends Equatable {
     return WeightHistory(
       id: json[FirestoreFields.id] as String,
       lotId: json[FirestoreFields.lotId] as String,
+      farmId: json[FirestoreFields.farmId] as String? ?? '',
       date: (json[FirestoreFields.date] as Timestamp).toDate(),
       averageWeight: (json[FirestoreFields.averageWeight] as num).toDouble(),
       createdAt: (json[FirestoreFields.createdAt] as Timestamp).toDate(),
@@ -79,6 +82,7 @@ class WeightHistory extends Equatable {
     return {
       FirestoreFields.id: id,
       FirestoreFields.lotId: lotId,
+      FirestoreFields.farmId: farmId,
       FirestoreFields.date: Timestamp.fromDate(date),
       FirestoreFields.averageWeight: averageWeight,
       FirestoreFields.createdAt: Timestamp.fromDate(createdAt),
@@ -90,6 +94,7 @@ class WeightHistory extends Equatable {
   WeightHistory copyWith({
     String? id,
     String? lotId,
+    String? farmId,
     DateTime? date,
     double? averageWeight,
     DateTime? createdAt,
@@ -98,6 +103,7 @@ class WeightHistory extends Equatable {
     return WeightHistory(
       id: id ?? this.id,
       lotId: lotId ?? this.lotId,
+      farmId: farmId ?? this.farmId,
       date: date ?? this.date,
       averageWeight: averageWeight ?? this.averageWeight,
       createdAt: createdAt ?? this.createdAt,
@@ -133,6 +139,7 @@ class WeightHistory extends Equatable {
   List<Object?> get props => [
         id,
         lotId,
+        farmId,
         date,
         averageWeight,
         createdAt,

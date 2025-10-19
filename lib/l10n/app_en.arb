@@ -302,5 +302,11 @@
   "transactionQuantityLabel": "Quantity",
   "transactionWeightLabel": "Average Weight",
   "transactionValueLabel": "Total Value",
-  "transactionDateLabel": "Transaction Date"
+  "transactionDateLabel": "Transaction Date",
+
+  "weightHistoryTitle": "Weight History",
+  "addWeightRecordTitle": "Add Weight Record",
+  "averageWeightLabel": "Average Weight",
+  "measurementDateLabel": "Measurement Date",
+  "addRecordButton": "Add Record"
 }

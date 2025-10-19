@@ -56,8 +56,8 @@ class LotBloc extends Bloc<LotEvent, LotState> {
     emit(LotLoading());
     try {
       final lot = await _lotRepository.getById(event.farmId, event.lotId);
-      // TODO: Load transactions and weight history
-      emit(LotDetailsLoaded(lot: lot));
+      final weightHistory = await _weightHistoryRepository.getByLotId(event.farmId, event.lotId);
+      emit(LotDetailsLoaded(lot: lot, weightHistory: weightHistory));
     } catch (e) {
       emit(LotError(message: 'Failed to load lot details: ${e.toString()}'));
     }
@@ -101,6 +101,7 @@ class LotBloc extends Bloc<LotEvent, LotState> {
         final weightRecord = WeightHistory(
           id: _uuid.v4(),
           lotId: lotId,
+          farmId: newLot.farmId,
           averageWeight: event.initialWeight!,
           date: now,
           createdAt: now,

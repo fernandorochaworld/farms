@@ -193,11 +193,10 @@ class FirebaseWeightHistoryRepository implements WeightHistoryRepository {
       // Use collectionGroup to find all weight history across all lots
       final snapshot = await _firestore
           .collectionGroup(FirestorePaths.weightHistoryCollection)
+          .where(FirestoreFields.farmId, isEqualTo: farmId)
           .orderBy(FirestoreFields.date, descending: true)
           .get();
 
-      // Filter by farmId in memory (since collectionGroup doesn't support it directly)
-      // Note: In production, you might want to add farmId field to weight history
       return snapshot.docs
           .map((doc) => WeightHistory.fromJson(doc.data()))
           .toList();

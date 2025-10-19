@@ -15,62 +15,62 @@ Implement weight history tracking for cattle lots with charts, Average Daily Gai
 ## Implementation Checklist
 
 ### Weight History Listing
-- [ ] Create WeightHistoryScreen UI
-  - [ ] Display weight records for a lot
-  - [ ] Show date and average weight
-  - [ ] Add floating action button to add record
+- [x] Create WeightHistoryScreen UI
+  - [x] Display weight records for a lot
+  - [x] Show date and average weight
+  - [x] Add floating action button to add record
   - [ ] Add chronological sorting
-  - [ ] Show weight change indicators
+  - [x] Show weight change indicators
   - [ ] Add date filtering
-  - [ ] Show empty state
-- [ ] Create WeightRecordCard widget
-- [ ] Implement WeightHistoryController/Bloc
+  - [x] Show empty state
+- [x] Create WeightRecordCard widget
+- [x] Implement WeightHistoryController/Bloc
 - [ ] Add widget tests
 
 ### Weight Entry
-- [ ] Create WeightEntryForm UI
-  - [ ] Add date picker
-  - [ ] Add average weight input (kg per head)
+- [x] Create WeightEntryForm UI
+  - [x] Add date picker
+  - [x] Add average weight input (kg per head)
   - [ ] Show current lot quantity
   - [ ] Add notes field
-  - [ ] Add form validation
-- [ ] Implement weight entry logic
-- [ ] Validate weight (> 0, reasonable range)
+  - [x] Add form validation
+- [x] Implement weight entry logic
+- [x] Validate weight (> 0, reasonable range)
 - [ ] Add widget tests
 
 ### Weight Chart
-- [ ] Create WeightChartWidget
-  - [ ] Line chart showing progression
-  - [ ] X-axis: dates
-  - [ ] Y-axis: weight (kg)
-  - [ ] Add data points
+- [x] Create WeightChartWidget
+  - [x] Line chart showing progression
+  - [x] X-axis: dates
+  - [x] Y-axis: weight (kg)
+  - [x] Add data points
   - [ ] Add trend line
   - [ ] Add zoom/pan capabilities
-  - [ ] Show weight gain/loss colors
-- [ ] Implement using fl_chart or similar
+  - [x] Show weight gain/loss colors
+- [x] Implement using fl_chart or similar
 - [ ] Add widget tests
 
 ### ADG Calculation
-- [ ] Create ADGCalculator service
-  - [ ] Formula: (final_weight - initial_weight) / days
-  - [ ] Calculate between any two dates
-  - [ ] Calculate for entire lot history
+- [x] Create ADGCalculator service
+  - [x] Formula: (final_weight - initial_weight) / days
+  - [x] Calculate between any two dates
+  - [x] Calculate for entire lot history
   - [ ] Calculate for date ranges
-- [ ] Display ADG in UI
-  - [ ] In lot details
-  - [ ] In weight history
+- [x] Display ADG in UI
+  - [x] In lot details
+  - [x] In weight history
   - [ ] In statistics
 - [ ] Add unit tests
 
 ### Weight Statistics
-- [ ] Calculate weight statistics
-  - [ ] Current average weight
-  - [ ] Initial weight
-  - [ ] Total weight gain/loss
-  - [ ] Average daily gain
+- [x] Calculate weight statistics
+  - [x] Current average weight
+  - [x] Initial weight
+  - [x] Total weight gain/loss
+  - [x] Average daily gain
   - [ ] Best performing period
   - [ ] Weight distribution
-- [ ] Create WeightStatisticsCard
+- [x] Create WeightStatisticsCard
 - [ ] Add unit tests
 
 ### Weight Comparison

@@ -26,22 +26,15 @@ class LotLoaded extends LotState {
 
 class LotDetailsLoaded extends LotState {
   final CattleLot lot;
-  // TODO: Add transactions and weight history when implemented
-  // final List<Transaction> transactions;
-  // final List<WeightHistory> weightHistory;
+  final List<WeightHistory> weightHistory;
 
   const LotDetailsLoaded({
     required this.lot,
-    // required this.transactions,
-    // required this.weightHistory,
+    required this.weightHistory,
   });
 
   @override
-  List<Object> get props => [
-        lot,
-        // transactions,
-        // weightHistory,
-      ];
+  List<Object> get props => [lot, weightHistory];
 }
 
 class LotError extends LotState {

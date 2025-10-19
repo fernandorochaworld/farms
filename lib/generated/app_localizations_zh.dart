@@ -335,4 +335,19 @@ class AppLocalizationsZh extends AppLocalizations {
 
   @override
   String get transactionDateLabel => 'Transaction Date';
+
+  @override
+  String get weightHistoryTitle => 'Weight History';
+
+  @override
+  String get addWeightRecordTitle => 'Add Weight Record';
+
+  @override
+  String get averageWeightLabel => 'Average Weight';
+
+  @override
+  String get measurementDateLabel => 'Measurement Date';
+
+  @override
+  String get addRecordButton => 'Add Record';
 }

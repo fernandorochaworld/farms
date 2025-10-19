@@ -5,10 +5,12 @@ import '../../../core/di/injection.dart';
 import '../bloc/lot_bloc/lot_bloc.dart';
 import '../models/farm_model.dart';
 import '../models/cattle_lot_model.dart';
+import '../models/weight_history_model.dart';
 import '../services/age_calculator_service.dart';
 import '../constants/enums.dart';
 import 'lot_form_screen.dart';
 import 'transaction_list_screen.dart';
+import 'weight_history_screen.dart';
 
 class LotDetailsScreen extends StatefulWidget {
   final Farm farm;
@@ -89,7 +91,7 @@ class _LotDetailsScreenState extends State<LotDetailsScreen> {
                   children: [
                     Text(lot.name, style: Theme.of(context).textTheme.headlineMedium),
                     const SizedBox(height: 8),
-                    _buildInfoCard(context, lot, ageRange),
+                    _buildInfoCard(context, lot, ageRange, state.weightHistory),
                     const SizedBox(height: 16),
                     // Placeholder for statistics
                     Text('Statistics', style: Theme.of(context).textTheme.titleLarge),
@@ -106,6 +108,18 @@ class _LotDetailsScreenState extends State<LotDetailsScreen> {
                       child: const Text('View Transactions'),
                     ),
                     const SizedBox(height: 16),
+                    ElevatedButton(
+                      onPressed: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (_) => WeightHistoryScreen(lot: lot),
+                          ),
+                        );
+                      },
+                      child: const Text('View Weight History'),
+                    ),
+                    const SizedBox(height: 16),
                     // Placeholder for transactions
                     Text('Transactions', style: Theme.of(context).textTheme.titleLarge),
                   ],
@@ -119,7 +133,11 @@ class _LotDetailsScreenState extends State<LotDetailsScreen> {
     );
   }
 
-  Widget _buildInfoCard(BuildContext context, CattleLot lot, String ageRange) {
+  Widget _buildInfoCard(BuildContext context, CattleLot lot, String ageRange, List<WeightHistory> weightHistory) {
+    final latestWeight = weightHistory.isNotEmpty ? weightHistory.first.averageWeight : 0.0;
+    final initialWeight = weightHistory.isNotEmpty ? weightHistory.last.averageWeight : 0.0;
+    final weightGain = latestWeight - initialWeight;
+
     return Card(
       child: Padding(
         padding: const EdgeInsets.all(16.0),
@@ -136,6 +154,10 @@ class _LotDetailsScreenState extends State<LotDetailsScreen> {
             _buildInfoRow(context, Icons.cake, 'Age Range', ageRange),
             const Divider(),
             _buildInfoRow(context, Icons.timer, 'Days Active', '${lot.daysActive} days'),
+            const Divider(),
+            _buildInfoRow(context, Icons.monitor_weight, 'Latest Weight', '${latestWeight.toStringAsFixed(2)} @'),
+            const Divider(),
+            _buildInfoRow(context, Icons.trending_up, 'Weight Gain', '${weightGain.toStringAsFixed(2)} @'),
           ],
         ),
       ),

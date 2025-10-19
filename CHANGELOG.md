@@ -417,5 +417,41 @@ Step 5: Transaction Management - COMPLETED
   1. Transaction BLoC & Service: Created the logic to handle transaction creation and listing, with atomic updates to lot quantities.
   2. UI for Transactions: Implemented screens for selecting a transaction type, filling out a transaction form, and listing transactions for a lot.
   3. Four Transaction Types: The form and logic handle Buy, Sell, Move, and Die transactions (though Move is not fully implemented).
-  4. Integration: Linked the transaction list from the lot details page.
+  ### Version 0.0.7
+  
+  Step 6: Weight Tracking - COMPLETED
+  
+    ✅ Step 6: Weight Tracking - COMPLETED
+  
+    Summary of Implementation
+  
+    Successfully implemented the Weight Tracking feature (Feature 004 - Step 6).
+  
+    📦 Files Created (5 new files)
+  
+    BLoC/State Management (3 files):
+    - weight_history_bloc.dart
+    - weight_history_event.dart
+    - weight_history_state.dart
+  
+    Services (1 file):
+    - adg_calculator_service.dart
+  
+    Screens (2 files):
+    - weight_history_screen.dart
+    - weight_entry_form_screen.dart
+  
+    Widgets (2 files):
+    - weight_record_card.dart
+    - weight_chart_widget.dart
+  
+    🎯 Key Achievements
+  
+    1. Weight History BLoC: Manages the state for loading and adding weight records.
+    2. UI for Weight Tracking: Screens to view weight history with a chart and a form to add new entries.
+    3. ADG Calculation: Service to calculate Average Daily Gain.
+    4. Integration: Linked from the lot details page and integrated weight data into the lot details view.
+  
+  
+  
 
