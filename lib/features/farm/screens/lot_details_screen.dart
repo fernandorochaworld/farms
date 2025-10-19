@@ -8,6 +8,7 @@ import '../models/cattle_lot_model.dart';
 import '../services/age_calculator_service.dart';
 import '../constants/enums.dart';
 import 'lot_form_screen.dart';
+import 'transaction_list_screen.dart';
 
 class LotDetailsScreen extends StatefulWidget {
   final Farm farm;
@@ -93,6 +94,18 @@ class _LotDetailsScreenState extends State<LotDetailsScreen> {
                     // Placeholder for statistics
                     Text('Statistics', style: Theme.of(context).textTheme.titleLarge),
                     const SizedBox(height: 8),
+                    ElevatedButton(
+                      onPressed: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (_) => TransactionListScreen(lot: lot),
+                          ),
+                        );
+                      },
+                      child: const Text('View Transactions'),
+                    ),
+                    const SizedBox(height: 16),
                     // Placeholder for transactions
                     Text('Transactions', style: Theme.of(context).textTheme.titleLarge),
                   ],

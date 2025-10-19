@@ -653,6 +653,72 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Are you sure you want to permanently delete this lot and all its associated data? This action cannot be undone.'**
   String get lotDeleteConfirmMessage;
+
+  /// No description provided for @transactionListTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Transactions'**
+  String get transactionListTitle;
+
+  /// No description provided for @transactionCreateTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'New Transaction'**
+  String get transactionCreateTitle;
+
+  /// No description provided for @transactionDetailsTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Transaction Details'**
+  String get transactionDetailsTitle;
+
+  /// No description provided for @transactionTypeBuy.
+  ///
+  /// In en, this message translates to:
+  /// **'Buy'**
+  String get transactionTypeBuy;
+
+  /// No description provided for @transactionTypeSell.
+  ///
+  /// In en, this message translates to:
+  /// **'Sell'**
+  String get transactionTypeSell;
+
+  /// No description provided for @transactionTypeMove.
+  ///
+  /// In en, this message translates to:
+  /// **'Move'**
+  String get transactionTypeMove;
+
+  /// No description provided for @transactionTypeDie.
+  ///
+  /// In en, this message translates to:
+  /// **'Record Death'**
+  String get transactionTypeDie;
+
+  /// No description provided for @transactionQuantityLabel.
+  ///
+  /// In en, this message translates to:
+  /// **'Quantity'**
+  String get transactionQuantityLabel;
+
+  /// No description provided for @transactionWeightLabel.
+  ///
+  /// In en, this message translates to:
+  /// **'Average Weight'**
+  String get transactionWeightLabel;
+
+  /// No description provided for @transactionValueLabel.
+  ///
+  /// In en, this message translates to:
+  /// **'Total Value'**
+  String get transactionValueLabel;
+
+  /// No description provided for @transactionDateLabel.
+  ///
+  /// In en, this message translates to:
+  /// **'Transaction Date'**
+  String get transactionDateLabel;
 }
 
 class _AppLocalizationsDelegate

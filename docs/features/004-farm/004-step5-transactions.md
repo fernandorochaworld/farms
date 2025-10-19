@@ -16,82 +16,82 @@ Implement complete transaction management for cattle lots, including Buy, Sell, 
 ## Implementation Checklist
 
 ### Transaction Listing
-- [ ] Create TransactionListScreen UI
-  - [ ] Display transactions for a lot
+- [x] Create TransactionListScreen UI
+  - [x] Display transactions for a lot
   - [ ] Show transaction type with icon
-  - [ ] Display quantity, weight, value
-  - [ ] Show transaction date
-  - [ ] Add floating action button to add transaction
+  - [x] Display quantity, weight, value
+  - [x] Show transaction date
+  - [x] Add floating action button to add transaction
   - [ ] Add filter by type
   - [ ] Add date range filter
   - [ ] Add sort options (date, value, type)
-  - [ ] Show empty state
-  - [ ] Add pull-to-refresh
-- [ ] Create TransactionTile widget
-  - [ ] Display transaction info
-  - [ ] Show type badge with color
-  - [ ] Show quantity with +/- indicator
-  - [ ] Display value and weight
+  - [x] Show empty state
+  - [x] Add pull-to-refresh
+- [x] Create TransactionTile widget
+  - [x] Display transaction info
+  - [x] Show type badge with color
+  - [x] Show quantity with +/- indicator
+  - [x] Display value and weight
   - [ ] Add tap to view details
   - [ ] Add swipe actions (edit, delete)
   - [ ] Show linked transaction indicator (for Move)
-- [ ] Implement TransactionListController/Bloc
-  - [ ] Fetch transactions by lot ID
+- [x] Implement TransactionListController/Bloc
+  - [x] Fetch transactions by lot ID
   - [ ] Handle real-time updates
   - [ ] Implement filtering
   - [ ] Handle pagination if needed
 - [ ] Add widget tests
 
 ### Transaction Creation - Buy
-- [ ] Create TransactionFormScreen (Buy mode) UI
-  - [ ] Add quantity input (required)
-  - [ ] Add average weight input (required)
-  - [ ] Add value/price input (required)
-  - [ ] Add date picker
-  - [ ] Add description/notes field
+- [x] Create TransactionFormScreen (Buy mode) UI
+  - [x] Add quantity input (required)
+  - [x] Add average weight input (required)
+  - [x] Add value/price input (required)
+  - [x] Add date picker
+  - [x] Add description/notes field
   - [ ] Show calculation: total value = quantity × price per head
-  - [ ] Add form validation
-  - [ ] Add submit button
-- [ ] Implement Buy transaction logic
-  - [ ] Create transaction record
-  - [ ] Increment lot.qtd_added
+  - [x] Add form validation
+  - [x] Add submit button
+- [x] Implement Buy transaction logic
+  - [x] Create transaction record
+  - [x] Increment lot.qtd_added
   - [ ] Create weight history entry
-  - [ ] Handle success/error states
-  - [ ] Show confirmation message
+  - [x] Handle success/error states
+  - [x] Show confirmation message
 - [ ] Add widget tests
 
 ### Transaction Creation - Sell
-- [ ] Create TransactionFormScreen (Sell mode) UI
-  - [ ] Add quantity input (validate <= current quantity)
-  - [ ] Add average weight input (required)
-  - [ ] Add value/price input (required)
-  - [ ] Add date picker
-  - [ ] Add description/notes field
+- [x] Create TransactionFormScreen (Sell mode) UI
+  - [x] Add quantity input (validate <= current quantity)
+  - [x] Add average weight input (required)
+  - [x] Add value/price input (required)
+  - [x] Add date picker
+  - [x] Add description/notes field
   - [ ] Show current lot quantity
   - [ ] Show remaining quantity after sell
-  - [ ] Add form validation
-  - [ ] Add submit button
-- [ ] Implement Sell transaction logic
-  - [ ] Validate quantity available
-  - [ ] Create transaction record
-  - [ ] Increment lot.qtd_removed
+  - [x] Add form validation
+  - [x] Add submit button
+- [x] Implement Sell transaction logic
+  - [x] Validate quantity available
+  - [x] Create transaction record
+  - [x] Increment lot.qtd_removed
   - [ ] Auto-close lot if current_quantity = 0
-  - [ ] Handle success/error states
-  - [ ] Show confirmation message
+  - [x] Handle success/error states
+  - [x] Show confirmation message
 - [ ] Add widget tests
 
 ### Transaction Creation - Move
-- [ ] Create TransactionFormScreen (Move mode) UI
+- [x] Create TransactionFormScreen (Move mode) UI
   - [ ] Add source lot selector (current lot)
   - [ ] Add destination lot selector
-  - [ ] Add quantity input (validate <= current quantity)
-  - [ ] Add average weight input (required)
-  - [ ] Add date picker
-  - [ ] Add description/notes field
+  - [x] Add quantity input (validate <= current quantity)
+  - [x] Add average weight input (required)
+  - [x] Add date picker
+  - [x] Add description/notes field
   - [ ] Show both lot quantities
   - [ ] Show impact preview
-  - [ ] Add form validation
-  - [ ] Add submit button
+  - [x] Add form validation
+  - [x] Add submit button
 - [ ] Implement Move transaction logic
   - [ ] Validate quantity available in source
   - [ ] Create two linked transactions atomically
@@ -105,36 +105,36 @@ Implement complete transaction management for cattle lots, including Buy, Sell, 
 - [ ] Add widget tests
 
 ### Transaction Creation - Die
-- [ ] Create TransactionFormScreen (Die mode) UI
-  - [ ] Add quantity input (validate <= current quantity)
-  - [ ] Add average weight input (optional)
-  - [ ] Add loss value input (optional)
+- [x] Create TransactionFormScreen (Die mode) UI
+  - [x] Add quantity input (validate <= current quantity)
+  - [x] Add average weight input (optional)
+  - [x] Add loss value input (optional)
   - [ ] Add cause of death field
-  - [ ] Add date picker
-  - [ ] Add description/notes field
+  - [x] Add date picker
+  - [x] Add description/notes field
   - [ ] Show mortality impact
-  - [ ] Add form validation
-  - [ ] Add submit button
-- [ ] Implement Die transaction logic
-  - [ ] Validate quantity available
-  - [ ] Create transaction record
-  - [ ] Increment lot.qtd_removed
+  - [x] Add form validation
+  - [x] Add submit button
+- [x] Implement Die transaction logic
+  - [x] Validate quantity available
+  - [x] Create transaction record
+  - [x] Increment lot.qtd_removed
   - [ ] Track for mortality statistics
   - [ ] Auto-close lot if current_quantity = 0
-  - [ ] Handle success/error states
-  - [ ] Show confirmation message
+  - [x] Handle success/error states
+  - [x] Show confirmation message
 - [ ] Add widget tests
 
 ### Transaction Type Selection
-- [ ] Create TransactionTypeSelector screen
-  - [ ] Display all four types with icons
-  - [ ] Buy: + icon, green color
-  - [ ] Sell: $ icon, blue color
-  - [ ] Move: ↔ icon, orange color
-  - [ ] Die: ✝ icon, red color
-  - [ ] Add descriptions for each type
-  - [ ] Handle selection
-  - [ ] Navigate to appropriate form
+- [x] Create TransactionTypeSelector screen
+  - [x] Display all four types with icons
+  - [x] Buy: + icon, green color
+  - [x] Sell: $ icon, blue color
+  - [x] Move: ↔ icon, orange color
+  - [x] Die: ✝ icon, red color
+  - [x] Add descriptions for each type
+  - [x] Handle selection
+  - [x] Navigate to appropriate form
 - [ ] Add widget tests
 
 ### Transaction Details
@@ -191,17 +191,17 @@ Implement complete transaction management for cattle lots, including Buy, Sell, 
 - [ ] Add widget tests
 
 ### Quantity Update Service
-- [ ] Create TransactionService
-  - [ ] updateLotQuantities method
+- [x] Create TransactionService
+  - [x] updateLotQuantities method
   - [ ] calculateQuantityDelta method
-  - [ ] validateQuantityChange method
+  - [x] validateQuantityChange method
   - [ ] autoCloseLot method
   - [ ] reopenLot method
-- [ ] Implement atomic updates
-  - [ ] Use Firestore transactions
-  - [ ] Ensure consistency
+- [x] Implement atomic updates
+  - [x] Use Firestore transactions
+  - [x] Ensure consistency
   - [ ] Handle rollback on failure
-- [ ] Add comprehensive error handling
+- [x] Add comprehensive error handling
 - [ ] Add unit tests
 
 ### Move Transaction Service
@@ -253,21 +253,21 @@ Implement complete transaction management for cattle lots, including Buy, Sell, 
 - [ ] Add widget tests
 
 ### Validation & Business Rules
-- [ ] Transaction quantity validation
-  - [ ] > 0 for all types
-  - [ ] <= current quantity for Sell, Move, Die
-- [ ] Weight validation
-  - [ ] > 0 if provided
+- [x] Transaction quantity validation
+  - [x] > 0 for all types
+  - [x] <= current quantity for Sell, Move, Die
+- [x] Weight validation
+  - [x] > 0 if provided
   - [ ] Reasonable range (e.g., 50-1000 kg)
-- [ ] Value validation
-  - [ ] >= 0
+- [x] Value validation
+  - [x] >= 0
   - [ ] Reasonable range
-- [ ] Date validation
-  - [ ] Not in future
-  - [ ] After lot start date
+- [x] Date validation
+  - [x] Not in future
+  - [x] After lot start date
   - [ ] Before lot end date (if closed)
-- [ ] Lot validation
-  - [ ] Lot must be active for new transactions
+- [x] Lot validation
+  - [x] Lot must be active for new transactions
   - [ ] Cannot exceed capacity
 - [ ] Move transaction validation
   - [ ] Source and destination must be different
@@ -277,53 +277,53 @@ Implement complete transaction management for cattle lots, including Buy, Sell, 
 
 ### Permission Checks
 - [ ] Implement transaction permission checks
-  - [ ] Create: All person types can create
+  - [x] Create: All person types can create
   - [ ] Edit: Owner, Manager can edit
   - [ ] Delete: Owner, Manager can delete
-  - [ ] View: All can view
+  - [x] View: All can view
   - [ ] Admin can override
 - [ ] Add UI permission guards
 - [ ] Add backend validation
 
 ### State Management
-- [ ] Create TransactionState
-  - [ ] TransactionInitial
-  - [ ] TransactionLoading
-  - [ ] TransactionLoaded
+- [x] Create TransactionState
+  - [x] TransactionInitial
+  - [x] TransactionLoading
+  - [x] TransactionLoaded
   - [ ] TransactionDetailsLoaded
-  - [ ] TransactionError
+  - [x] TransactionError
   - [ ] TransactionOperationInProgress
-  - [ ] TransactionOperationSuccess
-  - [ ] TransactionOperationFailure
-- [ ] Create TransactionEvent
-  - [ ] LoadTransactions
+  - [x] TransactionOperationSuccess
+  - [x] TransactionOperationFailure
+- [x] Create TransactionEvent
+  - [x] LoadTransactions
   - [ ] LoadTransactionDetails
-  - [ ] CreateBuyTransaction
-  - [ ] CreateSellTransaction
+  - [x] CreateBuyTransaction
+  - [x] CreateSellTransaction
   - [ ] CreateMoveTransaction
-  - [ ] CreateDieTransaction
+  - [x] CreateDieTransaction
   - [ ] UpdateTransaction
   - [ ] DeleteTransaction
   - [ ] FilterTransactions
-- [ ] Implement TransactionBloc
-  - [ ] Handle all events
-  - [ ] Emit appropriate states
-  - [ ] Call service methods
-  - [ ] Handle errors
+- [x] Implement TransactionBloc
+  - [x] Handle all events
+  - [x] Emit appropriate states
+  - [x] Call service methods
+  - [x] Handle errors
 
 ### Internationalization
-- [ ] Add translation keys
-  - [ ] transaction_list_title
-  - [ ] transaction_create_title
+- [x] Add translation keys
+  - [x] transaction_list_title
+  - [x] transaction_create_title
   - [ ] transaction_details_title
-  - [ ] transaction_type_buy
-  - [ ] transaction_type_sell
-  - [ ] transaction_type_move
-  - [ ] transaction_type_die
-  - [ ] transaction_quantity_label
-  - [ ] transaction_weight_label
-  - [ ] transaction_value_label
-  - [ ] transaction_date_label
+  - [x] transaction_type_buy
+  - [x] transaction_type_sell
+  - [x] transaction_type_move
+  - [x] transaction_type_die
+  - [x] transaction_quantity_label
+  - [x] transaction_weight_label
+  - [x] transaction_value_label
+  - [x] transaction_date_label
   - [ ] Validation messages
   - [ ] Confirmation messages
   - [ ] Error messages

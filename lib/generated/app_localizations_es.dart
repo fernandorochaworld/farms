@@ -303,4 +303,37 @@ class AppLocalizationsEs extends AppLocalizations {
   @override
   String get lotDeleteConfirmMessage =>
       'Are you sure you want to permanently delete this lot and all its associated data? This action cannot be undone.';
+
+  @override
+  String get transactionListTitle => 'Transactions';
+
+  @override
+  String get transactionCreateTitle => 'New Transaction';
+
+  @override
+  String get transactionDetailsTitle => 'Transaction Details';
+
+  @override
+  String get transactionTypeBuy => 'Buy';
+
+  @override
+  String get transactionTypeSell => 'Sell';
+
+  @override
+  String get transactionTypeMove => 'Move';
+
+  @override
+  String get transactionTypeDie => 'Record Death';
+
+  @override
+  String get transactionQuantityLabel => 'Quantity';
+
+  @override
+  String get transactionWeightLabel => 'Average Weight';
+
+  @override
+  String get transactionValueLabel => 'Total Value';
+
+  @override
+  String get transactionDateLabel => 'Transaction Date';
 }

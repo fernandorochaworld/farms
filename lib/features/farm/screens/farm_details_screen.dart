@@ -459,7 +459,7 @@ class _FarmDetailsScreenState extends State<FarmDetailsScreen> {
                           title: 'Transactions',
                           subtitle: 'Recent activity',
                           onTap: () {
-                            // TODO: Navigate to transactions
+                            // TODO: Navigate to farm-wide transactions
                           },
                         ),
                         _buildSectionTile(

@@ -290,5 +290,17 @@
   "lotReopenConfirmTitle": "Reopen Lot",
   "lotReopenConfirmMessage": "Are you sure you want to reopen this lot?",
   "lotDeleteConfirmTitle": "Delete Lot",
-  "lotDeleteConfirmMessage": "Are you sure you want to permanently delete this lot and all its associated data? This action cannot be undone."
+  "lotDeleteConfirmMessage": "Are you sure you want to permanently delete this lot and all its associated data? This action cannot be undone.",
+
+  "transactionListTitle": "Transactions",
+  "transactionCreateTitle": "New Transaction",
+  "transactionDetailsTitle": "Transaction Details",
+  "transactionTypeBuy": "Buy",
+  "transactionTypeSell": "Sell",
+  "transactionTypeMove": "Move",
+  "transactionTypeDie": "Record Death",
+  "transactionQuantityLabel": "Quantity",
+  "transactionWeightLabel": "Average Weight",
+  "transactionValueLabel": "Total Value",
+  "transactionDateLabel": "Transaction Date"
 }

@@ -337,7 +337,6 @@ Step 3: People Management - COMPLETED
   - View detailed person information
   - All operations respect permission rules
 
-### Version 0.0.5
 
 Step 4: Cattle Lot Management - COMPLETED
 
@@ -384,4 +383,39 @@ Step 4: Cattle Lot Management - COMPLETED
   6. Internationalization: Added all necessary keys for English.
 
 
+
+### Version 0.0.6
+
+Step 5: Transaction Management - COMPLETED
+
+  ✅ Step 5: Transaction Management - COMPLETED
+
+  Summary of Implementation
+
+  Successfully implemented the core of the Transaction Management feature (Feature 004 - Step 5). This allows users to add transactions to their cattle lots.
+
+  📦 Files Created (5 new files)
+
+  BLoC/State Management (3 files):
+  - transaction_bloc.dart
+  - transaction_event.dart
+  - transaction_state.dart
+
+  Services (1 file):
+  - transaction_service.dart
+
+  Screens (4 files):
+  - transaction_list_screen.dart
+  - transaction_type_selector_screen.dart
+  - transaction_form_screen.dart
+
+  Widgets (1 file):
+  - transaction_tile.dart
+
+  🎯 Key Achievements
+
+  1. Transaction BLoC & Service: Created the logic to handle transaction creation and listing, with atomic updates to lot quantities.
+  2. UI for Transactions: Implemented screens for selecting a transaction type, filling out a transaction form, and listing transactions for a lot.
+  3. Four Transaction Types: The form and logic handle Buy, Sell, Move, and Die transactions (though Move is not fully implemented).
+  4. Integration: Linked the transaction list from the lot details page.
 
