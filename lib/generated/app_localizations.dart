@@ -797,6 +797,54 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Add Goal'**
   String get addGoalButton;
+
+  /// No description provided for @servicesTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Services'**
+  String get servicesTitle;
+
+  /// No description provided for @addServiceTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'New Service'**
+  String get addServiceTitle;
+
+  /// No description provided for @serviceTypeLabel.
+  ///
+  /// In en, this message translates to:
+  /// **'Service Type'**
+  String get serviceTypeLabel;
+
+  /// No description provided for @serviceDescriptionLabel.
+  ///
+  /// In en, this message translates to:
+  /// **'Description'**
+  String get serviceDescriptionLabel;
+
+  /// No description provided for @serviceCostLabel.
+  ///
+  /// In en, this message translates to:
+  /// **'Cost'**
+  String get serviceCostLabel;
+
+  /// No description provided for @serviceDateLabel.
+  ///
+  /// In en, this message translates to:
+  /// **'Service Date'**
+  String get serviceDateLabel;
+
+  /// No description provided for @serviceStatusLabel.
+  ///
+  /// In en, this message translates to:
+  /// **'Status'**
+  String get serviceStatusLabel;
+
+  /// No description provided for @addServiceButton.
+  ///
+  /// In en, this message translates to:
+  /// **'Add Service'**
+  String get addServiceButton;
 }
 
 class _AppLocalizationsDelegate

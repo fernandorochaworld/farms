@@ -374,4 +374,28 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get addGoalButton => 'Add Goal';
+
+  @override
+  String get servicesTitle => 'Services';
+
+  @override
+  String get addServiceTitle => 'New Service';
+
+  @override
+  String get serviceTypeLabel => 'Service Type';
+
+  @override
+  String get serviceDescriptionLabel => 'Description';
+
+  @override
+  String get serviceCostLabel => 'Cost';
+
+  @override
+  String get serviceDateLabel => 'Service Date';
+
+  @override
+  String get serviceStatusLabel => 'Status';
+
+  @override
+  String get addServiceButton => 'Add Service';
 }

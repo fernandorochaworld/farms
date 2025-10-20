@@ -38,6 +38,7 @@ class FarmServiceHistory extends Equatable {
 
   /// User ID who created this record
   final String createdBy;
+  final ServiceStatus status;
 
   const FarmServiceHistory({
     required this.id,
@@ -48,6 +49,7 @@ class FarmServiceHistory extends Equatable {
     required this.description,
     required this.createdAt,
     required this.createdBy,
+    required this.status,
   });
 
   /// Check if service is recent (within last 30 days)
@@ -86,6 +88,10 @@ class FarmServiceHistory extends Equatable {
       description: json[FirestoreFields.description] as String? ?? '',
       createdAt: (json[FirestoreFields.createdAt] as Timestamp).toDate(),
       createdBy: json[FirestoreFields.createdBy] as String,
+      status: ServiceStatus.values.firstWhere(
+        (e) => e.toString() == json['status'],
+        orElse: () => ServiceStatus.done,
+      ),
     );
   }
 
@@ -100,6 +106,7 @@ class FarmServiceHistory extends Equatable {
       FirestoreFields.description: description,
       FirestoreFields.createdAt: Timestamp.fromDate(createdAt),
       FirestoreFields.createdBy: createdBy,
+      'status': status.toString(),
     };
   }
 
@@ -113,6 +120,7 @@ class FarmServiceHistory extends Equatable {
     String? description,
     DateTime? createdAt,
     String? createdBy,
+    ServiceStatus? status,
   }) {
     return FarmServiceHistory(
       id: id ?? this.id,
@@ -123,6 +131,7 @@ class FarmServiceHistory extends Equatable {
       description: description ?? this.description,
       createdAt: createdAt ?? this.createdAt,
       createdBy: createdBy ?? this.createdBy,
+      status: status ?? this.status,
     );
   }
 
@@ -163,6 +172,7 @@ class FarmServiceHistory extends Equatable {
         description,
         createdAt,
         createdBy,
+        status,
       ];
 
   @override

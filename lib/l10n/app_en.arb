@@ -317,5 +317,14 @@
   "goalBirthQuantityTargetLabel": "Birth Quantity Target",
   "goalDefinitionDateLabel": "Definition Date",
   "goalDateLabel": "Goal Date",
-  "addGoalButton": "Add Goal"
+  "addGoalButton": "Add Goal",
+
+  "servicesTitle": "Services",
+  "addServiceTitle": "New Service",
+  "serviceTypeLabel": "Service Type",
+  "serviceDescriptionLabel": "Description",
+  "serviceCostLabel": "Cost",
+  "serviceDateLabel": "Service Date",
+  "serviceStatusLabel": "Status",
+  "addServiceButton": "Add Service"
 }

@@ -15,37 +15,37 @@ Implement farm services history tracking for vaccinations, veterinary care, feed
 ## Implementation Checklist
 
 ### Service Listing
-- [ ] Create ServiceListScreen UI
-  - [ ] Display services for a farm
+- [x] Create ServiceListScreen UI
+  - [x] Display services for a farm
   - [ ] Show service type with icon
-  - [ ] Display date and cost
-  - [ ] Add floating action button
+  - [x] Display date and cost
+  - [x] Add floating action button
   - [ ] Filter by service type
   - [ ] Filter by date range
-  - [ ] Show empty state
-- [ ] Create ServiceCard widget
-  - [ ] Show service information
+  - [x] Show empty state
+- [x] Create ServiceCard widget
+  - [x] Show service information
   - [ ] Display type badge
-  - [ ] Show cost
-  - [ ] Show date
-- [ ] Implement ServiceListController/Bloc
+  - [x] Show cost
+  - [x] Show date
+- [x] Implement ServiceListController/Bloc
 - [ ] Add widget tests
 
 ### Service Creation
-- [ ] Create ServiceFormScreen UI
-  - [ ] Add service type selector
-    - [ ] Vaccination
-    - [ ] Veterinary
-    - [ ] Feeding
-    - [ ] Medical Treatment
-    - [ ] Deworming
-    - [ ] Other (custom)
-  - [ ] Add date picker
-  - [ ] Add cost input
-  - [ ] Add description field
+- [x] Create ServiceFormScreen UI
+  - [x] Add service type selector
+    - [x] Vaccination
+    - [x] Veterinary
+    - [x] Feeding
+    - [x] Medical Treatment
+    - [x] Deworming
+    - [x] Other (custom)
+  - [x] Add date picker
+  - [x] Add cost input
+  - [x] Add description field
   - [ ] Add attachments (optional)
-  - [ ] Add form validation
-- [ ] Implement service creation logic
+  - [x] Add form validation
+- [x] Implement service creation logic
 - [ ] Add widget tests
 
 ### Service Details

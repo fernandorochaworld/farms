@@ -278,6 +278,12 @@ extension GoalStatusExtension on GoalStatus {
   }
 }
 
+enum ServiceStatus {
+  toDo,
+  doing,
+  done,
+}
+
 /// Farm service types for tracking maintenance and care activities
 /// - vaccination: Vaccination services
 /// - veterinary: Veterinary care and consultations

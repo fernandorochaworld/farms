@@ -15,6 +15,7 @@ import 'farm_edit_screen.dart';
 import 'people_list_screen.dart';
 import 'lot_list_screen.dart';
 import 'goal_list_screen.dart';
+import 'service_list_screen.dart';
 
 /// Screen displaying detailed information about a specific farm
 class FarmDetailsScreen extends StatefulWidget {
@@ -481,7 +482,12 @@ class _FarmDetailsScreenState extends State<FarmDetailsScreen> {
                           title: 'Services History',
                           subtitle: 'Health & services',
                           onTap: () {
-                            // TODO: Navigate to services
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder: (_) => ServiceListScreen(farm: farm),
+                              ),
+                            );
                           },
                         ),
                         _buildSectionTile(
