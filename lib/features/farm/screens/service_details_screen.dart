@@ -24,7 +24,11 @@ class ServiceDetailsScreen extends StatelessWidget {
                 MaterialPageRoute(
                   builder: (_) => ServiceFormScreen(farm: farm, service: service),
                 ),
-              );
+              ).then((result) {
+                if (result == 'deleted') {
+                  Navigator.of(context).pop();
+                }
+              });
             },
           ),
         ],

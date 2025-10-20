@@ -55,7 +55,7 @@ class ServiceBloc extends Bloc<ServiceEvent, ServiceState> {
   Future<void> _onDeleteService(DeleteService event, Emitter<ServiceState> emit) async {
     try {
       await _serviceRepository.delete(event.service.farmId, event.service.id);
-      add(LoadServices(farmId: event.service.farmId));
+      emit(ServiceDeleteSuccess());
     } catch (e) {
       emit(ServiceError(message: e.toString()));
     }

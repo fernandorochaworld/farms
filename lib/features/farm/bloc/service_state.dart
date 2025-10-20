@@ -28,3 +28,5 @@ class ServiceError extends ServiceState {
   @override
   List<Object> get props => [message];
 }
+
+class ServiceDeleteSuccess extends ServiceState {}

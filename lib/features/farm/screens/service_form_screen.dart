@@ -92,68 +92,126 @@ class _ServiceFormScreenState extends State<ServiceFormScreen> {
       appBar: AppBar(
         title: Text(isEditMode ? 'Edit Service' : 'New Service'),
       ),
-      body: Form(
-        key: _formKey,
-        child: SingleChildScrollView(
-          padding: const EdgeInsets.all(16.0),
-          child: Column(
-            children: [
-              ServiceTypeSelector(
-                selectedType: _selectedType,
-                onChanged: (type) => setState(() => _selectedType = type),
-              ),
-              const SizedBox(height: 16),
-              CustomTextField(
-                controller: _descriptionController,
-                label: 'Description',
-                validator: (value) => (value?.isEmpty ?? true) ? 'Required' : null,
-              ),
-              const SizedBox(height: 16),
-              CustomTextField(
-                controller: _costController,
-                label: 'Cost',
-                keyboardType: TextInputType.number,
-              ),
-              const SizedBox(height: 16),
-              ListTile(
-                title: const Text('Service Date'),
-                subtitle: Text(DateFormat.yMMMd().format(_selectedDate)),
-                onTap: () async {
-                  final picked = await showDatePicker(
-                    context: context,
-                    initialDate: _selectedDate,
-                    firstDate: DateTime(2000),
-                    lastDate: DateTime.now().add(const Duration(days: 365 * 5)),
-                  );
-                  if (picked != null) {
-                    setState(() => _selectedDate = picked);
-                  }
-                },
-              ),
-              const SizedBox(height: 16),
-              DropdownButtonFormField<ServiceStatus>(
-                value: _selectedStatus,
-                onChanged: (value) {
-                  if (value != null) {
-                    setState(() => _selectedStatus = value);
-                  }
-                },
-                items: ServiceStatus.values.map((status) {
-                  return DropdownMenuItem(
-                    value: status,
-                    child: Text(status.toString().split('.').last),
-                  );
-                }).toList(),
-                decoration: const InputDecoration(labelText: 'Status'),
-              ),
-              const SizedBox(height: 24),
-              ElevatedButton(
-                onPressed: _submit,
-                child: const Text('Add Service'),
-              ),
-            ],
+      body: BlocListener<ServiceBloc, ServiceState>(
+        bloc: _serviceBloc,
+        listener: (context, state) {
+          if (state is ServiceDeleteSuccess) {
+            Navigator.of(context).pop('deleted');
+          }
+        },
+        child: Form(
+          key: _formKey,
+          child: SingleChildScrollView(
+            padding: const EdgeInsets.all(16.0),
+            child: Column(
+              children: [
+                ServiceTypeSelector(
+                  selectedType: _selectedType,
+                  onChanged: (type) => setState(() => _selectedType = type),
+                ),
+                const SizedBox(height: 16),
+                CustomTextField(
+                  controller: _descriptionController,
+                  label: 'Description',
+                  validator: (value) => (value?.isEmpty ?? true) ? 'Required' : null,
+                ),
+                const SizedBox(height: 16),
+                CustomTextField(
+                  controller: _costController,
+                  label: 'Cost',
+                  keyboardType: TextInputType.number,
+                ),
+                const SizedBox(height: 16),
+                ListTile(
+                  title: const Text('Service Date'),
+                  subtitle: Text(DateFormat.yMMMd().format(_selectedDate)),
+                  onTap: () async {
+                    final picked = await showDatePicker(
+                      context: context,
+                      initialDate: _selectedDate,
+                      firstDate: DateTime(2000),
+                      lastDate: DateTime.now().add(const Duration(days: 365 * 5)),
+                    );
+                    if (picked != null) {
+                      setState(() => _selectedDate = picked);
+                    }
+                  },
+                ),
+                const SizedBox(height: 16),
+                DropdownButtonFormField<ServiceStatus>(
+                  value: _selectedStatus,
+                  onChanged: (value) {
+                    if (value != null) {
+                      setState(() => _selectedStatus = value);
+                    }
+                  },
+                  items: ServiceStatus.values.map((status) {
+                    return DropdownMenuItem(
+                      value: status,
+                      child: Text(status.toString().split('.').last),
+                    );
+                  }).toList(),
+                  decoration: const InputDecoration(labelText: 'Status'),
+                ),
+                const SizedBox(height: 24),
+                ElevatedButton(
+                  onPressed: _submit,
+                  child: Text(isEditMode ? 'Update Service' : 'Add Service'),
+                ),
+                if (isEditMode) ...[
+                  const SizedBox(height: 24),
+                  const Divider(),
+                  const SizedBox(height: 24),
+                  Builder(builder: (context) {
+                    final canDelete = DateTime.now().difference(widget.service!.createdAt).inDays < 3;
+                    return Column(
+                      crossAxisAlignment: CrossAxisAlignment.stretch,
+                      children: [
+                        OutlinedButton.icon(
+                          onPressed: canDelete ? () => _showDeleteConfirmation(context) : null,
+                          icon: const Icon(Icons.delete),
+                          label: const Text('Delete Service'),
+                          style: OutlinedButton.styleFrom(foregroundColor: Colors.red),
+                        ),
+                        const SizedBox(height: 8),
+                        Text(
+                          'You can only delete a service within 3 days of its creation.',
+                          textAlign: TextAlign.center,
+                          style: Theme.of(context).textTheme.bodySmall,
+                        )
+                      ],
+                    );
+                  }),
+                ],
+              ],
+            ),
           ),
         ),
+      ),
+    );
+  }
+
+  void _showDeleteConfirmation(BuildContext context) {
+    showDialog(
+      context: context,
+      builder: (ctx) => AlertDialog(
+        title: const Text('Delete Service'),
+        content: const Text(
+            'Are you sure you want to delete this service? This action cannot be undone.'),
+        actions: [
+          TextButton(
+            onPressed: () => Navigator.of(ctx).pop(),
+            child: const Text('Cancel'),
+          ),
+          TextButton(
+            onPressed: () {
+              _serviceBloc.add(DeleteService(service: widget.service!));
+              Navigator.of(ctx).pop();
+            },
+            style: TextButton.styleFrom(foregroundColor: Colors.red),
+            child: const Text('Delete'),
+          ),
+        ],
       ),
     );
   }

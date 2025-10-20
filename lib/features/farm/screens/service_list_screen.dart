@@ -55,7 +55,7 @@ class _ServiceListScreenState extends State<ServiceListScreen> {
                       MaterialPageRoute(
                         builder: (_) => ServiceDetailsScreen(service: service, farm: widget.farm),
                       ),
-                    ),
+                    ).then((_) => _serviceBloc.add(LoadServices(farmId: widget.farm.id))),
                     child: ServiceCard(service: service),
                   );
                 },
